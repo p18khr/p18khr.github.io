@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jhansi Dental Care · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--deep:#0B3B4F;--deep2:#12506A;--mint:#CDEFE6;--mint2:#EEF9F6;--coral:#FF6F61;--ink:#0D2A36;--muted:#58717C;--line:#D6E6E3;--white:#FFFFFF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.6 "Plus Jakarta Sans",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--ink);color:var(--mint);font-size:14px;text-align:center;padding:9px 16px}
+header.bar{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px;gap:12px}
+.brand{font-weight:800;font-size:19px;display:flex;align-items:center;gap:10px}
+.brand i{width:28px;height:28px;border-radius:9px;background:var(--deep);display:grid;place-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;border:0;border-radius:12px;padding:12px 20px;font:700 15px "Plus Jakarta Sans",system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.dark{background:var(--deep);color:#fff}
+.hero{background:linear-gradient(180deg,var(--mint2),#fff);padding-block:48px 64px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+.pill{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--muted)}
+.pill b{width:8px;height:8px;border-radius:50%;background:#2BB673}
+.pill.closed b{background:#bbb}
+h1{font-weight:800;font-size:clamp(36px,4.8vw,58px);line-height:1.05;letter-spacing:-.02em;margin:16px 0 16px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--coral)}
+.lead{font-size:19px;color:var(--muted);max-width:36ch;margin:0 0 24px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.stat{margin-top:22px;font-size:15px;color:var(--muted)}
+.stat b{color:var(--ink)}
+.mouth{background:#fff;border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:0 30px 60px -40px rgba(11,59,79,.5)}
+.mouth h2{font-size:20px;margin:0 0 2px;font-weight:800}
+.mouth .hint{font-size:14px;color:var(--muted);margin:0 0 8px}
+#arch{width:100%;height:auto;display:block;touch-action:manipulation}
+.tooth{fill:#fff;stroke:#9FB9BF;stroke-width:1.5;cursor:pointer;transition:fill .15s,transform .2s}
+.tooth{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.3,1.6,.5,1) backwards}
+@keyframes pop{from{opacity:0;scale:.2}}
+.tooth:hover{fill:var(--mint)}
+.tooth.on{animation:throb 1.4s ease-in-out infinite}
+@keyframes throb{50%{scale:1.12}}
+.tooth.on{fill:var(--coral);stroke:#D9483A}
+.gum{fill:#F9D3D0}
+.picked{min-height:26px;font-weight:600;font-size:15px;color:var(--deep)}
+.sym{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font:600 14px "Plus Jakarta Sans",system-ui,sans-serif;padding:8px 13px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+.mouth .btn{margin-top:14px;width:100%;justify-content:center}
+section{padding-block:76px}
+h2.big{font-weight:800;font-size:clamp(28px,3.4vw,42px);letter-spacing:-.01em;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 28px;max-width:58ch}
+.treat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.t{border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:4px}
+.t h3{margin:0;font-size:18px;font-weight:700}
+.t p{margin:0;color:var(--muted);font-size:15px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+table.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:11px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours tr.today td{font-weight:700;color:var(--ink)}
+.hours tr.today td:first-child::after{content:"Today";margin-left:10px;font-size:12px;font-weight:600;background:var(--mint);color:var(--deep);padding:3px 8px;border-radius:999px}
+.book{background:var(--deep);color:#fff;border-radius:24px;padding:30px;display:grid;gap:14px}
+.book h2{margin:0;font-weight:800;font-size:28px}
+.book .sub{color:#B9D3DB;margin:0}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book label{display:grid;gap:6px;font-size:14px;color:#B9D3DB}
+.book input,.book select{font:inherit;font-size:16px;padding:12px;border-radius:12px;border:1px solid #2C6A83;background:#0F4760;color:#fff;color-scheme:dark}
+.book .full{grid-column:1/-1}
+.book .reason{grid-column:1/-1;background:#0F4760;border-radius:12px;padding:10px 12px;font-size:14px;color:#D6ECF2}
+.book .err{grid-column:1/-1;color:#FFC2BA;font-size:14px;margin:0}
+.book button{grid-column:1/-1;justify-content:center;padding:14px}
+footer{background:var(--mint2);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(11,59,79,.55)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font-size:20px}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:900px){.hero .wrap,.two{grid-template-columns:1fr}.treat{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.treat,.book form{grid-template-columns:1fr}.bar .btn{padding:10px 14px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tooth,.tooth.on{transition:none;animation:none}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Jhansi Dental Care by Prakhar Punj. Not the clinic's official site. Treatments listed are examples.</div>
+
+<header class="bar"><div class="wrap">
+  <div class="brand"><i><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 3c-2.5 0-4 2-4 4.5 0 3 1.3 5 2 8.5.4 2.2 1 5 2.6 5 1.3 0 1.6-2.2 2-4 .3-1.3.8-2 1.4-2s1.1.7 1.4 2c.4 1.8.7 4 2 4 1.6 0 2.2-2.8 2.6-5 .7-3.5 2-5.5 2-8.5C22 5 20.5 3 18 3c-2 0-3 1-6 1S8 3 6 3z"/></svg></i>Jhansi Dental Care</div>
+  <a class="btn" href="#book">Book a visit</a>
+</div></header>
+
+<main>
+<section class="hero" style="padding-top:48px"><div class="wrap">
+  <div>
+    <span class="pill" id="openPill"><b></b><span></span></span>
+    <h1>Show us where it hurts. <em>We'll take it from there.</em></h1>
+    <p class="lead">Tap the tooth that's bothering you, pick what you feel, and send it to the clinic before you arrive. Sipri Bazar, Jhansi.</p>
+    <div class="row"><a class="btn dark" href="#book">Book an appointment</a><a class="btn line" href="#treat">Treatments</a></div>
+    <div class="stat"><b>4.7★</b> from 150+ ratings on Justdial</div>
+  </div>
+  <div class="mouth">
+    <h2>Where does it hurt?</h2>
+    <p class="hint">Tap one or more teeth. Top of the picture is your upper jaw.</p>
+    <svg id="arch" viewBox="0 0 420 330" role="group" aria-label="Teeth chart"></svg>
+    <div class="picked" id="picked" aria-live="polite">No tooth picked yet.</div>
+    <div class="sym" id="sym" role="group" aria-label="What you feel"></div>
+    <a class="btn" href="#book">Use this in my booking →</a>
+  </div>
+</div></section>
+
+<section id="treat"><div class="wrap">
+  <h2 class="big">Treatments</h2>
+  <p class="sub">Examples of what a full dental clinic offers. The clinic confirms its own list.</p>
+  <div class="treat">
+    <div class="t"><h3>Check-up &amp; cleaning</h3><p>Examination, scaling and polishing.</p></div>
+    <div class="t"><h3>Fillings</h3><p>Tooth-coloured fillings for cavities.</p></div>
+    <div class="t"><h3>Root canal</h3><p>For deep decay and severe tooth pain.</p></div>
+    <div class="t"><h3>Crowns &amp; bridges</h3><p>To cover and replace damaged teeth.</p></div>
+    <div class="t"><h3>Braces &amp; aligners</h3><p>Straightening for teens and adults.</p></div>
+    <div class="t"><h3>Smile designing</h3><p>Whitening and cosmetic work.</p></div>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap two">
+  <div>
+    <h2 class="big">Timings</h2>
+    <p class="sub">Closed on Thursdays.</p>
+    <table class="hours" id="hours"></table>
+    <p class="sub" style="margin-top:22px">Parivar Plaza, Sipri Bazar, near Arya Kanya Chauraha, Jhansi.</p>
+    <div class="row"><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Jhansi+Dental+Care+Parivar+Plaza+Sipri+Bazar+Jhansi" target="_blank" rel="noopener">Get directions ↗</a></div>
+  </div>
+  <div class="book">
+    <h2>Book an appointment</h2>
+    <p class="sub">The clinic confirms your time on WhatsApp.</p>
+    <form id="bookForm">
+      <div class="reason" id="reason">Reason: general check-up</div>
+      <label>Your name<input id="bName" required placeholder="e.g. Pooja" autocomplete="name"></label>
+      <label>Phone<input id="bPhone" required inputmode="tel" placeholder="10-digit mobile" autocomplete="tel"></label>
+      <label>Date<input id="bDate" type="date" required></label>
+      <label>Time<select id="bTime"><option>11:00 am</option><option>12:30 pm</option><option>3:00 pm</option><option selected>5:00 pm</option><option>6:15 pm</option></select></label>
+      <p class="err" id="err" hidden>The clinic is closed on Thursdays. Please pick another day.</p>
+      <button class="btn" type="submit">Send booking on WhatsApp</button>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the clinic</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn dark" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const now = new Date(), dow = (now.getDay()+6)%7;
+$("hours").innerHTML = DAYS.map((d,i) => `<tr class="${i===dow?"today":""}"><td>${d}</td><td>${i===3 ? "Closed" : "11:00 am – 7:00 pm"}</td></tr>`).join("");
+(() => { const m = now.getHours()*60 + now.getMinutes(), open = dow !== 3 && m >= 660 && m < 1140;
+  $("openPill").classList.toggle("closed", !open);
+  $("openPill").querySelector("span").textContent = open ? "Open now · until 7 pm" : (dow === 3 ? "Closed today (Thursday)" : "Closed now · opens 11 am"); })();
+
+/* teeth chart: two arches of 16, drawn along ellipses */
+const svg = $("arch"), NS = "http://www.w3.org/2000/svg", picked = new Set();
+const kind = i => { const k = i < 8 ? 7 - i : i - 8; return k <= 1 ? "front tooth" : k === 2 ? "canine" : k <= 4 ? "premolar" : "back tooth (molar)"; };
+const side = (i, upper) => { const left = i < 8; return (upper ? "upper " : "lower ") + (left ? "right" : "left"); }; // patient's right shows on viewer's left
+function g(tag, attrs){ const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; }
+svg.appendChild(g("path",{d:"M50 150 A160 118 0 0 1 370 150", fill:"none", stroke:"#F9D3D0", "stroke-width":"44", "stroke-linecap":"round"}));
+svg.appendChild(g("path",{d:"M50 184 A160 118 0 0 0 370 184", fill:"none", stroke:"#F9D3D0", "stroke-width":"44", "stroke-linecap":"round"}));
+[true,false].forEach(upper => {
+  for (let i=0;i<16;i++){
+    const t = Math.PI * (i + .5) / 16, dx = -Math.cos(t)*160, dy = (upper ? -1 : 1) * Math.sin(t)*118;
+    const cx = 210 + dx, cy = (upper ? 150 : 184) + dy, ang = Math.atan2(dy, dx)*180/Math.PI + 90;
+    const k = i < 8 ? 7 - i : i - 8, w = k <= 1 ? 15 : k === 2 ? 16 : k <= 4 ? 18 : 22, h = k <= 2 ? 26 : 22;
+    const wrap = g("g",{transform:`translate(${cx} ${cy}) rotate(${ang})`});
+    const r = g("rect",{class:"tooth", x:-w/2, y:-h/2, width:w, height:h, rx:k>=5?8:6, tabindex:0, role:"button", "aria-pressed":"false"});
+    wrap.appendChild(r);
+    r.style.animationDelay = ((upper ? 0 : 16) + Math.abs(i - 7.5)) * 35 + "ms";
+    const label = `${side(i, upper)} ${kind(i)}`; r.setAttribute("aria-label", label); r.dataset.label = label;
+    const toggle = () => { const on = !r.classList.contains("on"); r.classList.toggle("on", on); r.setAttribute("aria-pressed", String(on)); on ? picked.add(label) : picked.delete(label); update(); };
+    r.addEventListener("click", toggle); r.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " "){ e.preventDefault(); toggle(); } });
+    svg.appendChild(wrap);
+  }
+});
+svg.appendChild(g("text",{x:210, y:172, "text-anchor":"middle", "font-size":"12", fill:"#58717C", "font-family":"Plus Jakarta Sans, sans-serif"})).textContent = "your right ←   → your left";
+
+const SYM = ["Pain","Sensitive to cold","Bleeding gums","Broken tooth","Swelling","Check-up","Braces enquiry"]; const sym = new Set();
+$("sym").innerHTML = SYM.map(s => `<button type="button" class="chip" aria-pressed="false">${s}</button>`).join("");
+$("sym").querySelectorAll(".chip").forEach(b => b.onclick = () => { const s = b.textContent; sym.has(s) ? sym.delete(s) : sym.add(s); b.setAttribute("aria-pressed", String(sym.has(s))); update(); });
+function reasonText(){
+  const where = picked.size ? [...picked].join(", ") : "", what = sym.size ? [...sym].join(", ").toLowerCase() : "";
+  if (!where && !what) return "general check-up";
+  return [what, where && `(${where})`].filter(Boolean).join(" ");
+}
+function update(){
+  $("picked").textContent = picked.size ? [...picked].map(s => s[0].toUpperCase()+s.slice(1)).join(" · ") : "No tooth picked yet.";
+  $("reason").textContent = "Reason: " + reasonText();
+}
+
+/* booking: skip Thursdays */
+const iso = d => d.toISOString().slice(0,10); const nd = new Date(now); nd.setDate(nd.getDate()+1); if (((nd.getDay()+6)%7) === 3) nd.setDate(nd.getDate()+1);
+$("bDate").value = iso(nd); $("bDate").min = iso(now);
+$("bDate").addEventListener("change", () => { $("err").hidden = ((new Date($("bDate").value+"T00:00").getDay()+6)%7) !== 3; });
+const dlg = $("dlg");
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const d = new Date($("bDate").value+"T00:00"); if (((d.getDay()+6)%7) === 3){ $("err").hidden = false; return; }
+  $("bubble").textContent = `Hi, I'd like to book an appointment.\nName: ${$("bName").value}\nPhone: ${$("bPhone").value}\nWhen: ${d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"})}, ${$("bTime").value}\nReason: ${reasonText()}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
