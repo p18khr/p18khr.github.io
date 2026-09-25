@@ -35,6 +35,7 @@ main{position:relative;z-index:1;width:42vw;min-width:0;padding-inline:clamp(20p
 h1,h2{font-family:var(--display);font-weight:800;line-height:.92;margin:0;letter-spacing:-.02em;text-wrap:balance}
 h1{font-size:clamp(52px,7.4vw,112px)}
 h2{font-size:clamp(40px,5.2vw,78px)}
+h2.long{font-size:clamp(34px,3.6vw,54px)}
 .scene p{margin:0;max-width:44ch;color:var(--dim)}
 .scene p strong{color:var(--fg);font-weight:500}
 .links{display:flex;flex-wrap:wrap;gap:6px 22px;font-weight:500}
@@ -46,6 +47,10 @@ h2{font-size:clamp(40px,5.2vw,78px)}
 .hint i{display:inline-block;width:1px;height:34px;background:var(--fg);transform-origin:top;animation:drop 1.8s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
+.offer{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:46ch}
+.offer li{display:flex;gap:12px;align-items:baseline}
+.offer li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);transform:translateY(-2px);transition:background .9s ease}
+.cta{font-size:18px;font-weight:500}
 .repos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 22px;font-size:15px}
 .repos li{display:flex;gap:10px;align-items:baseline;min-width:0}
 .repos span{color:var(--dim);font-size:13px;font-variant-numeric:tabular-nums;flex:none}
@@ -86,7 +91,7 @@ h2{font-size:clamp(40px,5.2vw,78px)}
     <div class="kicker reveal">Builder · India</div>
     <h1 class="reveal">Prakhar<br>Punj</h1>
     <p class="reveal">I build products and put them in front of real people. The same dots on the right rearrange into each one as you scroll. <strong>Move your cursor through them.</strong></p>
-    <div class="hello-links reveal"><a class="mail" href="mailto:prakharpps.18@gmail.com">prakharpps.18@gmail.com</a><a href="https://www.linkedin.com/in/prakhar-punj-s-a56322197" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="hello-links reveal"><a class="mail" href="mailto:prakharpps.18@gmail.com">prakharpps.18@gmail.com</a><a href="https://www.linkedin.com/in/prakhar-punj-s-a56322197" target="_blank" rel="noopener">LinkedIn</a><a href="#websites">Need a website?</a></div>
     <div class="hint reveal"><i></i>Scroll</div>
   </section>
 
@@ -114,7 +119,22 @@ h2{font-size:clamp(40px,5.2vw,78px)}
     <div class="links reveal"><a href="https://penchsafaribooking.in" target="_blank" rel="noopener">penchsafaribooking.in</a><a href="https://kanhasafaribooking.in" target="_blank" rel="noopener">kanhasafaribooking.in</a></div>
   </section>
 
-  <section class="scene" data-scene="4" id="earlier" aria-label="Earlier builds">
+  <section class="scene" data-scene="4" id="websites" aria-label="Websites for travel businesses">
+    <div class="kicker reveal">For safari operators, homestays &amp; tour guides</div>
+    <h2 class="reveal long">I build websites for travel businesses</h2>
+    <p class="reveal">Tourists look you up before they book. I'll build you a website like my Pench and Kanha sites, so they find everything in one place and <strong>send their booking request straight to you.</strong></p>
+    <ul class="offer reveal">
+      <li>Pages for your place, timings, prices and rules</li>
+      <li>A booking form that sends every request to your email</li>
+      <li>A WhatsApp button so tourists can message you directly</li>
+      <li>Your photos and a map</li>
+      <li>Works well on phones</li>
+    </ul>
+    <div class="links reveal"><a href="https://penchsafaribooking.in" target="_blank" rel="noopener">Example: Pench</a><a href="https://kanhasafaribooking.in" target="_blank" rel="noopener">Example: Kanha</a></div>
+    <p class="reveal cta">For a quote, write to <a class="mail" href="mailto:prakharpps.18@gmail.com?subject=Website%20for%20my%20business">prakharpps.18@gmail.com</a></p>
+  </section>
+
+  <section class="scene" data-scene="5" id="earlier" aria-label="Earlier builds">
     <div class="kicker reveal">2023 – 2024</div>
     <h2 class="reveal">Before that</h2>
     <p class="reveal">Apps and APIs I built while learning the full stack, one tile each on the right.</p>
@@ -132,6 +152,7 @@ const SCENES = [
   {bg:"#0E1A2E", fg:[45,212,191],  accent:"#2DD4BF"},   // NitiStack navy + teal
   {bg:"#0D0D2B", fg:[142,145,255], accent:"#9DA0FF"},   // ResetDopa night + violet
   {bg:"#15241A", fg:[227,163,74],  accent:"#E8B060"},   // forest + tiger amber
+  {bg:"#211A11", fg:[240,196,130], accent:"#F2C98E"},   // websites: warm sand
   {bg:"#141414", fg:[242,239,233], accent:"#F2EFE9"}
 ];
 const REPOS = [
@@ -212,7 +233,22 @@ const SHAPES = [
     paw(w/2 - s*0.95, h/2 + s*0.95, -0.35);
     paw(w/2 + s*0.95, h/2 - s*0.75, -0.2);
   },
-  // 4 — earlier builds: one tile per project
+  // 4 — websites: a browser window holding a booking page
+  (o,w,h) => {
+    const bw = S()*0.86, bh = bw*0.7, x = (w-bw)/2, y = (h-bh)/2, lw = Math.max(4, bw*0.012);
+    o.lineWidth = lw; o.strokeRect(x, y, bw, bh);
+    o.fillRect(x, y + bh*0.11, bw, lw);
+    [0.04,0.08,0.12].forEach(k => { o.beginPath(); o.arc(x + bw*k, y + bh*0.055, bw*0.012, 0, Math.PI*2); o.fill(); });
+    o.fillRect(x + bw*0.07, y + bh*0.22, bw*0.5, bh*0.07);
+    o.fillRect(x + bw*0.07, y + bh*0.36, bw*0.38, bh*0.03);
+    o.fillRect(x + bw*0.07, y + bh*0.43, bw*0.32, bh*0.03);
+    o.strokeRect(x + bw*0.07, y + bh*0.55, bw*0.38, bh*0.1);
+    o.strokeRect(x + bw*0.07, y + bh*0.69, bw*0.38, bh*0.1);
+    o.fillRect(x + bw*0.07, y + bh*0.83, bw*0.2, bh*0.09);
+    o.strokeRect(x + bw*0.55, y + bh*0.22, bw*0.38, bh*0.7);
+    o.beginPath(); o.moveTo(x + bw*0.55, y + bh*0.92); o.lineTo(x + bw*0.68, y + bh*0.6); o.lineTo(x + bw*0.76, y + bh*0.74); o.lineTo(x + bw*0.83, y + bh*0.5); o.lineTo(x + bw*0.93, y + bh*0.92); o.fill();
+  },
+  // 5 — earlier builds: one tile per project
   (o,w,h) => {
     const cols = 5, rows = 2, s = S()*0.8, g = s*0.05, tw = (s - g*(cols-1))/cols;
     const x0 = (w - s)/2, y0 = h/2 - (tw*rows + g)/2;
