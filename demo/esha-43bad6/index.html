@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Esha's Salon &amp; Makeup Studio · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+:root{--ivory:#FBF6F1;--plum:#3A1230;--plum2:#5A2149;--blush:#F3C3CF;--rose:#D9768F;--gold:#C9A25F;--muted:#7A5F6F;--line:#EADBD9}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--plum);font:400 17px/1.65 "Jost",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--plum);color:var(--ivory);font-size:14px;text-align:center;padding:9px 16px}
+.hero{position:relative;background:var(--plum);color:var(--ivory);overflow:hidden}
+#dust{position:absolute;inset:0;width:100%;height:100%}
+.top{position:relative;z-index:2}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:20px}
+.brand{font:400 24px "Marcellus",serif;letter-spacing:.04em}
+.brand small{display:block;font:400 11px "Jost",system-ui,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--blush)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--blush);color:var(--plum);border:0;border-radius:999px;padding:13px 24px;font:500 15px "Jost",sans-serif;letter-spacing:.03em;text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px -10px rgba(243,195,207,.8)}
+.btn.line{background:transparent;color:inherit;border:1px solid currentColor}
+.hero-body{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-block:48px 84px}
+.kick{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+h1{font:400 clamp(44px,6.4vw,84px)/1.02 "Marcellus",serif;margin:14px 0 20px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--blush)}
+.hero p{max-width:40ch;color:#E9D6DE;font-size:18px;margin:0 0 28px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.stat{display:flex;gap:26px;margin-top:30px}
+.stat div{border-left:1px solid rgba(243,195,207,.35);padding-left:14px}
+.stat b{display:block;font:400 30px "Marcellus",serif;color:var(--blush)}
+.stat span{font-size:13px;color:#CDB3C1}
+.mirror{justify-self:center;width:min(340px,100%);aspect-ratio:3/4;border-radius:200px 200px 24px 24px;border:1px solid rgba(201,162,95,.6);padding:12px}
+.mirror div{width:100%;height:100%;border-radius:190px 190px 16px 16px;background:radial-gradient(circle at 50% 38%,rgba(243,195,207,.35),transparent 55%),linear-gradient(170deg,#6B2A57,#2A0C22);display:grid;place-items:end center;padding-bottom:24px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E9D6DE}
+section{padding-block:80px}
+h2{font:400 clamp(34px,4.4vw,52px)/1.08 "Marcellus",serif;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 32px;max-width:56ch}
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--ivory);padding:26px;display:grid;gap:6px;transition:background .25s}
+.svc:hover{background:#fff}
+.svc h3{margin:0;font:400 24px "Marcellus",serif}
+.svc p{margin:0;color:var(--muted);font-size:15px}
+.svc .pr{font-size:14px;color:var(--rose);font-weight:500;margin-top:4px}
+.planner{background:#fff;border:1px solid var(--line);border-radius:28px;padding:36px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px}
+.step{margin-bottom:22px}
+.step h4{margin:0 0 10px;font:500 13px "Jost",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:400 15px "Jost",system-ui,sans-serif;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--ivory);color:var(--plum);cursor:pointer;transition:all .15s}
+.chip[aria-pressed="true"]{background:var(--plum);color:var(--ivory);border-color:var(--plum)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+input{font:inherit;font-size:16px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--ivory);color:var(--plum)}
+.quote{background:var(--plum);color:var(--ivory);border-radius:20px;padding:26px;display:grid;gap:10px;align-content:start}
+.quote h3{margin:0;font:400 26px "Marcellus",serif}
+.quote ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15px;color:#E9D6DE}
+.quote li{display:flex;justify-content:space-between;gap:10px}
+.quote .tot{border-top:1px solid rgba(243,195,207,.3);padding-top:12px;display:flex;justify-content:space-between;font:400 26px "Marcellus",serif;color:var(--blush)}
+.quote .note{font-size:13px;color:#CDB3C1;margin:0}
+.quote .btn{justify-content:center}
+.looks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.looks figure{margin:0;aspect-ratio:3/4;border-radius:120px 120px 16px 16px;display:grid;place-items:end center;padding:16px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#fff;position:relative;overflow:hidden}
+.looks figure::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),transparent 50%)}
+.looks span{position:relative}
+.l1{background:linear-gradient(160deg,#C2185B,#4A0E2E)}.l2{background:linear-gradient(160deg,#E8A0B4,#8C3A5B)}.l3{background:linear-gradient(160deg,#C9A25F,#5A3A1A)}.l4{background:linear-gradient(160deg,#9B6B9E,#3A1230)}
+.brands{display:flex;flex-wrap:wrap;gap:12px 40px;align-items:center;font:400 26px "Marcellus",serif;color:var(--muted);letter-spacing:.08em}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:20px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(58,18,48,.6)}
+dialog::backdrop{background:rgba(58,18,48,.6)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:400 24px "Marcellus",serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px;color:#1B2B1B}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:860px){.hero-body,.planner,.visit{grid-template-columns:1fr}.mirror{width:220px}.services{grid-template-columns:1fr}.looks{grid-template-columns:1fr 1fr}.planner{padding:22px}}
+@media (max-width:480px){.fields{grid-template-columns:1fr}.stat{gap:16px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Esha's Salon &amp; Makeup Studio by Prakhar Punj. Not the salon's official site. Photos and most prices are placeholders.</div>
+
+<header class="hero">
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="top"><div class="wrap"><div class="brand">Esha's<small>Salon &amp; Makeup Studio</small></div><a class="btn" href="#plan">Plan your look</a></div></div>
+  <div class="wrap hero-body">
+    <div>
+      <div class="kick">Bridal · Engagement · Party · Salon</div>
+      <h1>Your wedding look, <em>planned</em> before the big day.</h1>
+      <p>Bridal and party makeup in Jhansi, at the studio or at your venue. Pick your functions, see a starting price, and send your date to Esha on WhatsApp.</p>
+      <div class="row"><a class="btn" href="#plan">Plan my bridal look</a><a class="btn line" href="#services">All services</a></div>
+      <div class="stat"><div><b>4.5★</b><span>1,700+ ratings on Justdial</span></div><div><b>Venue</b><span>visits for weddings</span></div></div>
+    </div>
+    <div class="mirror" aria-hidden="true"><div>Bride photo</div></div>
+  </div>
+</header>
+
+<main>
+<section id="services"><div class="wrap">
+  <h2>Services</h2>
+  <p class="sub">Makeup with MAC and Kryolan. Prices below are placeholders except bridal, taken from a public listing. Confirm with the studio.</p>
+  <div class="services">
+    <div class="svc"><h3>Bridal makeup</h3><p>Full look for the wedding day, with a paid trial beforehand.</p><div class="pr">from ₹8,000 per function</div></div>
+    <div class="svc"><h3>Engagement &amp; reception</h3><p>Lighter, camera-ready looks for the functions around the wedding.</p><div class="pr">price on request</div></div>
+    <div class="svc"><h3>Party makeup</h3><p>For guests, sangeet nights and family functions.</p><div class="pr">price on request</div></div>
+    <div class="svc"><h3>Airbrush makeup</h3><p>A smooth, long-lasting finish for long days and photography.</p><div class="pr">price on request</div></div>
+    <div class="svc"><h3>Hair styling &amp; draping</h3><p>Buns, braids, curls, and saree or dupatta draping.</p><div class="pr">price on request</div></div>
+    <div class="svc"><h3>Salon &amp; skin</h3><p>Haircuts, facials, waxing and pre-wedding care.</p><div class="pr">price on request</div></div>
+  </div>
+</div></section>
+
+<section id="plan" style="padding-top:0"><div class="wrap"><div class="planner">
+  <div>
+    <h2>Plan your bridal look</h2>
+    <p class="sub">Choose what you need. The starting price updates as you go.</p>
+    <div class="step"><h4>1 · Your functions</h4><div class="chips" id="funcs"></div></div>
+    <div class="step"><h4>2 · Add-ons</h4><div class="chips" id="adds"></div></div>
+    <div class="step"><h4>3 · Where</h4><div class="chips" id="where"></div></div>
+    <div class="fields">
+      <label>Your name<input id="name" placeholder="e.g. Neha" autocomplete="name"></label>
+      <label>First function date<input id="date" type="date"></label>
+    </div>
+  </div>
+  <aside class="quote" aria-live="polite">
+    <h3>Your starting price</h3>
+    <ul id="qList"></ul>
+    <div class="tot"><span>From</span><span id="qTot">₹0</span></div>
+    <p class="note">Bridal is ₹8,000 per function from a public listing. Add-ons are confirmed by the studio. A paid trial is available.</p>
+    <button class="btn" type="button" id="send">Send my date on WhatsApp</button>
+  </aside>
+</div></div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Looks</h2>
+  <p class="sub">Brides and party looks go here, from the studio's own photos.</p>
+  <div class="looks"><figure class="l1"><span>Bridal</span></figure><figure class="l2"><span>Engagement</span></figure><figure class="l3"><span>Reception</span></figure><figure class="l4"><span>Party</span></figure></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <p class="sub" style="margin-bottom:14px">Products used</p>
+  <div class="brands"><span>MAC</span><span>Kryolan</span></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap visit">
+  <div>
+    <h2>Visit the studio</h2>
+    <p class="sub">Below Reliance Trends, near Hotel Pujan, Jeevan Shah Tiraha, Jhansi.</p>
+  </div>
+  <div class="row"><a class="btn" style="background:var(--plum);color:var(--ivory)" href="https://www.google.com/maps/search/?api=1&query=Esha%27s+Salon+and+Makeup+Studio+Jhansi" target="_blank" rel="noopener">Get directions ↗</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Esha%27s+Salon+and+Makeup+Studio+Jhansi" target="_blank" rel="noopener">Read reviews on Google ↗</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the studio</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn" type="button" id="close" style="justify-content:center;background:var(--plum);color:var(--ivory)">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id), rs = n => "₹" + n.toLocaleString("en-IN");
+const FUNCS = ["Haldi","Mehendi","Sangeet","Wedding","Reception"], ADDS = ["Airbrush finish","Hair styling","Draping","Lashes","Family makeup"], WHERE = ["At the studio","At my venue"];
+const sel = {funcs:new Set(["Wedding"]), adds:new Set(), where:"At the studio"};
+function chips(id, list, multi, key){
+  $(id).innerHTML = list.map(x => `<button type="button" class="chip" aria-pressed="${multi ? sel[key].has(x) : sel[key]===x}">${x}</button>`).join("");
+  $(id).querySelectorAll(".chip").forEach(b => b.onclick = () => {
+    const x = b.textContent;
+    if (multi){ sel[key].has(x) ? sel[key].delete(x) : sel[key].add(x); if (key==="funcs" && !sel.funcs.size) sel.funcs.add(x); }
+    else sel[key] = x;
+    chips(id, list, multi, key); quote(); sparkle();
+  });
+}
+function quote(){
+  const n = sel.funcs.size, rows = [`<li><span>Bridal makeup × ${n}</span><span>${rs(8000*n)}</span></li>`];
+  sel.adds.forEach(a => rows.push(`<li><span>${a}</span><span>on request</span></li>`));
+  if (sel.where === "At my venue") rows.push(`<li><span>Venue visit</span><span>on request</span></li>`);
+  $("qList").innerHTML = rows.join(""); $("qTot").textContent = rs(8000*n);
+}
+chips("funcs", FUNCS, true, "funcs"); chips("adds", ADDS, true, "adds"); chips("where", WHERE, false, "where"); quote();
+const d = new Date(); d.setMonth(d.getMonth()+2); $("date").value = d.toISOString().slice(0,10); $("date").min = new Date().toISOString().slice(0,10);
+const dlg = $("dlg");
+$("send").onclick = () => {
+  const when = $("date").value ? new Date($("date").value+"T00:00").toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"}) : "(date)";
+  $("bubble").textContent = `Hi Esha, I'd like to book bridal makeup.\nName: ${$("name").value || "(your name)"}\nFirst function: ${when}\nFunctions: ${[...sel.funcs].join(", ")}\nAdd-ons: ${sel.adds.size ? [...sel.adds].join(", ") : "none"}\n${sel.where}\nStarting price shown: ${$("qTot").textContent}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open","");
+};
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+
+/* hero: shimmer dust, like highlighter catching light; the cursor is a brush that leaves a trail */
+const cv = $("dust"), ctx = cv.getContext("2d"), reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W, H, motes = [], trail = [];
+function size(){ const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1);
+  W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  motes = Array.from({length: Math.round(W/9)}, () => ({x:Math.random()*W, y:Math.random()*H, r:.6+Math.random()*1.8, p:Math.random()*6.28, v:.1+Math.random()*.3})); }
+function sparkle(){ for (let i=0;i<24;i++) trail.push({x: W*.8 + (Math.random()-.5)*160, y: H*.45 + (Math.random()-.5)*200, life:1, r:1+Math.random()*2.5}); }
+cv.parentElement.addEventListener("pointermove", e => { if (reduce) return; const r = cv.getBoundingClientRect();
+  for (let i=0;i<3;i++) trail.push({x:e.clientX-r.left+(Math.random()-.5)*14, y:e.clientY-r.top+(Math.random()-.5)*14, life:1, r:1+Math.random()*2.2}); });
+function frame(t){
+  ctx.clearRect(0,0,W,H);
+  const g = ctx.createRadialGradient(W*.75,H*.35,0,W*.75,H*.35,Math.max(W,H)*.7); g.addColorStop(0,"#5A2149"); g.addColorStop(1,"#3A1230");
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  motes.forEach(m => { if (!reduce){ m.y -= m.v; m.x += Math.sin(t/2000+m.p)*.2; if (m.y < -5){ m.y = H+5; m.x = Math.random()*W; } }
+    const a = .15 + .6*Math.max(0, Math.sin(t/900 + m.p*4)); ctx.fillStyle = `rgba(233,196,140,${a})`; ctx.beginPath(); ctx.arc(m.x,m.y,m.r,0,6.28); ctx.fill(); });
+  trail = trail.filter(p => (p.life -= .02) > 0);
+  trail.forEach(p => { p.y += .3; const c = p.life > .5 ? "243,195,207" : "201,162,95";
+    ctx.fillStyle = `rgba(${c},${p.life})`; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*p.life+.3,0,6.28); ctx.fill(); });
+  requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
