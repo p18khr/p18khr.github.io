@@ -38,7 +38,9 @@ h2{font-size:clamp(40px,5.2vw,78px)}
 .scene p{margin:0;max-width:44ch;color:var(--dim)}
 .scene p strong{color:var(--fg);font-weight:500}
 .links{display:flex;flex-wrap:wrap;gap:6px 22px;font-weight:500}
-.links a::after{content:" ↗";font-size:.85em}
+.links a[target]::after{content:" ↗";font-size:.85em}
+.mail{font-weight:500;font-size:18px}
+.hello-links{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline}
 .stack{font-size:14px;color:var(--dim)}
 .hint{font-size:14px;color:var(--dim);display:flex;align-items:center;gap:10px}
 .hint i{display:inline-block;width:1px;height:34px;background:var(--fg);transform-origin:top;animation:drop 1.8s ease-in-out infinite}
@@ -84,6 +86,7 @@ h2{font-size:clamp(40px,5.2vw,78px)}
     <div class="kicker reveal">Builder · India</div>
     <h1 class="reveal">Prakhar<br>Punj</h1>
     <p class="reveal">I build products and put them in front of real people. The same dots on the right rearrange into each one as you scroll. <strong>Move your cursor through them.</strong></p>
+    <div class="hello-links reveal"><a class="mail" href="mailto:prakharpps.18@gmail.com">prakharpps.18@gmail.com</a></div>
     <div class="hint reveal"><i></i>Scroll</div>
   </section>
 
@@ -117,6 +120,7 @@ h2{font-size:clamp(40px,5.2vw,78px)}
     <p class="reveal">Apps and APIs I built while learning the full stack, one tile each on the right.</p>
     <ul class="repos reveal" id="repos"></ul>
     <div class="links reveal"><a href="https://github.com/p18khr" target="_blank" rel="noopener">Everything on GitHub</a></div>
+    <p class="reveal">Want to work together? Write to <a class="mail" href="mailto:prakharpps.18@gmail.com">prakharpps.18@gmail.com</a></p>
   </section>
 </main>
 
