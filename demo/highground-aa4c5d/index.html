@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The High Ground · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{--deep:#12201C;--deep2:#1B2E28;--sand:#EBDDB8;--paper:#F6F2E7;--orange:#FF6B35;--ink:#14201C;--muted:#5E6B64;--line:#DAD3BF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "Work Sans",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:#000;color:var(--sand);font-size:14px;text-align:center;padding:9px 16px}
+.hero{position:relative;background:var(--deep);color:var(--sand);overflow:hidden;min-height:min(680px,90vh);display:grid}
+#topo{position:absolute;inset:0;width:100%;height:100%}
+.top{position:relative;z-index:2}.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
+.brand{font:400 20px "Archivo Black",Impact,sans-serif;letter-spacing:.02em;text-transform:uppercase}
+.mono{font:500 12px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;border:0;border-radius:6px;padding:13px 22px;font:600 15px "Work Sans",system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.dark{background:var(--deep);color:var(--sand)}
+.hero-body{position:relative;z-index:1;align-self:center;padding-block:10px 90px;width:100%}
+.hero-body > *{max-width:700px}
+.hero-body .mono{color:var(--orange)}
+h1{font:400 clamp(48px,8vw,108px)/.92 "Archivo Black",Impact,sans-serif;text-transform:uppercase;margin:14px 0 20px;letter-spacing:-.01em}
+.hero p{max-width:42ch;font-size:19px;color:#CBC3A8;margin:0 0 26px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.status{display:inline-flex;gap:8px;align-items:center;margin-top:22px;color:#CBC3A8}
+.status i{width:9px;height:9px;border-radius:50%;background:#5EDB8A}
+.status.closed i{background:#777}
+.elev{position:absolute;right:24px;bottom:24px;z-index:1;text-align:right;color:#9FB0A6}
+.elev b{display:block;font:400 34px "Archivo Black",sans-serif;color:var(--sand)}
+section{padding-block:80px}
+h2{font:400 clamp(34px,5vw,60px)/1 "Archivo Black",Impact,sans-serif;text-transform:uppercase;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 28px;max-width:56ch}
+.sig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.sig figure{margin:0;aspect-ratio:4/3;border-radius:10px;display:grid;align-items:end;padding:14px;position:relative;overflow:hidden;transition:transform .25s}
+.sig figure:hover{transform:translateY(-3px)}
+.sig figure::after{content:"Photo";position:absolute;top:10px;right:12px;font:500 11px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.sig span{color:#fff;font-weight:600;background:rgba(0,0,0,.4);padding:5px 12px;border-radius:4px;justify-self:start}
+.s1{background:linear-gradient(145deg,#D9482B,#4A140C)}.s2{background:linear-gradient(145deg,#E09A3A,#5A3210)}.s3{background:linear-gradient(145deg,#3E7A5E,#12201C)}
+.s4{background:linear-gradient(145deg,#B8563A,#3A1A10)}.s5{background:linear-gradient(145deg,#8A6A4A,#2A1C10)}.s6{background:linear-gradient(145deg,#C24A6A,#3A1020)}
+.apps{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.book{background:var(--deep);color:var(--sand);border-radius:16px;padding:34px;display:grid;grid-template-columns:.9fr 1.1fr;gap:34px}
+.book .sub{color:#A9B5AD}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:14px;color:#A9B5AD}
+label.full{grid-column:1/-1}
+input,select{font:inherit;font-size:16px;padding:12px;border-radius:8px;border:1px solid #33483F;background:var(--deep2);color:var(--sand);color-scheme:dark}
+.slots{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.slot{font:500 14px "Work Sans",system-ui,sans-serif;padding:8px 14px;border-radius:6px;border:1px solid #33483F;background:transparent;color:var(--sand);cursor:pointer}
+.slot[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:#fff}
+form .btn{grid-column:1/-1;justify-content:center;padding:15px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.landmark{border:1.5px dashed var(--line);border-radius:12px;padding:18px;display:flex;gap:14px;align-items:center}
+.landmark b{font:400 20px "Archivo Black",sans-serif;text-transform:uppercase}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:14px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(18,32,28,.7)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:400 22px "Archivo Black",sans-serif;text-transform:uppercase}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:860px){.sig{grid-template-columns:1fr 1fr}.book,.visit{grid-template-columns:1fr}.book{padding:22px}.elev{display:none}}
+@media (max-width:480px){form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for The High Ground by Prakhar Punj. Not the official site. Photos are placeholders.</div>
+
+<header class="hero">
+  <canvas id="topo" aria-hidden="true"></canvas>
+  <div class="top"><div class="wrap"><div class="brand">The High Ground</div><a class="btn" href="#book">Book a table</a></div></div>
+  <div class="wrap hero-body">
+    <div class="mono">Rooftop · opposite Dhyanchand Stadium</div>
+    <h1>Eat above the city.</h1>
+    <p>A rooftop cafe and restaurant in Civil Lines, with Chinese, North Indian and more. Open every day, 11 am to 9 pm.</p>
+    <div class="row"><a class="btn" href="#book">Book the rooftop</a><a class="btn line" href="#food">See the food</a></div>
+    <div class="status" id="status"><i></i><span></span></div>
+  </div>
+  <div class="elev mono" aria-hidden="true">Move your cursor to raise the ground<b id="elevN">+0 m</b></div>
+</header>
+
+<main>
+<section id="food"><div class="wrap">
+  <h2>From the kitchen</h2>
+  <p class="sub">The restaurant's own food photos go here. The full menu and delivery stay on Zomato.</p>
+  <div class="sig">
+    <figure class="s1"><span>Chilli paneer</span></figure>
+    <figure class="s2"><span>Tandoori platter</span></figure>
+    <figure class="s3"><span>Hakka noodles</span></figure>
+    <figure class="s4"><span>Butter chicken</span></figure>
+    <figure class="s5"><span>Cold coffee</span></figure>
+    <figure class="s6"><span>Mocktails</span></figure>
+  </div>
+  <div class="apps">
+    <a class="btn dark" href="https://www.zomato.com/jhansi/the-high-ground-cafe-restaurant-civil-lines/menu" target="_blank" rel="noopener">See the full menu on Zomato ↗</a>
+    <a class="btn line" href="https://www.zomato.com/jhansi/the-high-ground-cafe-restaurant-civil-lines" target="_blank" rel="noopener">Order delivery ↗</a>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2>Book the rooftop</h2>
+    <p class="sub">Family dinner, a birthday, or the group after a match at the stadium. Pick a time and send the booking. The restaurant confirms on WhatsApp.</p>
+  </div>
+  <form id="bookForm">
+    <label>Your name<input id="bName" required placeholder="e.g. Vikas" autocomplete="name"></label>
+    <label>People<select id="bPpl"><option>2</option><option selected>4</option><option>6</option><option>8</option><option>10+</option></select></label>
+    <label class="full">Date<input id="bDate" type="date" required></label>
+    <div class="slots" id="slots" role="group" aria-label="Time"></div>
+    <button class="btn" type="submit">Send booking on WhatsApp</button>
+  </form>
+</div></div></section>
+
+<section style="padding-top:0"><div class="wrap visit">
+  <div>
+    <h2>Find us</h2>
+    <p class="sub">Officers Colony, Chitra Chauraha, Civil Lines, Jhansi.</p>
+    <div class="landmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>Opposite Dhyanchand Stadium</b><div class="mono" style="color:var(--muted)">Look up: we're on the roof</div></div></div>
+  </div>
+  <div class="row"><a class="btn dark" href="https://www.google.com/maps/search/?api=1&query=The+High+Ground+Rooftop+Cafe+Civil+Lines+Jhansi" target="_blank" rel="noopener">Get directions ↗</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=The+High+Ground+Rooftop+Cafe+Civil+Lines+Jhansi" target="_blank" rel="noopener">Read reviews on Google ↗</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This booking would reach the restaurant</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn dark" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* open now: 11 am - 9 pm daily */
+(() => { const d = new Date(), m = d.getHours()*60 + d.getMinutes(), open = m >= 660 && m < 1260;
+  $("status").classList.toggle("closed", !open);
+  $("status").querySelector("span").textContent = open ? "Open now · until 9 pm" : "Closed now · opens 11 am"; })();
+
+/* booking */
+const SLOTS = ["12:30 pm","2:00 pm","5:00 pm","7:00 pm","8:00 pm"]; let slot = "7:00 pm";
+$("slots").innerHTML = SLOTS.map(s => `<button type="button" class="slot" aria-pressed="${s===slot}">${s}</button>`).join("");
+$("slots").querySelectorAll(".slot").forEach(b => b.onclick = () => { slot = b.textContent; $("slots").querySelectorAll(".slot").forEach(x => x.setAttribute("aria-pressed", String(x===b))); });
+const d = new Date(); $("bDate").value = d.toISOString().slice(0,10); $("bDate").min = $("bDate").value;
+const dlg = $("dlg");
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const when = new Date($("bDate").value+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi High Ground! Rooftop table booking:\nName: ${$("bName").value}\nWhen: ${when}, ${slot}\nPeople: ${$("bPpl").value}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+
+/* hero: a live contour map. Hills drift slowly; the cursor raises a new peak where it rests. */
+const cv = $("topo"), ctx = cv.getContext("2d");
+let W, H, cell, cols, rows, field, peaks, mx = -1e4, my = -1e4, lift = 0;
+function size(){ const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1);
+  W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  cell = W < 600 ? 14 : 12; cols = Math.ceil(W/cell)+1; rows = Math.ceil(H/cell)+1; field = new Float32Array(cols*rows);
+  peaks = Array.from({length:5}, (_,i) => ({x: W*(.35 + Math.random()*.6), y: H*(.1 + Math.random()*.8), h: .6 + Math.random()*.6, r: Math.min(W,H)*(.18+Math.random()*.2), p: Math.random()*6.28})); }
+cv.parentElement.addEventListener("pointermove", e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+cv.parentElement.addEventListener("pointerleave", () => { mx = my = -1e4; });
+const LEVELS = 11;
+function frame(t){
+  const s = reduce ? 0 : t/1000;
+  lift += ((mx > -1e3 ? 1.1 : 0) - lift) * .04;
+  for (let j=0;j<rows;j++) for (let i=0;i<cols;i++){
+    const x = i*cell, y = j*cell; let v = .08*Math.sin(x/170 + s*.2) + .08*Math.cos(y/140 - s*.15);
+    for (const pk of peaks){ const px = pk.x + Math.sin(s*.12 + pk.p)*30, py = pk.y + Math.cos(s*.1 + pk.p)*20, dx = x-px, dy = y-py; v += pk.h*Math.exp(-(dx*dx+dy*dy)/(pk.r*pk.r)); }
+    if (lift > .01){ const dx = x-mx, dy = y-my; v += lift*Math.exp(-(dx*dx+dy*dy)/(110*110)); }
+    field[j*cols+i] = v;
+  }
+  ctx.fillStyle = "#12201C"; ctx.fillRect(0,0,W,H);
+  for (let l=1;l<=LEVELS;l++){
+    const iso = l*.14, major = l%5===0;
+    ctx.strokeStyle = major ? "rgba(255,107,53,.55)" : `rgba(235,221,184,${.10 + l*.018})`; ctx.lineWidth = major ? 1.6 : 1;
+    ctx.beginPath();
+    for (let j=0;j<rows-1;j++) for (let i=0;i<cols-1;i++){
+      const a = field[j*cols+i], b = field[j*cols+i+1], c = field[(j+1)*cols+i+1], d = field[(j+1)*cols+i];
+      const k = (a>iso?8:0)|(b>iso?4:0)|(c>iso?2:0)|(d>iso?1:0); if (k===0 || k===15) continue;
+      const x = i*cell, y = j*cell, lerp = (p,q) => (iso-p)/(q-p);
+      const T = [x + cell*lerp(a,b), y], R = [x+cell, y + cell*lerp(b,c)], B = [x + cell*lerp(d,c), y+cell], L = [x, y + cell*lerp(a,d)];
+      const seg = (p,q) => { ctx.moveTo(p[0],p[1]); ctx.lineTo(q[0],q[1]); };
+      switch(k){ case 1: case 14: seg(L,B); break; case 2: case 13: seg(B,R); break; case 3: case 12: seg(L,R); break; case 4: case 11: seg(T,R); break;
+        case 5: seg(L,T); seg(B,R); break; case 6: case 9: seg(T,B); break; case 7: case 8: seg(L,T); break; case 10: seg(T,R); seg(L,B); break; }
+    }
+    ctx.stroke();
+  }
+  if (lift > .05 && mx > 0){ $("elevN").textContent = "+" + Math.round(lift*100) + " m"; ctx.fillStyle = "#FF6B35"; ctx.beginPath(); ctx.arc(mx, my, 3, 0, 6.28); ctx.fill(); }
+  else $("elevN").textContent = "+0 m";
+  requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
