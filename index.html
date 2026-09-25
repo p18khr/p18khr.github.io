@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Prakhar Punj builds products: NitiStack, ResetDopa, and safari booking sites for Pench and Kanha.">
+<meta property="og:title" content="Prakhar Punj">
+<meta property="og:description" content="Products I've built: NitiStack, ResetDopa, Pench and Kanha Safari.">
+<meta name="theme-color" content="#111114">
+<title>Prakhar Punj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* One deliberate dark world: each scene repaints the page in its product's own colours. */
+:root{
+  --bg:#111114; --fg:#F2EFE9; --dim:rgba(242,239,233,.62); --accent:#F2EFE9;
+  --display:"Syne","Arial Black",Impact,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);transition:background-color .9s ease;overflow-x:hidden}
+a{color:var(--accent);text-underline-offset:4px;text-decoration-thickness:1px;transition:color .9s ease}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
+
+#field{position:fixed;top:0;right:0;width:58vw;height:100vh;height:100dvh;display:block;touch-action:pan-y}
+
+main{position:relative;z-index:1;width:42vw;min-width:0;padding-inline:clamp(20px,5vw,72px)}
+.scene{min-height:88vh;display:flex;flex-direction:column;justify-content:center;gap:18px;padding-block:72px}
+.kicker{font:600 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);transition:color .9s ease}
+h1,h2{font-family:var(--display);font-weight:800;line-height:.92;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:clamp(52px,7.4vw,112px)}
+h2{font-size:clamp(40px,5.2vw,78px)}
+.scene p{margin:0;max-width:44ch;color:var(--dim)}
+.scene p strong{color:var(--fg);font-weight:500}
+.links{display:flex;flex-wrap:wrap;gap:6px 22px;font-weight:500}
+.links a::after{content:" ↗";font-size:.85em}
+.stack{font-size:14px;color:var(--dim)}
+.hint{font-size:14px;color:var(--dim);display:flex;align-items:center;gap:10px}
+.hint i{display:inline-block;width:1px;height:34px;background:var(--fg);transform-origin:top;animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+.repos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 22px;font-size:15px}
+.repos li{display:flex;gap:10px;align-items:baseline;min-width:0}
+.repos span{color:var(--dim);font-size:13px;font-variant-numeric:tabular-nums;flex:none}
+.repos a{overflow-wrap:anywhere}
+
+.dots{position:fixed;left:clamp(8px,1.4vw,22px);top:50%;transform:translateY(-50%);z-index:2;display:grid;gap:12px}
+.dots button{width:9px;height:9px;padding:0;border-radius:50%;border:1px solid var(--fg);background:transparent;cursor:pointer;opacity:.5;transition:all .3s}
+.dots button[aria-current="true"]{background:var(--accent);border-color:var(--accent);opacity:1;transform:scale(1.3)}
+
+.reveal{opacity:1;transform:none;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .scene:not(.seen) .reveal{opacity:.001;transform:translateY(26px)}
+.scene .reveal:nth-child(2){transition-delay:.08s}
+.scene .reveal:nth-child(3){transition-delay:.16s}
+.scene .reveal:nth-child(4){transition-delay:.24s}
+.scene .reveal:nth-child(5){transition-delay:.32s}
+
+@media (max-width:820px){
+  #field{width:100vw;opacity:.55}
+  main{width:100%}
+  .scene{min-height:92vh;justify-content:flex-end;padding-block:48px 64px}
+  .scene p{color:var(--fg)}
+  .dots{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hint i{animation:none}
+  .reveal,.js .scene:not(.seen) .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<nav class="dots" id="dots" aria-label="Sections"></nav>
+
+<main>
+  <section class="scene" data-scene="0" id="hello" aria-label="Introduction">
+    <div class="kicker reveal">Builder · India</div>
+    <h1 class="reveal">Prakhar<br>Punj</h1>
+    <p class="reveal">I build products and put them in front of real people. The same dots on the right rearrange into each one as you scroll. <strong>Move your cursor through them.</strong></p>
+    <div class="hint reveal"><i></i>Scroll</div>
+  </section>
+
+  <section class="scene" data-scene="1" id="nitistack" aria-label="NitiStack">
+    <div class="kicker reveal">Now · Fintech</div>
+    <h2 class="reveal">NitiStack</h2>
+    <p class="reveal">An adviser uploads a client's holdings and gets a full risk report in minutes: <strong>what a crash would do, where the money is too concentrated, and whether the portfolio suits the client at all.</strong> It goes out as a PDF under the adviser's own firm name.</p>
+    <div class="stack reveal">Python · FastAPI · React · TypeScript · PostgreSQL · 1,000+ automated tests</div>
+    <div class="links reveal"><a href="https://nitistack.com" target="_blank" rel="noopener">nitistack.com</a></div>
+  </section>
+
+  <section class="scene" data-scene="2" id="resetdopa" aria-label="ResetDopa">
+    <div class="kicker reveal">Live on Android · Wellbeing</div>
+    <h2 class="reveal">ResetDopa</h2>
+    <p class="reveal">A 30-day program to break the scroll habit. <strong>Before Instagram opens, you breathe for a minute</strong>, like the circle on the right. There's also urge tracking, daily five-minute tasks and an AI companion for 11pm, when urges are hardest to resist.</p>
+    <div class="stack reveal">React Native · Expo · Firebase · Node.js</div>
+    <div class="links reveal"><a href="https://play.google.com/store/apps/details?id=com.dopareset.app" target="_blank" rel="noopener">Google Play</a><a href="https://resetdopa.com" target="_blank" rel="noopener">resetdopa.com</a><a href="https://github.com/p18khr/ResetDopa" target="_blank" rel="noopener">Code</a></div>
+  </section>
+
+  <section class="scene" data-scene="3" id="safari" aria-label="Safari booking sites">
+    <div class="kicker reveal">Live · Travel</div>
+    <h2 class="reveal">Pench &amp; Kanha Safari</h2>
+    <p class="reveal">Booking sites for jeep safaris in two of central India's tiger reserves. They cover zones, gate timings and monsoon rules, and <strong>every enquiry goes straight to the operator's inbox.</strong></p>
+    <div class="stack reveal">React · Node.js</div>
+    <div class="links reveal"><a href="https://penchsafaribooking.in" target="_blank" rel="noopener">penchsafaribooking.in</a><a href="https://kanhasafaribooking.in" target="_blank" rel="noopener">kanhasafaribooking.in</a></div>
+  </section>
+
+  <section class="scene" data-scene="4" id="earlier" aria-label="Earlier builds">
+    <div class="kicker reveal">2023 – 2024</div>
+    <h2 class="reveal">Before that</h2>
+    <p class="reveal">Apps and APIs I built while learning the full stack, one tile each on the right.</p>
+    <ul class="repos reveal" id="repos"></ul>
+    <div class="links reveal"><a href="https://github.com/p18khr" target="_blank" rel="noopener">Everything on GitHub</a></div>
+  </section>
+</main>
+
+<script>
+document.documentElement.classList.add("js");
+
+const SCENES = [
+  {bg:"#111114", fg:[242,239,233], accent:"#F2EFE9"},
+  {bg:"#0E1A2E", fg:[45,212,191],  accent:"#2DD4BF"},   // NitiStack navy + teal
+  {bg:"#0D0D2B", fg:[142,145,255], accent:"#9DA0FF"},   // ResetDopa night + violet
+  {bg:"#15241A", fg:[227,163,74],  accent:"#E8B060"},   // forest + tiger amber
+  {bg:"#141414", fg:[242,239,233], accent:"#F2EFE9"}
+];
+const REPOS = [
+  ["2024","Employee & vendor app","employee-vendor-app-credmarg"],
+  ["2024","Patient appointments","patientAppointmentApi"],
+  ["2024","Date picker","pearlthoughtDatepicker"],
+  ["2024","Job search","search_jobs"],
+  ["2024","Blog","Blogapp"],
+  ["2024","Contacts","ContactApp"],
+  ["2023","National parks","NationalParkreactapp"],
+  ["2023","Parks API","NationalParksSpringBootApp"],
+  ["2023","E-commerce","ecommerceAngularApp"],
+  ["2023","Budget app","budgetAppAdvancedReactNative"]
+];
+document.getElementById("repos").innerHTML = REPOS.map(([y,n,r]) =>
+  `<li><span>${y}</span><a href="https://github.com/p18khr/${r}" target="_blank" rel="noopener">${n}</a></li>`).join("");
+
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const cv = document.getElementById("field"), ctx = cv.getContext("2d");
+let W = 0, H = 0, DPR = 1, N = 0, parts = [], targets = [], scene = 0, t0 = performance.now();
+let col = SCENES[0].fg.slice();
+const mouse = {x:-1e4, y:-1e4};
+
+/* ---------- shapes: draw white on an offscreen canvas, sample the pixels ---------- */
+function sample(draw){
+  const off = document.createElement("canvas"); off.width = W; off.height = H;
+  const o = off.getContext("2d"); o.fillStyle = o.strokeStyle = "#fff";
+  draw(o, W, H);
+  const d = o.getImageData(0,0,W,H).data, pts = [], gap = Math.max(3, Math.round(Math.sqrt(W*H/ (N*2.2))));
+  for (let y=0; y<H; y+=gap) for (let x=0; x<W; x+=gap) if (d[(y*W+x)*4+3] > 128) pts.push([x,y]);
+  if (!pts.length) pts.push([W/2,H/2]);
+  for (let i=pts.length-1; i>0; i--){ const j=Math.random()*(i+1)|0; [pts[i],pts[j]]=[pts[j],pts[i]]; }
+  const out = [];
+  for (let i=0;i<N;i++){ const p = pts[i % pts.length]; out.push([p[0] + (i>=pts.length?(Math.random()-.5)*gap:0), p[1] + (i>=pts.length?(Math.random()-.5)*gap:0)]); }
+  return out;
+}
+const S = () => Math.min(W, H);
+
+const SHAPES = [
+  // 0 — the name
+  (o,w,h) => {
+    const fam = getComputedStyle(document.documentElement).getPropertyValue("--display");
+    let fs = S()*0.26; o.font = `800 ${fs}px ${fam}`;
+    const mw = Math.max(o.measureText("PRAKHAR").width, 1); fs *= Math.min(1, (w*0.84)/mw);
+    o.font = `800 ${fs}px ${fam}`; o.textAlign = "center"; o.textBaseline = "middle";
+    o.fillText("PRAKHAR", w/2, h/2 - fs*0.55); o.fillText("PUNJ", w/2, h/2 + fs*0.55);
+  },
+  // 1 — NitiStack: a market line falling, with its risk band
+  (o,w,h) => {
+    const s = S()*0.78, x0 = (w-s)/2, y0 = (h-s*0.62)/2, ch = s*0.62;
+    let v = 0.35, rnd = mulberry(7); const pts = [];
+    for (let i=0;i<=46;i++){ v += (rnd()-.5)*0.11 + (i>30 && i<38 ? 0.05 : -0.006); v = Math.max(.06, Math.min(.94, v)); pts.push([x0 + s*i/46, y0 + ch*v]); }
+    o.lineWidth = Math.max(6, s*0.022); o.lineJoin = "round"; o.lineCap = "round";
+    o.beginPath(); pts.forEach(([x,y],i)=> i?o.lineTo(x,y):o.moveTo(x,y)); o.stroke();
+    o.lineWidth = Math.max(2, s*0.006);
+    o.beginPath(); o.moveTo(x0, y0+ch+s*0.06); o.lineTo(x0+s, y0+ch+s*0.06); o.stroke();
+    for (let i=0;i<=6;i++){ o.fillRect(x0 + s*i/6 - 1, y0+ch+s*0.06, 3, s*0.03); }
+    o.globalAlpha = 1; o.setLineDash([s*0.02, s*0.02]);
+    o.beginPath(); o.moveTo(x0, y0+ch*0.8); o.lineTo(x0+s, y0+ch*0.8); o.stroke();
+  },
+  // 2 — ResetDopa: breathing rings
+  (o,w,h) => {
+    const r = S()*0.30; o.lineWidth = Math.max(5, r*0.07);
+    [1, .72, .46].forEach(k => { o.beginPath(); o.arc(w/2, h/2, r*k, 0, Math.PI*2); o.stroke(); });
+    o.beginPath(); o.arc(w/2, h/2, r*.16, 0, Math.PI*2); o.fill();
+  },
+  // 3 — Safari: two tiger pugmarks walking
+  (o,w,h) => {
+    const s = S()*0.23;
+    const paw = (cx, cy, rot) => {
+      o.save(); o.translate(cx, cy); o.rotate(rot);
+      o.beginPath(); o.moveTo(-s*.55, s*.35); o.bezierCurveTo(-s*.62,-s*.2, s*.62,-s*.2, s*.55, s*.35);
+      o.bezierCurveTo(s*.4, s*.62, -s*.4, s*.62, -s*.55, s*.35); o.fill();
+      [[-.62,-.38,.17,.24,-.35],[-.22,-.68,.17,.25,-.1],[.22,-.68,.17,.25,.1],[.62,-.38,.17,.24,.35]].forEach(([x,y,rx,ry,a])=>{
+        o.beginPath(); o.ellipse(x*s, y*s, rx*s, ry*s, a, 0, Math.PI*2); o.fill(); });
+      o.restore();
+    };
+    paw(w/2 - s*0.95, h/2 + s*0.95, -0.35);
+    paw(w/2 + s*0.95, h/2 - s*0.75, -0.2);
+  },
+  // 4 — earlier builds: one tile per project
+  (o,w,h) => {
+    const cols = 5, rows = 2, s = S()*0.8, g = s*0.05, tw = (s - g*(cols-1))/cols;
+    const x0 = (w - s)/2, y0 = h/2 - (tw*rows + g)/2;
+    o.lineWidth = Math.max(3, tw*0.06);
+    for (let r=0;r<rows;r++) for (let c=0;c<cols;c++){
+      const x = x0 + c*(tw+g), y = y0 + r*(tw+g);
+      o.strokeRect(x, y, tw, tw); o.fillRect(x + tw*.2, y + tw*.28, tw*.6, tw*.08); o.fillRect(x + tw*.2, y + tw*.46, tw*.38, tw*.08);
+    }
+  }
+];
+function mulberry(a){ return () => { a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+
+/* ---------- setup ---------- */
+function setup(){
+  const r = cv.getBoundingClientRect();
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+  cv.width = W*DPR; cv.height = H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+  N = W < 500 ? 750 : 1400;
+  targets = SHAPES.map(sample);
+  if (parts.length !== N) parts = Array.from({length:N}, () => ({
+    x: Math.random()*W, y: Math.random()*H, vx:0, vy:0,
+    k: 0.018 + Math.random()*0.03, f: 0.78 + Math.random()*0.08, ph: Math.random()*Math.PI*2
+  }));
+  if (reduce) parts.forEach((p,i) => { p.x = targets[scene][i][0]; p.y = targets[scene][i][1]; });
+}
+
+/* ---------- loop ---------- */
+function frame(now){
+  const t = (now - t0)/1000, tg = targets[scene], fg = SCENES[scene].fg;
+  for (let i=0;i<3;i++) col[i] += (fg[i]-col[i])*0.05;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = `rgb(${col[0]|0},${col[1]|0},${col[2]|0})`;
+  const breathe = scene === 2 ? 0.78 + 0.22*Math.sin(t*Math.PI/4) : 1;   // 8-second breath
+  const cx = W/2, cy = H/2, sz = W < 500 ? 1.8 : 2.2;
+  for (let i=0;i<N;i++){
+    const p = parts[i];
+    let tx = tg[i][0], ty = tg[i][1];
+    if (breathe !== 1){ tx = cx + (tx-cx)*breathe; ty = cy + (ty-cy)*breathe; }
+    if (!reduce){ tx += Math.sin(t*1.3 + p.ph)*1.2; ty += Math.cos(t*1.1 + p.ph)*1.2; }
+    p.vx = p.vx*p.f + (tx - p.x)*p.k;
+    p.vy = p.vy*p.f + (ty - p.y)*p.k;
+    const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx*dx + dy*dy;
+    if (d2 < 9000 && !reduce){ const d = Math.sqrt(d2) || 1, push = (95 - d)/95 * 5; p.vx += dx/d*push; p.vy += dy/d*push; }
+    p.x += p.vx; p.y += p.vy;
+    ctx.fillRect(p.x, p.y, sz, sz);
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ---------- scenes follow scroll ---------- */
+const sections = [...document.querySelectorAll(".scene")];
+const dots = document.getElementById("dots");
+sections.forEach((s,i) => {
+  const b = document.createElement("button"); b.type = "button";
+  b.setAttribute("aria-label", s.getAttribute("aria-label"));
+  b.addEventListener("click", () => s.scrollIntoView({behavior: reduce ? "auto" : "smooth"}));
+  dots.appendChild(b);
+});
+function setScene(i){
+  if (i === scene && document.body.dataset.ready) return;
+  scene = i; document.body.dataset.ready = 1;
+  const sc = SCENES[i];
+  document.body.style.backgroundColor = sc.bg;
+  document.documentElement.style.setProperty("--accent", sc.accent);
+  [...dots.children].forEach((b,j) => b.setAttribute("aria-current", String(j===i)));
+  // scatter a little on every change so the regroup is visible
+  if (!reduce) parts.forEach(p => { p.vx += (Math.random()-.5)*14; p.vy += (Math.random()-.5)*14; });
+}
+function onScroll(){
+  const mid = innerHeight*0.5; let best = 0, bd = Infinity;
+  sections.forEach((s,i) => { const r = s.getBoundingClientRect(), c = r.top + r.height/2, d = Math.abs(c - mid);
+    if (r.top < innerHeight*0.85) s.classList.add("seen");
+    if (d < bd){ bd = d; best = i; } });
+  setScene(best);
+}
+addEventListener("scroll", onScroll, {passive:true});
+
+addEventListener("pointermove", e => { const r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; }, {passive:true});
+addEventListener("pointerleave", () => { mouse.x = mouse.y = -1e4; });
+document.addEventListener("pointerout", e => { if (!e.relatedTarget){ mouse.x = mouse.y = -1e4; } });
+
+let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(setup, 150); });
+
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+  setup(); onScroll(); sections[0].classList.add("seen"); requestAnimationFrame(frame);
+});
+</script>
+
+</body>
+</html>
