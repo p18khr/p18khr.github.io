@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manali Cafe &amp; Lounge · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{--snow:#F5F7FA;--ink:#101A2B;--pine:#1C3D4A;--pine2:#27566A;--sun:#FF8A4C;--sun2:#FFC27A;--muted:#5D6B7C;--line:#DCE3EA}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--snow);color:var(--ink);font:400 17px/1.6 "Manrope",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--ink);color:#DCE3EA;font-size:14px;text-align:center;padding:9px 16px}
+.hero{position:relative;min-height:min(680px,90vh);color:#fff;overflow:hidden;display:grid}
+#hills{position:absolute;inset:0;width:100%;height:100%}
+.top{position:relative;z-index:2}.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
+.brand{font:400 30px/1 "Bebas Neue",Impact,sans-serif;letter-spacing:.08em}
+.brand small{display:block;font:600 11px "Manrope",sans-serif;letter-spacing:.3em;opacity:.8}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--sun);color:var(--ink);border:0;border-radius:10px;padding:13px 22px;font:700 15px "Manrope",sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(255,138,76,.8)}
+.btn.line{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.dark{background:var(--pine);color:#fff}
+.hero-body{position:relative;z-index:1;align-self:center;padding-block:20px 160px}
+.kick{font:700 13px "Manrope",system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--sun2)}
+h1{font:400 clamp(64px,11vw,150px)/.86 "Bebas Neue",Impact,sans-serif;letter-spacing:.01em;margin:10px 0 16px;text-shadow:0 4px 30px rgba(16,26,43,.35)}
+.hero p{font-size:19px;max-width:40ch;margin:0 0 26px;color:#F1E6DC;text-shadow:0 2px 12px rgba(16,26,43,.5)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.facts span{background:rgba(16,26,43,.45);backdrop-filter:blur(6px);padding:7px 12px;border-radius:999px;font-size:14px}
+section{padding-block:80px}
+h2{font:400 clamp(44px,6vw,72px)/.95 "Bebas Neue",Impact,sans-serif;letter-spacing:.02em;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 26px;max-width:58ch}
+.menu-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:0 12px}
+.search input{border:0;outline:0;font:inherit;font-size:16px;padding:12px 0;width:100%;background:transparent;color:var(--ink)}
+.toggle{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;cursor:pointer;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px}
+.toggle input{accent-color:#16A34A;width:18px;height:18px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px}
+.tab{flex:none;font:700 14px "Manrope",system-ui,sans-serif;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--pine);color:#fff;border-color:var(--pine)}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.item{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.item h3{margin:0;font:600 17px "Manrope",system-ui,sans-serif}
+.item p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.item .price{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dot{display:inline-block;width:11px;height:11px;border:1.5px solid;margin-right:7px;position:relative}
+.dot::after{content:"";position:absolute;inset:2px;border-radius:50%;background:currentColor}
+.dot.v{color:#16A34A}.dot.n{color:#DC2626}
+mark{background:var(--sun2);color:inherit;border-radius:3px;padding:0 2px}
+.empty{color:var(--muted);padding:20px 0}
+.apps{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.seats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.seat{border:2px solid var(--line);border-radius:20px;padding:0;overflow:hidden;cursor:pointer;background:#fff;text-align:left;font:inherit;color:inherit}
+.seat[aria-pressed="true"]{border-color:var(--sun)}
+.seat .pic{height:150px;display:grid;align-items:end;padding:12px;color:#fff;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.seat .body{padding:16px}
+.seat h3{margin:0;font:400 30px/1 "Bebas Neue",sans-serif;letter-spacing:.04em}
+.seat p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.p1{background:linear-gradient(180deg,#FF8A4C,#7A3E5C 60%,#1C3D4A)}.p2{background:linear-gradient(160deg,#27566A,#101A2B)}
+.bookbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:12px;align-items:end;margin-top:18px;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:18px}
+label{display:grid;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
+.bookbar input,.bookbar select{font:inherit;font-size:16px;padding:11px;border-radius:10px;border:1.5px solid var(--line);background:var(--snow);color:var(--ink);min-width:0}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(16,26,43,.6)}
+dialog::backdrop{background:rgba(16,26,43,.6)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:400 30px/1 "Bebas Neue",sans-serif;letter-spacing:.03em}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:860px){.items,.seats,.visit{grid-template-columns:1fr}.bookbar{grid-template-columns:1fr 1fr}.bookbar .btn{grid-column:1/-1;justify-content:center}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Manali Cafe &amp; Lounge by Prakhar Punj. Not the official site. Menu items and prices are placeholders.</div>
+
+<header class="hero">
+  <canvas id="hills" aria-hidden="true"></canvas>
+  <div class="top"><div class="wrap"><div class="brand">Manali<small>CAFE &amp; LOUNGE</small></div><a class="btn" href="#book">Book a table</a></div></div>
+  <div class="wrap hero-body">
+    <div class="kick">Top floor · Radha Tower · Civil Lines</div>
+    <h1>Hill-station evenings in Jhansi.</h1>
+    <p>A rooftop with North Indian, Chinese and Continental food, open from 11 am. Find a dish in seconds and book the rooftop for tonight.</p>
+    <div class="row"><a class="btn" href="#menu">Find a dish</a><a class="btn line" href="#book">Book the rooftop</a></div>
+    <div class="facts"><span>About ₹550 for two</span><span>Rooftop + indoor</span><span>1,100+ reviews on Justdial</span></div>
+  </div>
+</header>
+
+<main>
+<section id="menu"><div class="wrap">
+  <h2>The menu, on your phone</h2>
+  <p class="sub">Search any dish, or show veg only. Placeholder dishes and prices until the café shares its menu.</p>
+  <div class="menu-tools">
+    <label class="search" aria-label="Search the menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5D6B7C" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="Search: paneer, pasta, coffee…"></label>
+    <label class="toggle"><input type="checkbox" id="veg"> Veg only</label>
+  </div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="items" id="items"></div>
+  <div class="apps">
+    <a class="btn dark" href="https://www.zomato.com/jhansi/manali-cafe-and-lounge-civil-lines" target="_blank" rel="noopener">Order on Zomato ↗</a>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap">
+  <h2>Book a table</h2>
+  <p class="sub">Pick where you want to sit, then send the booking. The café confirms on WhatsApp.</p>
+  <div class="seats" id="seats">
+    <button type="button" class="seat" data-s="Rooftop" aria-pressed="true"><div class="pic p1">Rooftop photo</div><div class="body"><h3>Rooftop</h3><p>Open sky and the city lights. Best at sunset.</p></div></button>
+    <button type="button" class="seat" data-s="Indoor" aria-pressed="false"><div class="pic p2">Indoor photo</div><div class="body"><h3>Indoor</h3><p>Cool and quiet, for families and hot afternoons.</p></div></button>
+  </div>
+  <form class="bookbar" id="bookForm">
+    <label>Name<input id="bName" required placeholder="Your name" autocomplete="name"></label>
+    <label>Date<input id="bDate" type="date" required></label>
+    <label>Time<select id="bTime"><option>1:00 pm</option><option>5:30 pm</option><option selected>7:00 pm</option><option>8:30 pm</option><option>10:00 pm</option></select></label>
+    <label>People<select id="bPpl"><option>2</option><option selected>4</option><option>6</option><option>8</option><option>10+</option></select></label>
+    <button class="btn" type="submit">Book on WhatsApp</button>
+  </form>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap visit">
+  <div><h2>Find us</h2><p class="sub">Top floor, Radha Tower, Allahabad Bank Chauraha, Civil Lines, Jhansi.</p></div>
+  <div class="row"><a class="btn dark" href="https://www.google.com/maps/search/?api=1&query=Manali+Cafe+and+Lounge+Radha+Tower+Civil+Lines+Jhansi" target="_blank" rel="noopener">Get directions ↗</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Manali+Cafe+and+Lounge+Radha+Tower+Civil+Lines+Jhansi" target="_blank" rel="noopener">Read reviews on Google ↗</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This booking would reach the café</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn dark" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id), rs = n => "₹" + n.toLocaleString("en-IN");
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const MENU = {
+  "North Indian":[["Paneer butter masala","Rich tomato gravy","v",260],["Dal makhani","Slow-cooked black lentils","v",220],["Butter chicken","Classic, creamy","n",320],["Butter naan","From the tandoor","v",50],["Veg biryani","With raita","v",240]],
+  "Chinese":[["Chilli paneer","Dry or gravy","v",240],["Veg Hakka noodles","Wok-tossed","v",180],["Veg Manchurian","Gravy","v",200],["Chilli chicken","Dry","n",280],["Spring rolls","Crispy, six pieces","v",170]],
+  "Continental":[["White sauce pasta","Penne, mushrooms","v",240],["Margherita pizza","Thin crust","v",260],["Grilled sandwich","Cheese and veg","v",150],["Peri peri fries","Spicy","v",140],["Chicken burger","With fries","n",220]],
+  "Drinks & desserts":[["Cold coffee","With ice cream","v",140],["Virgin mojito","Mint and lime","v",130],["Masala chai","Kulhad","v",50],["Brownie with ice cream","Warm","v",160]]
+};
+let tab = "North Indian";
+function renderTabs(){
+  $("tabs").innerHTML = ["All", ...Object.keys(MENU)].map(k => `<button class="tab" role="tab" aria-selected="${k===tab}">${k}</button>`).join("");
+  $("tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => { tab = b.textContent; renderTabs(); renderItems(); });
+}
+function renderItems(){
+  const q = $("q").value.trim().toLowerCase(), veg = $("veg").checked;
+  let rows = (tab === "All" || q ? Object.values(MENU).flat() : MENU[tab]);
+  rows = rows.filter(([n,d,t]) => (!veg || t==="v") && (!q || (n+" "+d).toLowerCase().includes(q)));
+  const hl = s => { const e = esc(s); if (!q) return e; const i = s.toLowerCase().indexOf(q); return i < 0 ? e : esc(s.slice(0,i)) + "<mark>" + esc(s.slice(i,i+q.length)) + "</mark>" + esc(s.slice(i+q.length)); };
+  $("items").innerHTML = rows.length ? rows.map(([n,d,t,p]) => `<div class="item"><div><h3><i class="dot ${t}" title="${t==="v"?"Veg":"Non-veg"}"></i>${hl(n)}</h3><p>${hl(d)}</p></div><span class="price">${rs(p)}</span></div>`).join("")
+    : `<div class="empty">Nothing matches "${esc(q)}".</div>`;
+}
+$("q").addEventListener("input", renderItems); $("veg").addEventListener("change", renderItems);
+renderTabs(); renderItems();
+
+let seat = "Rooftop";
+document.querySelectorAll(".seat").forEach(b => b.onclick = () => { seat = b.dataset.s; document.querySelectorAll(".seat").forEach(x => x.setAttribute("aria-pressed", String(x===b))); });
+const d = new Date(); $("bDate").value = d.toISOString().slice(0,10); $("bDate").min = $("bDate").value;
+const dlg = $("dlg");
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const when = new Date($("bDate").value+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Manali Cafe! Table booking:\nName: ${$("bName").value}\nWhen: ${when}, ${$("bTime").value}\nPeople: ${$("bPpl").value}\nSeating: ${seat}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+
+/* hero: layered Himalayan ridges at sunset that shift with the cursor, with mist drifting through */
+const cv = $("hills"), ctx = cv.getContext("2d"), reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W, H, ridges = [], mist = [], px = 0, tx = 0;
+function ridge(seed, base, amp, rough){ const pts = []; let a = seed; const rnd = () => (a = (a*9301 + 49297) % 233280) / 233280;
+  let y = base; for (let i=0;i<=60;i++){ y += (rnd()-.5)*amp*rough; y = Math.max(base-amp, Math.min(base+amp*.3, y)); pts.push(y); } return pts; }
+function size(){ const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1);
+  W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  ridges = [
+    {pts:ridge(7, H*.48, H*.22, .9), c:"#8E6A8C", d:.15, snow:true},
+    {pts:ridge(21, H*.6, H*.16, .8), c:"#4E5E7E", d:.35},
+    {pts:ridge(42, H*.72, H*.12, .7), c:"#27566A", d:.6},
+    {pts:ridge(77, H*.84, H*.08, .6), c:"#1C3D4A", d:1}
+  ];
+  mist = Array.from({length:7}, (_,i) => ({x:Math.random()*W, y:H*(.5+i*.06), w:W*(.3+Math.random()*.3), s:.1+Math.random()*.25}));
+}
+addEventListener("pointermove", e => { tx = (e.clientX / innerWidth - .5); });
+function frame(t){
+  px += (tx - px) * .05;
+  const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,"#2B2F55"); g.addColorStop(.35,"#B85C6A"); g.addColorStop(.62,"#FF9A5A"); g.addColorStop(1,"#FFC27A");
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle = "rgba(255,230,190,.9)"; ctx.beginPath(); ctx.arc(W*.7 - px*20, H*.44, Math.min(W,H)*.07, 0, 6.28); ctx.fill();
+  ridges.forEach((r,li) => {
+    const off = reduce ? 0 : -px*60*r.d, step = (W+160)/60;
+    ctx.fillStyle = r.c; ctx.beginPath(); ctx.moveTo(-80+off, H);
+    r.pts.forEach((y,i) => ctx.lineTo(-80 + i*step + off, y)); ctx.lineTo(W+80+off, H); ctx.closePath(); ctx.fill();
+    if (r.snow){ ctx.fillStyle = "rgba(255,255,255,.75)";
+      r.pts.forEach((y,i) => { if (i>0 && i<60 && y < r.pts[i-1] && y < r.pts[i+1] && y < H*.42){ const x = -80 + i*step + off;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x-step*.7, y+14); ctx.lineTo(x+step*.7, y+14); ctx.closePath(); ctx.fill(); } }); }
+    if (li === 1 || li === 2) mist.forEach(m => { if (!reduce) m.x += m.s; if (m.x - m.w > W) m.x = -m.w;
+      ctx.save(); ctx.translate(m.x, m.y); ctx.scale(1, .22);
+      const mg = ctx.createRadialGradient(0, 0, 0, 0, 0, m.w*.5); mg.addColorStop(0,"rgba(255,236,220,.2)"); mg.addColorStop(1,"rgba(255,236,220,0)");
+      ctx.fillStyle = mg; ctx.beginPath(); ctx.arc(0, 0, m.w*.5, 0, 6.28); ctx.fill(); ctx.restore(); });
+  });
+  // rooftop railing in the foreground
+  ctx.fillStyle = "#101A2B"; ctx.fillRect(0, H*.93, W, H*.07);
+  for (let x=0; x<W; x+=22) ctx.fillRect(x, H*.88, 3, H*.05); ctx.fillRect(0, H*.875, W, 4);
+  requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
