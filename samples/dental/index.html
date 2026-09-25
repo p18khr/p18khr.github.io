@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lakeview Dental Studio · Sample site</title>
+<meta name="description" content="Sample clinic website by Prakhar Punj.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+<style>
+:root{--ink:#0E3440;--teal:#0F5E6B;--mint:#DDF2EC;--mint2:#EEF8F5;--coral:#F26B4F;--line:#D5E6E1;--muted:#56707A;--white:#FFFFFF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.6 "Outfit",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--ink);color:#fff;font-size:14px;text-align:center;padding:9px 16px}
+.demo a{color:#9FE3D3;font-weight:500}
+header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:19px;text-decoration:none}
+.logo svg{flex:none}
+nav{display:flex;gap:26px;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;border:0;border-radius:999px;padding:12px 22px;font:600 15px "Outfit",sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(242,107,79,.7)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.hero{background:linear-gradient(180deg,var(--mint2),#fff);padding-block:64px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.tag{display:inline-block;background:var(--mint);color:var(--teal);font-weight:500;font-size:14px;padding:6px 12px;border-radius:999px}
+h1{font-size:clamp(38px,5vw,60px);line-height:1.05;font-weight:600;margin:16px 0 18px;letter-spacing:-.02em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--teal)}
+.lead{font-size:19px;color:var(--muted);max-width:34ch;margin:0 0 28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.open-now{margin-top:22px;font-size:15px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.open-now i{width:9px;height:9px;border-radius:50%;background:#2BB673}
+.open-now.closed i{background:#C9C9C9}
+.art{aspect-ratio:1/1;max-width:100%;border-radius:32px;background:radial-gradient(circle at 30% 25%,#fff 0 18%,transparent 19%),linear-gradient(145deg,#BFE7DC,#7BC8B8);display:grid;place-items:center;position:relative;overflow:hidden}
+.art svg{width:58%;height:auto;filter:drop-shadow(0 18px 30px rgba(14,52,64,.25));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.art .chip{position:absolute;background:#fff;border-radius:14px;padding:10px 14px;font-size:14px;box-shadow:0 10px 24px -12px rgba(14,52,64,.4)}
+.art .c1{left:6%;bottom:12%}.art .c2{right:6%;top:10%}
+.art b{display:block;font-size:18px}
+section{padding-block:72px}
+h2{font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.01em;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 32px;max-width:52ch}
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.svc{border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:6px;transition:border-color .2s,transform .2s}
+.svc:hover{border-color:var(--teal);transform:translateY(-2px)}
+.svc h3{margin:0;font-size:19px;font-weight:600}
+.svc p{margin:0;color:var(--muted);font-size:15px}
+.svc .fee{font-weight:500;color:var(--teal);font-size:15px;margin-top:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.doc{display:flex;gap:20px;align-items:center;background:var(--mint2);border-radius:20px;padding:22px}
+.avatar{width:88px;height:88px;border-radius:50%;background:linear-gradient(145deg,#0F5E6B,#2E8C8C);color:#fff;display:grid;place-items:center;font-size:30px;font-weight:600;flex:none}
+.doc h3{margin:0;font-size:20px}
+.doc p{margin:2px 0 0;color:var(--muted);font-size:15px}
+table.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:11px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours tr.today td{font-weight:600;color:var(--ink)}
+.hours tr.today td:first-child::after{content:"Today";margin-left:10px;font-size:12px;font-weight:500;background:var(--mint);color:var(--teal);padding:3px 8px;border-radius:999px}
+.book{background:var(--ink);color:#fff;border-radius:28px;padding:40px;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px}
+.book h2{color:#fff}
+.book .sub{color:#A9C3CA}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:14px;color:#C9DCE1}
+label.full{grid-column:1/-1}
+input,select{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid #2F5561;background:#123F4C;color:#fff}
+input::placeholder{color:#7FA1AA}
+.slots{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.slot{font:inherit;font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid #2F5561;background:transparent;color:#fff;cursor:pointer}
+.slot[aria-pressed="true"]{background:#9FE3D3;color:var(--ink);border-color:#9FE3D3}
+form .btn{grid-column:1/-1;justify-content:center;padding:15px}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:500;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";color:var(--teal);font-size:22px;line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--muted);margin:10px 0 0;max-width:62ch}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.map{border-radius:20px;min-height:260px;background:
+  linear-gradient(90deg,transparent 48%,#fff 48% 52%,transparent 52%),
+  linear-gradient(0deg,transparent 58%,#fff 58% 62%,transparent 62%),
+  linear-gradient(35deg,transparent 70%,#CFE6F2 70% 82%,transparent 82%),#E7F1EC;position:relative}
+.pin{position:absolute;left:50%;top:40%;transform:translate(-50%,-100%);background:var(--coral);color:#fff;padding:8px 12px;border-radius:12px;font-size:14px;font-weight:500;white-space:nowrap}
+.pin::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:var(--coral)}
+footer{background:var(--mint2);padding-block:28px;font-size:14px;color:var(--muted)}
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);border:0;cursor:pointer}
+dialog{border:0;border-radius:20px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(14,52,64,.5)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px;color:#1B2B1B}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:860px){
+  nav{display:none}
+  .hero .wrap,.two,.book,.visit{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .book{padding:26px}
+}
+@media (max-width:520px){.services{grid-template-columns:1fr}form{grid-template-columns:1fr}.bar .btn{padding:10px 16px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.art svg{animation:none}}
+</style>
+</head>
+<body>
+<div class="demo">This is a sample website with a made-up clinic. <a href="https://p18khr.github.io/#websites">Get one like it for your business →</a></div>
+
+<header><div class="wrap bar">
+  <a class="logo" href="#top"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="9" fill="#0F5E6B"/><path d="M9 10c0-2 2-3 3.5-2.5 1 .3 1.7.8 2.5.8s1.5-.5 2.5-.8C19 7 21 8 21 10c0 3-1 5-1.6 8-.3 1.5-1.8 1.6-2.2.2L16 15h-2l-1.2 3.2c-.4 1.4-1.9 1.3-2.2-.2C10 15 9 13 9 10z" fill="#fff"/></svg>Lakeview Dental</a>
+  <nav><a href="#services">Treatments</a><a href="#doctor">Doctor</a><a href="#hours">Timings</a><a href="#visit">Location</a></nav>
+  <a class="btn" href="#book">Book a visit</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="tag">Dental clinic · Lakeview Road</span>
+    <h1>Gentle dental care, <em>on time</em>, every time.</h1>
+    <p class="lead">Check-ups, fillings, root canals, braces and implants. Book online and get a confirmation on WhatsApp.</p>
+    <div class="hero-actions"><a class="btn" href="#book">Book an appointment</a><a class="btn ghost" href="#services">See treatments</a></div>
+    <div class="open-now" id="openNow"><i></i><span></span></div>
+  </div>
+  <div class="art" aria-hidden="true">
+    <svg viewBox="0 0 100 110"><path d="M20 22c0-12 12-18 21-14 4 2 6 3 9 3s5-1 9-3c9-4 21 2 21 14 0 18-6 30-9 48-2 10-11 11-13 1l-4-18c-1-4-7-4-8 0l-4 18c-2 10-11 9-13-1-3-18-9-30-9-48z" fill="#fff"/><path d="M34 22c3-4 9-5 13-2" stroke="#BFE7DC" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+    <div class="chip c2"><b>12+ years</b>of practice</div>
+    <div class="chip c1"><b>Open 6 days</b>Mon – Sat</div>
+  </div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <h2>Treatments</h2>
+  <p class="sub">Fees are starting prices. The doctor confirms the exact cost after a check-up.</p>
+  <div class="services">
+    <div class="svc"><h3>Check-up &amp; cleaning</h3><p>Full examination, scaling and polishing.</p><div class="fee">from ₹800</div></div>
+    <div class="svc"><h3>Fillings</h3><p>Tooth-coloured fillings for cavities and chips.</p><div class="fee">from ₹1,200</div></div>
+    <div class="svc"><h3>Root canal</h3><p>Single-sitting treatment in most cases.</p><div class="fee">from ₹4,500</div></div>
+    <div class="svc"><h3>Braces &amp; aligners</h3><p>Metal, ceramic and clear aligner options.</p><div class="fee">from ₹35,000</div></div>
+    <div class="svc"><h3>Implants</h3><p>Permanent replacement for missing teeth.</p><div class="fee">from ₹25,000</div></div>
+    <div class="svc"><h3>Children's dentistry</h3><p>Friendly first visits and preventive care.</p><div class="fee">from ₹600</div></div>
+  </div>
+</div></section>
+
+<section id="doctor" style="padding-top:0"><div class="wrap two">
+  <div>
+    <h2>Your dentist</h2>
+    <div class="doc"><div class="avatar">AR</div><div><h3>Dr. Ananya Rao</h3><p>BDS, MDS (Conservative Dentistry)</p><p>Reg. No. A-00000 · Sample</p></div></div>
+  </div>
+  <div id="hours">
+    <h2>Timings</h2>
+    <table class="hours" id="hoursTable"></table>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2>Book an appointment</h2>
+    <p class="sub">Pick a time and send the request. The clinic confirms on WhatsApp, usually within the hour.</p>
+  </div>
+  <form id="bookForm">
+    <label>Your name<input id="bName" required placeholder="e.g. Rahul Mehta" autocomplete="name"></label>
+    <label>Phone<input id="bPhone" required inputmode="tel" placeholder="10-digit mobile" autocomplete="tel"></label>
+    <label>Treatment<select id="bSvc"><option>Check-up &amp; cleaning</option><option>Fillings</option><option>Root canal</option><option>Braces &amp; aligners</option><option>Implants</option><option>Children's dentistry</option><option>Not sure / tooth pain</option></select></label>
+    <label>Date<input id="bDate" type="date" required></label>
+    <div class="slots" id="slots" role="group" aria-label="Time"></div>
+    <button class="btn" type="submit">Send booking request</button>
+  </form>
+</div></div></section>
+
+<section class="faq"><div class="wrap">
+  <h2>Questions</h2>
+  <details><summary>Do I need an appointment?</summary><p>Appointments are recommended so you don't wait. For tooth pain, call or message and we'll fit you in the same day where possible.</p></details>
+  <details><summary>Is a root canal painful?</summary><p>It is done under local anaesthesia, so most patients feel pressure rather than pain. Mild soreness for a day or two afterwards is normal.</p></details>
+  <details><summary>How do I pay?</summary><p>UPI, cards and cash are accepted at the clinic.</p></details>
+  <details><summary>Is there parking?</summary><p>Two-wheeler parking in front and car parking in the building basement.</p></details>
+</div></section>
+
+<section id="visit" style="padding-top:0"><div class="wrap visit">
+  <div>
+    <h2>Visit us</h2>
+    <p class="sub">First floor, 24 Lakeview Road, opposite the city park. Sample address.</p>
+    <a class="btn ghost" href="#book">Book before you come</a>
+  </div>
+  <div class="map" role="img" aria-label="Map showing the clinic location"><span class="pin">Lakeview Dental</span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Lakeview Dental Studio (sample). Website by <a href="https://p18khr.github.io/#websites">Prakhar Punj</a>.</div></footer>
+
+<button class="wa" type="button" id="waBtn" aria-label="Message the clinic on WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></button>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would go to the clinic</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On a real site, this opens WhatsApp with the message ready to send to the clinic's number. This sample doesn't send anything.</p>
+  <button class="btn" type="button" id="dlgClose" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const HOURS = [["Monday","10:00","20:00"],["Tuesday","10:00","20:00"],["Wednesday","10:00","20:00"],["Thursday","10:00","20:00"],["Friday","10:00","20:00"],["Saturday","10:00","14:00"],["Sunday",null,null]];
+const fmt = t => { const [h,m] = t.split(":").map(Number); return `${((h+11)%12)+1}:${String(m).padStart(2,"0")} ${h<12?"am":"pm"}`; };
+const now = new Date(), dow = (now.getDay()+6)%7;
+document.getElementById("hoursTable").innerHTML = HOURS.map(([d,o,c],i) =>
+  `<tr class="${i===dow?"today":""}"><td>${d}</td><td>${o?fmt(o)+" – "+fmt(c):"Closed"}</td></tr>`).join("");
+const [,o,c] = HOURS[dow], mins = now.getHours()*60+now.getMinutes(), toM = t => { const [h,m]=t.split(":").map(Number); return h*60+m; };
+const open = o && mins >= toM(o) && mins < toM(c), on = document.getElementById("openNow");
+on.classList.toggle("closed", !open);
+on.querySelector("span").textContent = open ? `Open now · until ${fmt(c)}` : "Closed now · book online anytime";
+
+const dateIn = document.getElementById("bDate");
+const iso = d => d.toISOString().slice(0,10);
+const tmr = new Date(now); tmr.setDate(now.getDate()+1);
+dateIn.min = iso(now); dateIn.value = iso(tmr);
+const SLOTS = ["10:30 am","12:00 pm","3:00 pm","5:30 pm","7:00 pm"];
+let slot = SLOTS[0];
+const slotsEl = document.getElementById("slots");
+SLOTS.forEach(s => { const b = document.createElement("button"); b.type="button"; b.className="slot"; b.textContent=s; b.setAttribute("aria-pressed", String(s===slot));
+  b.onclick = () => { slot = s; slotsEl.querySelectorAll(".slot").forEach(x => x.setAttribute("aria-pressed", String(x===b))); }; slotsEl.appendChild(b); });
+
+const dlg = document.getElementById("dlg"), bubble = document.getElementById("bubble");
+function show(msg){ bubble.textContent = msg; if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); }
+document.getElementById("dlgClose").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+document.getElementById("bookForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const d = new Date(dateIn.value + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  show(`Hi, I'd like to book an appointment.\nName: ${document.getElementById("bName").value}\nPhone: ${document.getElementById("bPhone").value}\nTreatment: ${document.getElementById("bSvc").value}\nWhen: ${d}, ${slot}`);
+});
+document.getElementById("waBtn").onclick = () => show("Hi, I have a question about a dental appointment.");
+</script>
+</body>
+</html>

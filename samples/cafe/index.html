@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chai &amp; Crumb · Sample site</title>
+<meta name="description" content="Sample café website by Prakhar Punj.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Karla:wght@400;500;700&display=swap">
+<style>
+:root{--green:#1D3A2E;--green2:#274C3D;--butter:#F6D56A;--paper:#FAF8F2;--ink:#18231E;--muted:#5F6E66;--line:#E3DFD2;--chili:#D9482B}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "Karla",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--chili);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:20px}
+.demo{background:#000;color:#fff;font-size:14px;text-align:center;padding:9px 16px}
+.demo a{color:var(--butter);font-weight:700}
+.hero{background:var(--green);color:var(--paper);overflow:hidden;position:relative}
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:20px;gap:12px}
+.brand{font:800 24px "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+.brand span{color:var(--butter)}
+.top nav{display:flex;gap:22px;font-size:15px}
+.top nav a{text-decoration:none;opacity:.8}
+.hero-body{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:end;padding-block:40px 0}
+h1{font:800 clamp(52px,9vw,120px)/.88 "Bricolage Grotesque",sans-serif;letter-spacing:-.04em;margin:0 0 22px;text-wrap:balance}
+h1 span{color:var(--butter);display:inline-block;animation:wobble 4s ease-in-out infinite}
+@keyframes wobble{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.hero p{font-size:19px;max-width:34ch;opacity:.85;margin:0 0 28px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--butter);color:var(--green);border:0;border-radius:14px;padding:14px 22px;font:700 16px "Karla",sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.cup{justify-self:center;width:min(300px,100%);position:relative;margin-bottom:-6px}
+.cup svg{width:100%;height:auto;display:block}
+.steam path{animation:steam 3s ease-in-out infinite;opacity:.0}
+.steam path:nth-child(2){animation-delay:1s}.steam path:nth-child(3){animation-delay:2s}
+@keyframes steam{0%{opacity:0;transform:translateY(8px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-18px)}}
+.strip{background:var(--butter);color:var(--green);font:700 15px "Karla",sans-serif;white-space:nowrap;overflow:hidden;padding-block:12px}
+.strip div{display:inline-block;animation:marq 28s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+section{padding-block:64px}
+h2{font:800 clamp(36px,5vw,56px)/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 26px}
+.menu-wrap{display:grid;grid-template-columns:1fr 330px;gap:32px;align-items:start}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tab{font:700 15px "Karla",sans-serif;border:2px solid var(--green);background:transparent;color:var(--green);border-radius:999px;padding:8px 16px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--green);color:var(--paper)}
+.items{display:grid;gap:0}
+.item{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1.5px dashed var(--line)}
+.item h3{margin:0;font:700 19px "Bricolage Grotesque",sans-serif}
+.item p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.veg{display:inline-block;width:12px;height:12px;border:1.5px solid #2E8B3E;position:relative;margin-right:6px;vertical-align:1px}
+.veg::after{content:"";position:absolute;inset:2px;border-radius:50%;background:#2E8B3E}
+.price{font-weight:700;font-variant-numeric:tabular-nums}
+.add{width:38px;height:38px;border-radius:12px;border:2px solid var(--green);background:#fff;color:var(--green);font:700 20px/1 "Karla";cursor:pointer}
+.add:hover{background:var(--green);color:var(--paper)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:30px;height:30px;border-radius:9px;border:0;background:var(--green);color:var(--paper);font:700 16px/1 "Karla";cursor:pointer}
+.qty span{min-width:14px;text-align:center;font-weight:700}
+.order{position:sticky;top:20px;background:#fff;border:2px solid var(--green);border-radius:20px;padding:22px;display:grid;gap:12px}
+.order h3{margin:0;font:800 24px "Bricolage Grotesque",sans-serif}
+.order ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15px}
+.order li{display:flex;justify-content:space-between;gap:10px}
+.order .empty{color:var(--muted);font-size:15px}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px;border-top:1.5px dashed var(--line);padding-top:10px}
+.order .btn{justify-content:center;background:var(--green);color:var(--paper)}
+.order .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.opts{display:flex;gap:8px;font-size:14px}
+.opts label{flex:1;display:flex;gap:6px;align-items:center;justify-content:center;border:1.5px solid var(--line);border-radius:10px;padding:8px;cursor:pointer}
+.opts input{accent-color:var(--green)}
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--green);color:var(--paper);border-radius:20px;padding:24px}
+.card h3{margin:0 0 6px;font:800 22px "Bricolage Grotesque",sans-serif;color:var(--butter)}
+.card p{margin:0;opacity:.85}
+footer{padding-block:26px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+dialog{border:0;border-radius:20px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(29,58,46,.55)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:800 22px "Bricolage Grotesque",sans-serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:860px){.hero-body,.menu-wrap{grid-template-columns:1fr}.info{grid-template-columns:1fr}.top nav{display:none}.cup{width:220px}.order{position:static}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}h1 span,.steam path,.strip div{animation:none}.steam path{opacity:.6}}
+</style>
+</head>
+<body>
+<div class="demo">This is a sample website with a made-up café. <a href="https://p18khr.github.io/#websites">Get one like it for your business →</a></div>
+
+<header class="hero"><div class="wrap">
+  <div class="top"><div class="brand">Chai <span>&amp;</span> Crumb</div><nav><a href="#menu">Menu</a><a href="#visit">Visit</a></nav></div>
+  <div class="hero-body">
+    <div>
+      <h1>Proper chai. Warm <span>buns.</span></h1>
+      <p>A small café on Park Street. Order ahead on WhatsApp and pick it up without the queue.</p>
+      <a class="btn" href="#menu">Order ahead →</a>
+    </div>
+    <div class="cup" aria-hidden="true">
+      <svg viewBox="0 0 200 190">
+        <g class="steam" stroke="#FAF8F2" stroke-width="5" fill="none" stroke-linecap="round">
+          <path d="M70 60c-10-12 10-18 0-32"/><path d="M100 60c-10-12 10-18 0-32"/><path d="M130 60c-10-12 10-18 0-32"/>
+        </g>
+        <path d="M40 72h120l-12 96a14 14 0 0 1-14 12H66a14 14 0 0 1-14-12z" fill="#F6D56A"/>
+        <path d="M160 88h10a18 18 0 0 1 0 36h-14" stroke="#F6D56A" stroke-width="10" fill="none"/>
+        <path d="M46 96h108" stroke="#1D3A2E" stroke-width="4" opacity=".25"/>
+        <ellipse cx="100" cy="74" rx="60" ry="8" fill="#C98A4B"/>
+      </svg>
+    </div>
+  </div>
+</div>
+<div class="strip" aria-hidden="true"><div>Masala chai ★ Filter coffee ★ Bun maska ★ Kheema pav ★ Open 7am–10pm ★ Order on WhatsApp ★ Masala chai ★ Filter coffee ★ Bun maska ★ Kheema pav ★ Open 7am–10pm ★ Order on WhatsApp ★ </div></div>
+</header>
+
+<main>
+<section id="menu"><div class="wrap">
+  <h2>Menu</h2>
+  <p class="sub">Tap + to add. Your order goes to the café on WhatsApp.</p>
+  <div class="menu-wrap">
+    <div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="items" id="items" role="tabpanel"></div>
+    </div>
+    <aside class="order" aria-label="Your order">
+      <h3>Your order</h3>
+      <ul id="orderList"></ul>
+      <div class="total"><span>Total</span><span id="total">₹0</span></div>
+      <div class="opts" role="radiogroup" aria-label="Pickup or dine in">
+        <label><input type="radio" name="mode" value="Pickup" checked> Pickup</label>
+        <label><input type="radio" name="mode" value="Dine in"> Dine in</label>
+      </div>
+      <button class="btn" id="send" type="button" disabled>Send order on WhatsApp</button>
+    </aside>
+  </div>
+</div></section>
+
+<section id="visit" style="padding-top:0"><div class="wrap">
+  <h2>Visit</h2>
+  <p class="sub">Sample details for a made-up café.</p>
+  <div class="info">
+    <div class="card"><h3>Where</h3><p>12 Park Street, next to the bookshop</p></div>
+    <div class="card"><h3>When</h3><p>Every day, 7am to 10pm</p></div>
+    <div class="card"><h3>Pay</h3><p>UPI, cards or cash</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Chai &amp; Crumb (sample). Website by <a href="https://p18khr.github.io/#websites">Prakhar Punj</a>.</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would go to the café</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On a real site, this opens WhatsApp with the order ready to send to the café's number. This sample doesn't send anything.</p>
+  <button class="btn" type="button" id="dlgClose" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const MENU = {
+  "Chai & coffee":[["Masala chai","Ginger, cardamom, slow-boiled",40],["Cutting chai","Half glass, full strength",25],["Filter coffee","South Indian decoction, frothy",60],["Cold coffee","With a scoop of ice cream",120]],
+  "Bakes":[["Bun maska","Soft bun, lots of butter",50],["Cream roll","Flaky, filled fresh every morning",45],["Banana bread","Warm slice, walnut",90]],
+  "Plates":[["Kheema pav","Spiced mince, two buttered pavs",180],["Masala omelette","Three eggs, onion, chilli, toast",120],["Veg sandwich","Grilled, green chutney",110]]
+};
+const VEG = new Set(["Masala chai","Cutting chai","Filter coffee","Cold coffee","Bun maska","Cream roll","Banana bread","Veg sandwich"]);
+const cart = new Map(); let tab = Object.keys(MENU)[0];
+const $ = id => document.getElementById(id);
+const rs = n => "₹" + n.toLocaleString("en-IN");
+
+function renderTabs(){
+  $("tabs").innerHTML = Object.keys(MENU).map(k => `<button class="tab" role="tab" aria-selected="${k===tab}" data-k="${k}">${k}</button>`).join("");
+  $("tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => { tab = b.dataset.k; renderTabs(); renderItems(); });
+}
+function renderItems(){
+  $("items").innerHTML = MENU[tab].map(([n,d,p]) => {
+    const q = cart.get(n)?.q || 0;
+    const ctl = q ? `<div class="qty"><button data-n="${n}" data-d="-1" aria-label="Remove one ${n}">−</button><span>${q}</span><button data-n="${n}" data-d="1" aria-label="Add one ${n}">+</button></div>`
+                  : `<button class="add" data-n="${n}" data-d="1" aria-label="Add ${n}">+</button>`;
+    return `<div class="item"><div><h3>${VEG.has(n)?'<i class="veg" title="Vegetarian"></i>':""}${n}</h3><p>${d}</p></div><div class="price">${rs(p)}</div>${ctl}</div>`;
+  }).join("");
+  $("items").querySelectorAll("[data-n]").forEach(b => b.onclick = () => change(b.dataset.n, +b.dataset.d));
+}
+function change(n, d){
+  const p = Object.values(MENU).flat().find(i => i[0]===n)[2];
+  const q = (cart.get(n)?.q || 0) + d;
+  q > 0 ? cart.set(n, {q, p}) : cart.delete(n);
+  renderItems(); renderOrder();
+}
+function renderOrder(){
+  const rows = [...cart].map(([n,{q,p}]) => `<li><span>${q} × ${n}</span><span>${rs(q*p)}</span></li>`);
+  $("orderList").innerHTML = rows.length ? rows.join("") : `<li class="empty">Nothing yet. Tap + on anything you like.</li>`;
+  $("total").textContent = rs([...cart.values()].reduce((s,{q,p}) => s+q*p, 0));
+  $("send").disabled = !cart.size;
+}
+const dlg = $("dlg");
+$("send").onclick = () => {
+  const mode = document.querySelector('input[name="mode"]:checked').value;
+  $("bubble").textContent = `Hi! Order for ${mode.toLowerCase()}:\n` + [...cart].map(([n,{q}]) => `${q} × ${n}`).join("\n") + `\nTotal: ${$("total").textContent}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open","");
+};
+$("dlgClose").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+renderTabs(); renderItems(); renderOrder();
+</script>
+</body>
+</html>

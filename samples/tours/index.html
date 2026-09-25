@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stripe &amp; Sal Safaris · Sample site</title>
+<meta name="description" content="Sample tour operator website by Prakhar Punj.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Franklin:wght@400;500;600;700&display=swap">
+<style>
+:root{--night:#0F1A13;--forest:#18291E;--leaf:#2A4431;--amber:#EFA537;--sand:#F3E9D6;--muted:#A9B5A6;--line:#2E4535}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--sand);font:400 17px/1.6 "Libre Franklin",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--amber);color:var(--night);font-size:14px;text-align:center;padding:9px 16px;font-weight:500}
+.demo a{font-weight:700}
+.hero{position:relative;min-height:min(640px,90vh);display:grid;align-items:end;overflow:hidden}
+#scene{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;padding-block:0 64px;width:100%}
+.top{position:absolute;top:0;left:0;right:0;z-index:2}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:20px}
+.brand{font:400 26px "DM Serif Display",serif}
+.brand em{color:var(--amber)}
+.top a.btn{padding:10px 18px}
+h1{font:400 clamp(46px,7.5vw,96px)/.95 "DM Serif Display",serif;margin:0 0 18px;max-width:12ch;text-wrap:balance}
+h1 em{color:var(--amber)}
+.hero p{max-width:40ch;font-size:19px;color:#DCE3D6;margin:0 0 26px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:var(--night);border:0;border-radius:4px;padding:14px 22px;font:700 15px "Libre Franklin",sans-serif;letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+section{padding-block:72px}
+h2{font:400 clamp(34px,4.4vw,54px)/1.05 "DM Serif Display",serif;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 30px;max-width:56ch}
+.zones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.zone{background:var(--forest);border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:pointer;text-align:left;color:inherit;font:inherit;padding:0;transition:border-color .2s,transform .2s}
+.zone:hover{transform:translateY(-3px)}
+.zone[aria-pressed="true"]{border-color:var(--amber)}
+.zone .pic{height:130px;background:var(--leaf);position:relative}
+.zone .body{padding:18px}
+.zone h3{margin:0 0 4px;font:400 26px "DM Serif Display",serif}
+.zone p{margin:0;color:var(--muted);font-size:15px}
+.zone .spot{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--amber);letter-spacing:.04em;text-transform:uppercase}
+.planner{background:var(--sand);color:var(--night);border-radius:8px;padding:34px;display:grid;grid-template-columns:1.1fr .9fr;gap:36px}
+.planner h2{color:var(--night)}
+.planner .sub{color:#5B6657}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fields label{display:grid;gap:6px;font-size:14px;font-weight:600}
+.fields .full{grid-column:1/-1}
+input,select{font:inherit;font-size:16px;padding:12px;border:1.5px solid #CDBF9F;border-radius:4px;background:#fff;color:var(--night)}
+.seg{display:flex;border:1.5px solid #CDBF9F;border-radius:4px;overflow:hidden}
+.seg button{flex:1;font:600 15px "Libre Franklin";padding:11px;border:0;background:#fff;color:var(--night);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--night);color:var(--sand)}
+.stepper{display:flex;align-items:center;border:1.5px solid #CDBF9F;border-radius:4px;background:#fff}
+.stepper button{width:46px;height:46px;border:0;background:transparent;font:700 20px "Libre Franklin";cursor:pointer;color:var(--night)}
+.stepper span{flex:1;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.jeep{display:flex;gap:6px;margin-top:6px}
+.jeep i{width:22px;height:22px;border-radius:50%;background:#E3D6BA;transition:background .2s}
+.jeep i.on{background:var(--amber)}
+.summary{background:var(--night);color:var(--sand);border-radius:6px;padding:24px;display:grid;gap:10px;align-content:start}
+.summary h3{margin:0 0 6px;font:400 26px "DM Serif Display",serif}
+.row{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:#CFD8CB;font-variant-numeric:tabular-nums}
+.row.tot{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;font-size:20px;color:var(--sand);font-weight:700}
+.summary .note{font-size:13px;color:var(--muted);margin:4px 0 8px}
+.summary .btn{justify-content:center}
+.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.rules div{border-top:2px solid var(--amber);padding-top:14px}
+.rules b{display:block;font:400 22px "DM Serif Display",serif;margin-bottom:4px}
+.rules p{margin:0;color:var(--muted);font-size:15px}
+footer{border-top:1px solid var(--line);padding-block:26px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:8px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(15,26,19,.7)}
+.dlg{padding:24px;display:grid;gap:14px;color:var(--night)}
+.dlg h3{margin:0;font:400 24px "DM Serif Display",serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#5B6657;margin:0}
+@media (max-width:860px){.zones{grid-template-columns:1fr}.planner{grid-template-columns:1fr;padding:22px}.rules{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.fields{grid-template-columns:1fr}.rules{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">This is a sample website with a made-up safari company. <a href="https://p18khr.github.io/#websites">Get one like it for your business →</a></div>
+
+<header class="hero">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="top"><div class="wrap"><div class="brand">Stripe <em>&amp;</em> Sal</div><a class="btn" href="#plan">Plan a safari</a></div></div>
+  <div class="wrap">
+    <h1>Morning jeeps into <em>tiger</em> country.</h1>
+    <p>Guided jeep safaris into three core zones, run by people who grew up at the park gate. Plan your trip and see the fare before you ask.</p>
+    <a class="btn" href="#plan">Check fares →</a>
+  </div>
+</header>
+
+<main>
+<section id="zones"><div class="wrap">
+  <h2>Choose a zone</h2>
+  <p class="sub">Each zone has its own gate and its own chances. Tap one to plan with it.</p>
+  <div class="zones" id="zonesEl"></div>
+</div></section>
+
+<section id="plan" style="padding-top:0"><div class="wrap"><div class="planner">
+  <div>
+    <h2>Plan your safari</h2>
+    <p class="sub">Sample fares for a made-up company. The fare updates as you choose.</p>
+    <div class="fields">
+      <label class="full">Zone<select id="zoneSel"></select></label>
+      <label>Date<input type="date" id="date"></label>
+      <label>Shift<div class="seg" id="shift"><button type="button" aria-pressed="true">Morning</button><button type="button" aria-pressed="false">Evening</button></div></label>
+      <label class="full">Travellers (max 6 per jeep)
+        <div class="stepper"><button type="button" id="minus" aria-label="Fewer travellers">−</button><span id="count">2</span><button type="button" id="plus" aria-label="More travellers">+</button></div>
+        <div class="jeep" id="jeep" aria-hidden="true"></div>
+      </label>
+      <label class="full">Your name<input id="name" placeholder="e.g. Priya Sharma" autocomplete="name"></label>
+    </div>
+  </div>
+  <div class="summary">
+    <h3>Your fare</h3>
+    <div class="row"><span>Jeep &amp; driver</span><span id="fJeep"></span></div>
+    <div class="row"><span>Guide</span><span id="fGuide"></span></div>
+    <div class="row"><span>Park entry (<span id="fN"></span>)</span><span id="fEntry"></span></div>
+    <div class="row tot"><span>Total</span><span id="fTot"></span></div>
+    <p class="note">One jeep, shared only with your group.</p>
+    <button class="btn" type="button" id="send">Send enquiry on WhatsApp</button>
+  </div>
+</div></div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Before you come</h2>
+  <div class="rules">
+    <div><b>ID proof</b><p>Carry the ID you booked with. Every traveller is checked at the gate.</p></div>
+    <div><b>Timings</b><p>Morning jeeps leave at sunrise, evening jeeps at 2:30 pm.</p></div>
+    <div><b>Children</b><p>Under 5 go free but still take a seat in the jeep.</p></div>
+    <div><b>Monsoon</b><p>Core zones close from July to September. Buffer zones stay open.</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Stripe &amp; Sal Safaris (sample). Website by <a href="https://p18khr.github.io/#websites">Prakhar Punj</a>.</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would go to the operator</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On a real site, this opens WhatsApp with the enquiry ready to send. This sample doesn't send anything.</p>
+  <button class="btn" type="button" id="dlgClose" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const ZONES = [
+  {n:"Tala",d:"The most tiger sightings, and the most jeeps.",s:"Best for tigers",jeep:4500,hue:"#2F5A38"},
+  {n:"Magdhi",d:"Open meadows, deer herds and leopards.",s:"Best for photos",jeep:4000,hue:"#3D5A2A"},
+  {n:"Khitauli",d:"Quiet, dense sal forest and birdlife.",s:"Fewest jeeps",jeep:3500,hue:"#24492F"}
+];
+const GUIDE = 700, ENTRY = 250;
+let zone = 0, n = 2, shift = "Morning";
+const $ = id => document.getElementById(id), rs = x => "₹" + x.toLocaleString("en-IN");
+
+$("zonesEl").innerHTML = ZONES.map((z,i) => `<button class="zone" type="button" data-i="${i}" aria-pressed="${i===0}">
+  <div class="pic" style="background:linear-gradient(160deg,${z.hue},#0F1A13)"><svg viewBox="0 0 300 130" width="100%" height="130" preserveAspectRatio="none" aria-hidden="true">${
+    Array.from({length:9},(_,k)=>{const x=k*36+((i*13)%20),h=40+((k*37+i*11)%50);return `<path d="M${x} 130 L${x+14} ${130-h} L${x+28} 130Z" fill="#0F1A13" opacity="${.35+((k+i)%3)*.2}"/>`}).join("")
+  }</svg></div>
+  <div class="body"><h3>${z.n}</h3><p>${z.d}</p><span class="spot">${z.s}</span></div></button>`).join("");
+$("zoneSel").innerHTML = ZONES.map((z,i) => `<option value="${i}">${z.n}</option>`).join("");
+document.querySelectorAll(".zone").forEach(b => b.onclick = () => { zone = +b.dataset.i; update(); document.getElementById("plan").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); });
+$("zoneSel").onchange = e => { zone = +e.target.value; update(); };
+$("shift").querySelectorAll("button").forEach(b => b.onclick = () => { shift = b.textContent; $("shift").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x===b))); });
+$("minus").onclick = () => { n = Math.max(1, n-1); update(); };
+$("plus").onclick = () => { n = Math.min(6, n+1); update(); };
+const d = new Date(); d.setDate(d.getDate()+7); $("date").value = d.toISOString().slice(0,10); $("date").min = new Date().toISOString().slice(0,10);
+
+function update(){
+  const z = ZONES[zone];
+  document.querySelectorAll(".zone").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.i===zone)));
+  $("zoneSel").value = zone; $("count").textContent = n;
+  $("jeep").innerHTML = Array.from({length:6},(_,i)=>`<i class="${i<n?"on":""}"></i>`).join("");
+  $("fJeep").textContent = rs(z.jeep); $("fGuide").textContent = rs(GUIDE);
+  $("fN").textContent = `${n} × ${rs(ENTRY)}`; $("fEntry").textContent = rs(n*ENTRY);
+  $("fTot").textContent = rs(z.jeep + GUIDE + n*ENTRY);
+}
+update();
+
+const dlg = $("dlg");
+$("send").onclick = () => {
+  const when = new Date($("date").value + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi, I'd like to book a safari.\nName: ${$("name").value || "(your name)"}\nZone: ${ZONES[zone].n}\nDate: ${when}, ${shift.toLowerCase()} shift\nTravellers: ${n}\nFare shown: ${$("fTot").textContent}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open","");
+};
+$("dlgClose").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+
+/* Hero: layered forest at dusk, fireflies drifting */
+const cv = $("scene"), ctx = cv.getContext("2d"), reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W, H, flies = [], trees = [];
+function size(){
+  const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1);
+  W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  trees = [0,1,2].map(l => Array.from({length: Math.ceil(W/ (40 - l*8)) + 2}, (_,i) => ({x: i*(40-l*8) + Math.random()*20, h: (0.25 + l*0.12)*H*(0.6+Math.random()*0.6)})));
+  flies = Array.from({length: Math.round(W/22)}, () => ({x: Math.random()*W, y: H*(0.35+Math.random()*0.55), p: Math.random()*6.28, s: 0.2+Math.random()*0.5}));
+}
+function draw(t){
+  const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,"#3A2A1C"); g.addColorStop(.45,"#6B4222"); g.addColorStop(.7,"#23321F"); g.addColorStop(1,"#0F1A13");
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle = "rgba(239,165,55,.85)"; ctx.beginPath(); ctx.arc(W*0.72, H*0.46, Math.min(W,H)*0.09, 0, Math.PI*2); ctx.fill();
+  ["#1E2E1F","#15231A","#0F1A13"].forEach((c,l) => {
+    ctx.fillStyle = c; const off = reduce ? 0 : Math.sin(t/4000 + l)*6*(l+1);
+    trees[l].forEach(tr => { ctx.beginPath(); ctx.moveTo(tr.x+off-18, H); ctx.lineTo(tr.x+off, H - tr.h - l*H*0.05); ctx.lineTo(tr.x+off+18, H); ctx.fill(); });
+    ctx.fillRect(0, H - H*(0.08+l*0.04), W, H);
+  });
+  flies.forEach(f => {
+    if (!reduce){ f.x += Math.cos(f.p + t/1500)*f.s; f.y += Math.sin(f.p + t/1700)*f.s*0.6; }
+    const a = 0.35 + 0.65*Math.max(0, Math.sin(t/600 + f.p*3));
+    ctx.fillStyle = `rgba(246,214,106,${a})`; ctx.beginPath(); ctx.arc(f.x, f.y, 1.8, 0, Math.PI*2); ctx.fill();
+  });
+  if (!reduce) requestAnimationFrame(draw);
+}
+size(); requestAnimationFrame(draw);
+addEventListener("resize", () => { size(); if (reduce) draw(0); });
+</script>
+</body>
+</html>
