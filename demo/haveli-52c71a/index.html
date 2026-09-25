@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Haveli Restaurant · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Mukta:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap">
+<style>
+:root{--night:#240C10;--wine:#3A1319;--marigold:#F5A524;--sand:#EBCFA6;--stone:#F7EEE1;--ink:#2A1216;--muted:#7A5E58;--line:#E6D5C0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--stone);color:var(--ink);font:400 18px/1.6 "Mukta",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--marigold);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:#000;color:var(--sand);font-size:14px;text-align:center;padding:9px 16px}
+.hero{position:relative;background:var(--night);color:var(--stone);overflow:hidden;min-height:min(680px,90vh);display:grid}
+#jaali{position:absolute;inset:0;width:100%;height:100%}
+.top{position:relative;z-index:2}.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
+.brand{font:400 28px "Gloock",Georgia,serif;color:var(--sand)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--marigold);color:var(--night);border:0;border-radius:999px;padding:13px 24px;font:700 16px "Mukta",system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px -10px rgba(245,165,36,.8)}
+.btn.line{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.dark{background:var(--wine);color:var(--stone)}
+.hero-body{position:relative;z-index:1;align-self:center;padding-block:10px 90px;width:100%}
+.hero-body > *{max-width:640px}
+.hero .hi{font:400 clamp(34px,4.5vw,52px)/1 "Tiro Devanagari Hindi",serif;color:var(--marigold);margin:0}
+h1{font:400 clamp(46px,7.5vw,98px)/.98 "Gloock",Georgia,serif;margin:10px 0 18px;text-wrap:balance}
+.hero p{font-size:20px;color:#E4CDB8;margin:0 0 26px;max-width:40ch}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.status{display:inline-flex;gap:8px;align-items:center;margin-top:20px;color:#E4CDB8;font-size:16px}
+.status i{width:9px;height:9px;border-radius:50%;background:#6EDB8F}.status.closed i{background:#777}
+.hint{position:absolute;right:22px;bottom:20px;z-index:1;font-size:14px;color:#BFA590}
+section{padding-block:84px}
+h2{font:400 clamp(36px,5vw,62px)/1.02 "Gloock",Georgia,serif;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 30px;max-width:56ch}
+.thali-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.thali{position:relative;width:min(460px,100%);aspect-ratio:1/1;margin:0 auto}
+.plate{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFFFFF,#D9D4CC 55%,#A8A198 100%);box-shadow:0 30px 50px -24px rgba(42,18,22,.5), inset 0 0 0 10px rgba(255,255,255,.35)}
+.katori{position:absolute;width:23%;aspect-ratio:1/1;border-radius:50%;border:0;cursor:pointer;padding:0;transform:translate(-50%,-50%);box-shadow:inset 0 0 0 5px #C9C3BA, 0 6px 10px -4px rgba(0,0,0,.35);transition:transform .2s}
+.katori:hover,.katori[aria-pressed="true"]{transform:translate(-50%,-50%) scale(1.1)}
+.katori[aria-pressed="true"]{box-shadow:inset 0 0 0 5px var(--marigold),0 0 0 4px rgba(245,165,36,.35)}
+.center{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:36%;aspect-ratio:1/1;border-radius:50%;border:0;padding:0;cursor:pointer;background:radial-gradient(circle,#F2DDB0 0 40%,#E9C98E 41% 70%,#D9B070 71%)}
+.center[aria-pressed="true"]{box-shadow:0 0 0 4px rgba(245,165,36,.6)}
+.detail{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;min-height:190px}
+.detail .tag{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.detail h3{margin:6px 0 6px;font:400 34px "Gloock",serif}
+.detail p{margin:0;color:var(--muted)}
+.apps{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.book{background:var(--wine);color:var(--stone);border-radius:28px;padding:36px;display:grid;grid-template-columns:.9fr 1.1fr;gap:34px}
+.book .sub{color:#D8BFA9}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:15px;color:#D8BFA9}
+input,select{font:inherit;font-size:16px;padding:12px;border-radius:12px;border:1px solid #5A2A30;background:#2E0F14;color:var(--stone);color-scheme:dark}
+.chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 15px "Mukta",system-ui,sans-serif;padding:7px 15px;border-radius:999px;border:1px solid #5A2A30;background:transparent;color:var(--stone);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--marigold);color:var(--night);border-color:var(--marigold)}
+form .btn{grid-column:1/-1;justify-content:center;padding:15px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:20px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(36,12,16,.7)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:400 26px "Gloock",serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:860px){.thali-wrap,.book,.visit{grid-template-columns:1fr}.book{padding:22px}.hint{display:none}}
+@media (max-width:480px){form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Haveli Restaurant by Prakhar Punj. Not the official site. Photos and thali items are placeholders.</div>
+
+<header class="hero">
+  <canvas id="jaali" aria-hidden="true"></canvas>
+  <div class="top"><div class="wrap"><div class="brand">Haveli</div><a class="btn" href="#book">Book a table</a></div></div>
+  <div class="wrap hero-body">
+    <p class="hi">हवेली</p>
+    <h1>A full thali, the way home makes it.</h1>
+    <p>Indian food and thalis at Jeevan Shah, Civil Lines. Open every day, 11 am to 11 pm. Bring the family.</p>
+    <div class="row"><a class="btn" href="#thali">See the thali</a><a class="btn line" href="#book">Book for the family</a></div>
+    <div class="status" id="status"><i></i><span></span></div>
+  </div>
+  <div class="hint">Move your cursor: the lamp lights the jaali</div>
+</header>
+
+<main>
+<section id="thali"><div class="wrap">
+  <h2>What's on the thali</h2>
+  <p class="sub">Tap a bowl to see what's in it. Placeholder items until the restaurant shares its real thali.</p>
+  <div class="thali-wrap">
+    <div class="thali" id="thaliEl"><div class="plate"></div></div>
+    <div class="detail" aria-live="polite"><div class="tag" id="dTag">Tap a bowl</div><h3 id="dName">The Haveli thali</h3><p id="dText">A full meal on one plate: dal, two sabzis, paneer, raita, rice, rotis and something sweet.</p></div>
+  </div>
+  <div class="apps">
+    <a class="btn dark" href="https://www.zomato.com/jhansi/haveli-restaurant-civil-lines/menu" target="_blank" rel="noopener">See the full menu on Zomato ↗</a>
+    <a class="btn line" style="color:var(--wine)" href="https://www.zomato.com/jhansi/haveli-restaurant-civil-lines" target="_blank" rel="noopener">Order delivery ↗</a>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2 style="color:var(--stone)">Book for the family</h2>
+    <p class="sub">Sunday lunch, a birthday or a kitty party. Tell the restaurant when and how many, and they confirm on WhatsApp.</p>
+  </div>
+  <form id="bookForm">
+    <label>Your name<input id="bName" required placeholder="e.g. Sharma ji" autocomplete="name"></label>
+    <label>People<select id="bPpl"><option>2</option><option selected>4</option><option>6</option><option>10</option><option>15+</option></select></label>
+    <label>Date<input id="bDate" type="date" required></label>
+    <label>Time<select id="bTime"><option>12:30 pm</option><option>2:00 pm</option><option selected>8:00 pm</option><option>9:30 pm</option></select></label>
+    <div class="chips" id="occ" role="group" aria-label="Occasion"></div>
+    <button class="btn" type="submit">Send booking on WhatsApp</button>
+  </form>
+</div></div></section>
+
+<section style="padding-top:0"><div class="wrap visit">
+  <div><h2>Find us</h2><p class="sub">Basement, Modi Tower, Nagar Nigam Road, Jeevan Shah, Civil Lines, Jhansi.</p></div>
+  <div class="row"><a class="btn dark" href="https://www.google.com/maps/search/?api=1&query=Haveli+Restaurant+Modi+Tower+Jeevan+Shah+Jhansi" target="_blank" rel="noopener">Get directions ↗</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Haveli+Restaurant+Modi+Tower+Jeevan+Shah+Jhansi" target="_blank" rel="noopener">Read reviews on Google ↗</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This booking would reach Haveli</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn dark" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* open now: 11 am - 11 pm daily */
+(() => { const d = new Date(), m = d.getHours()*60 + d.getMinutes(), open = m >= 660 && m < 1380;
+  $("status").classList.toggle("closed", !open);
+  $("status").querySelector("span").textContent = open ? "Open now · until 11 pm" : "Closed now · opens 11 am"; })();
+
+/* the thali: each bowl is a button */
+const BOWLS = [
+  ["Dal","#E0A93B","Yellow dal, tempered with ghee and jeera."],
+  ["Paneer","#D9652B","Paneer in a rich tomato gravy."],
+  ["Seasonal sabzi","#6E9E3A","The vegetable of the day."],
+  ["Chole","#9A5A2A","Chickpeas, slow-cooked and spiced."],
+  ["Raita","#F3EFE6","Cool curd with boondi."],
+  ["Sweet","#E9C46A","Gulab jamun or kheer, depending on the day."]
+];
+const thali = $("thaliEl");
+BOWLS.forEach(([n,c,t],i) => { const a = -Math.PI/2 + i*(Math.PI*2/BOWLS.length) - .35, r = 33;
+  const b = document.createElement("button"); b.type = "button"; b.className = "katori"; b.setAttribute("aria-label", n); b.setAttribute("aria-pressed","false");
+  b.style.left = (50 + Math.cos(a)*r) + "%"; b.style.top = (50 + Math.sin(a)*r*.92) + "%";
+  b.style.background = `radial-gradient(circle at 40% 35%, ${c}, ${c} 55%, rgba(0,0,0,.25))`;
+  b.onclick = () => pick(b, n, t, "In the bowl"); thali.appendChild(b); });
+const center = document.createElement("button"); center.type = "button"; center.className = "center"; center.setAttribute("aria-label","Rice and rotis"); center.setAttribute("aria-pressed","false");
+center.onclick = () => pick(center, "Rice & rotis", "Jeera rice in the middle, hot rotis on the side, refilled as you eat.", "On the plate"); thali.appendChild(center);
+function pick(el, n, t, tag){ thali.querySelectorAll("[aria-pressed]").forEach(x => x.setAttribute("aria-pressed", String(x===el)));
+  $("dTag").textContent = tag; $("dName").textContent = n; $("dText").textContent = t; }
+
+/* booking */
+const OCC = ["Family meal","Birthday","Kitty party","Office lunch"]; let occ = OCC[0];
+$("occ").innerHTML = OCC.map(o => `<button type="button" class="chip" aria-pressed="${o===occ}">${o}</button>`).join("");
+$("occ").querySelectorAll(".chip").forEach(b => b.onclick = () => { occ = b.textContent; $("occ").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x===b))); });
+const d = new Date(); $("bDate").value = d.toISOString().slice(0,10); $("bDate").min = $("bDate").value;
+const dlg = $("dlg");
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const when = new Date($("bDate").value+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Namaste Haveli! Table booking:\nName: ${$("bName").value}\nWhen: ${when}, ${$("bTime").value}\nPeople: ${$("bPpl").value}\nOccasion: ${occ}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+
+/* hero: a carved jaali screen; the cursor is a diya lamp whose light falls through the lattice */
+const cv = $("jaali"), ctx = cv.getContext("2d");
+let W, H, pattern, lx, ly, tx, ty;
+function makePattern(){
+  const t = 64, c = document.createElement("canvas"); c.width = c.height = t; const g = c.getContext("2d");
+  g.fillStyle = "#000"; g.fillRect(0,0,t,t);
+  g.globalCompositeOperation = "destination-out";
+  const hole = (x,y) => { g.beginPath(); for (let k=0;k<8;k++){ const a = k*Math.PI/4, r = k%2 ? 9 : 17; g.lineTo(x + Math.cos(a)*r, y + Math.sin(a)*r); } g.closePath(); g.fill(); };
+  hole(t/2, t/2); hole(0,0); hole(t,0); hole(0,t); hole(t,t);
+  [[t/2,0],[0,t/2],[t,t/2],[t/2,t]].forEach(([x,y]) => { g.beginPath(); g.arc(x, y, 5, 0, 6.28); g.fill(); });
+  return ctx.createPattern(c, "repeat");
+}
+function size(){ const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1);
+  W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  pattern = makePattern(); lx = tx = W*.72; ly = ty = W < 700 ? H*.85 : H*.45; }
+cv.parentElement.addEventListener("pointermove", e => { const r = cv.getBoundingClientRect(); tx = e.clientX - r.left; ty = e.clientY - r.top; });
+function frame(t){
+  if (reduce){ lx = tx; ly = ty; } else { lx += (tx-lx)*.08; ly += (ty-ly)*.08; }
+  const flick = reduce ? 1 : 1 + Math.sin(t/90)*.03 + Math.sin(t/37)*.02;
+  const R = Math.max(W,H)*.55*flick;
+  const g = ctx.createRadialGradient(lx, ly, 0, lx, ly, R);
+  g.addColorStop(0,"rgba(255,196,92,1)"); g.addColorStop(.25,"rgba(245,140,50,.75)"); g.addColorStop(.6,"rgba(120,40,30,.35)"); g.addColorStop(1,"rgba(36,12,16,0)");
+  ctx.fillStyle = "#240C10"; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  // the carved screen sits in front of the light
+  ctx.save(); ctx.fillStyle = pattern; ctx.globalAlpha = .92; ctx.fillRect(0,0,W,H); ctx.restore();
+  // darken the left so the headline stays readable
+  const v = ctx.createLinearGradient(0,0,W,0); const narrow = W < 700; v.addColorStop(0,"rgba(36,12,16,.85)"); v.addColorStop(.55, narrow ? "rgba(36,12,16,.72)" : "rgba(36,12,16,.35)"); v.addColorStop(1, narrow ? "rgba(36,12,16,.55)" : "rgba(36,12,16,0)");
+  ctx.fillStyle = v; ctx.fillRect(0,0,W,H);
+  // the diya itself
+  ctx.fillStyle = "rgba(255,220,140,.95)"; ctx.beginPath(); ctx.ellipse(lx, ly, 4*flick, 7*flick, 0, 0, 6.28); ctx.fill();
+  requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
