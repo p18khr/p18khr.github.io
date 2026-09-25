@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cafe Jugnoo · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hind:wght@400;500;600;700&display=swap">
+<style>
+:root{--night:#0C0E22;--night2:#15183A;--ink:#EDEBFF;--dim:#A9A8CC;--glow:#E6F46A;--lamp:#FFB347;--line:#2A2D5A;--paper:#F7F5EE}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--ink);font:400 17px/1.6 "Hind",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--glow);color:var(--night);font-size:14px;text-align:center;padding:9px 16px;font-weight:500}
+.hero{position:relative;min-height:min(700px,92vh);display:grid;align-items:center;overflow:hidden}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-block:100px 150px}
+.top{position:absolute;top:0;left:0;right:0;z-index:2}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
+.brand{font:400 26px "Rozha One",serif;display:flex;align-items:center;gap:10px}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--glow);box-shadow:0 0 14px 4px rgba(230,244,106,.7)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--glow);color:var(--night);border:0;border-radius:999px;padding:13px 22px;font:700 15px "Hind",sans-serif;text-decoration:none;cursor:pointer;transition:box-shadow .2s,transform .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(230,244,106,.55)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.hi{font:400 clamp(30px,4vw,44px)/1 "Rozha One",serif;color:var(--glow);margin:0 0 6px;text-shadow:0 0 18px rgba(230,244,106,.5)}
+h1{font:400 clamp(48px,7.2vw,92px)/.95 "Rozha One",serif;margin:0 0 18px;letter-spacing:-.01em}
+.hero p{max-width:40ch;font-size:19px;color:var(--dim);margin:0 0 26px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.open{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--dim);margin-top:20px}
+.open b{width:9px;height:9px;border-radius:50%;background:#58D68D;box-shadow:0 0 10px #58D68D}
+.open.closed b{background:#777;box-shadow:none}
+section{padding-block:72px}
+h2{font:400 clamp(36px,5vw,56px)/1 "Rozha One",serif;margin:0 0 8px}
+.sub{color:var(--dim);margin:0 0 26px}
+.menu-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:6px}
+.order-out{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.swg{font-size:14px;color:var(--dim);border:1px dashed var(--line);border-radius:999px;padding:8px 12px}
+.dishes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dish{background:var(--night2);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .2s,border-color .2s}
+.dish:hover{transform:translateY(-4px);border-color:var(--glow)}
+.ph{aspect-ratio:4/3;display:grid;place-items:center;position:relative;overflow:hidden}
+.ph::after{content:"Dish photo";position:absolute;bottom:8px;right:10px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.ph svg{width:38%;opacity:.9}
+.dish .info{padding:14px 16px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.dish h3{margin:0;font:600 16px "Hind",sans-serif}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:180px 180px;gap:12px}
+.gallery figure{margin:0;border-radius:16px;position:relative;overflow:hidden;display:grid;align-items:end;padding:12px}
+.gallery span{font-size:13px;color:#fff;background:rgba(0,0,0,.35);padding:4px 10px;border-radius:999px;justify-self:start}
+.g1{grid-row:1/3;background:radial-gradient(circle at 70% 20%,rgba(230,244,106,.5),transparent 30%),linear-gradient(160deg,#2B2466,#0C0E22)}
+.g2{background:linear-gradient(135deg,#FFB347,#6B2D5C)}
+.g3{background:linear-gradient(135deg,#3B3F8C,#1B1E48)}
+.g4{background:linear-gradient(135deg,#8A5A3B,#2A1A12)}
+.g5{background:linear-gradient(135deg,#E6F46A,#3F8C6B)}
+.menu-wrap{display:grid;grid-template-columns:1fr 330px;gap:32px;align-items:start}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.tab{font:600 15px "Hind",sans-serif;border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--glow);color:var(--night);border-color:var(--glow)}
+.item{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
+.item h3{margin:0;font:600 18px "Hind",sans-serif}
+.item p{margin:0;color:var(--dim);font-size:14px}
+.dot{display:inline-block;width:11px;height:11px;border:1.5px solid;margin-right:7px;vertical-align:0;position:relative}
+.dot::after{content:"";position:absolute;inset:2px;border-radius:50%;background:currentColor}
+.dot.v{color:#3FB950}.dot.n{color:#E5534B}
+.price{font-weight:600;font-variant-numeric:tabular-nums;color:var(--dim)}
+.add{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--glow);background:transparent;color:var(--glow);font:700 19px/1 "Hind";cursor:pointer}
+.add:hover{background:var(--glow);color:var(--night)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:50%;border:0;background:var(--glow);color:var(--night);font:700 15px/1 "Hind";cursor:pointer}
+.panel{position:sticky;top:20px;background:var(--night2);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:12px}
+.panel h3{margin:0;font:400 26px "Rozha One",serif}
+.panel ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15px}
+.panel li{display:flex;justify-content:space-between;gap:10px}
+.panel .empty{color:var(--dim)}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px;border-top:1px solid var(--line);padding-top:10px}
+.panel .btn{justify-content:center}
+.panel .btn:disabled{opacity:.35;cursor:not-allowed;box-shadow:none;transform:none}
+.seg{display:flex;gap:6px}
+.seg button{flex:1;font:600 14px "Hind";padding:9px;border-radius:10px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--glow);color:var(--glow)}
+.book{background:linear-gradient(135deg,#1B1E48,#2A1D3E);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;grid-template-columns:.9fr 1.1fr;gap:36px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:14px;color:var(--dim)}
+label.full{grid-column:1/-1}
+input,select{font:inherit;font-size:16px;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0F1230;color:var(--ink);color-scheme:dark}
+.chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 14px "Hind";padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--lamp);color:var(--night);border-color:var(--lamp)}
+form .btn{grid-column:1/-1;justify-content:center;padding:15px}
+.visit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{border:1px solid var(--line);border-radius:18px;padding:22px}
+.card h3{margin:0 0 6px;font:400 24px "Rozha One",serif;color:var(--glow)}
+.card p{margin:0;color:var(--dim)}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+dialog::backdrop{background:rgba(12,14,34,.75)}
+.dlg{padding:24px;display:grid;gap:14px;color:#1B1B2B;background:var(--paper)}
+.dlg h3{margin:0;font:400 24px "Rozha One",serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#5A5A6E;margin:0}
+@media (max-width:860px){.dishes{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 140px 140px}.g1{grid-column:1/-1;grid-row:auto}.menu-wrap,.book{grid-template-columns:1fr}.panel{position:static}.visit{grid-template-columns:1fr}.book{padding:22px}}
+@media (max-width:480px){form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Cafe Jugnoo by Prakhar Punj. Not the café's official site. Menu and prices are placeholders.</div>
+
+<header class="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="top"><div class="wrap"><div class="brand"><i></i>Cafe Jugnoo</div><a class="btn" href="#table">Book a table</a></div></div>
+  <div class="wrap">
+    <div class="hi">जुगनू</div>
+    <h1>The rooftop that glows after class.</h1>
+    <p>Rolls, tikka, honey chilli potato and cold coffee on an open rooftop near Bundelkhand University. Order on Zomato, or book the rooftop for the gang.</p>
+    <div class="row"><a class="btn" href="#menu">See the menu</a><a class="btn ghost" href="#table">Book the rooftop</a></div>
+    <div class="open" id="open"><b></b><span></span></div>
+  </div>
+</header>
+
+<main>
+<section id="menu"><div class="wrap">
+  <div class="menu-head">
+    <div><h2>Menu</h2><p class="sub">Dish photos go here. Placeholder dishes and prices until the café shares theirs.</p></div>
+    <div class="order-out"><a class="btn" href="https://www.zomato.com/jhansi/jugnoo-shivaji-nagar" target="_blank" rel="noopener">Order on Zomato ↗</a><span class="swg">+ Swiggy link</span></div>
+  </div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="dishes" id="items" role="tabpanel"></div>
+</div></section>
+
+<section id="rooftop" style="padding-top:0"><div class="wrap">
+  <h2>The rooftop</h2>
+  <p class="sub">Photos of the space go here.</p>
+  <div class="gallery">
+    <figure class="g1"><span>Rooftop at night</span></figure>
+    <figure class="g2"><span>String lights</span></figure>
+    <figure class="g3"><span>Group table</span></figure>
+    <figure class="g4"><span>Coffee close-up</span></figure>
+    <figure class="g5"><span>Birthday setup</span></figure>
+  </div>
+</div></section>
+
+<section id="table" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2>Book the rooftop</h2>
+    <p class="sub">Birthdays, farewells or just the group after exams. Tell the café when and how many.</p>
+  </div>
+  <form id="bookForm">
+    <label>Your name<input id="bName" required placeholder="e.g. Aman" autocomplete="name"></label>
+    <label>People<select id="bPeople"><option>2</option><option selected>4</option><option>6</option><option>8</option><option>10+</option></select></label>
+    <label>Date<input id="bDate" type="date" required></label>
+    <label>Time<select id="bTime"><option>1:00 pm</option><option>4:00 pm</option><option>6:00 pm</option><option selected>7:30 pm</option><option>9:00 pm</option></select></label>
+    <div class="chips" id="occ" role="group" aria-label="Occasion"></div>
+    <button class="btn" type="submit">Send booking on WhatsApp</button>
+  </form>
+</div></div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Find us</h2>
+  <div class="visit">
+    <div class="card"><h3>Where</h3><p>Rooftop, near Bundelkhand University, Shivaji Nagar, Jhansi</p></div>
+    <div class="card"><h3>When</h3><p>Every day, 12:30 pm to 11:30 pm</p></div>
+    <div class="card"><h3>Vibe</h3><p>Open-air rooftop with a view of the road below</p></div>
+  </div>
+  <div class="row" style="margin-top:20px"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Cafe+Jugnoo+Bundelkhand+University+Jhansi" target="_blank" rel="noopener">Get directions ↗</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Cafe+Jugnoo+Bundelkhand+University+Jhansi" target="_blank" rel="noopener">Read reviews on Google ↗</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This booking would reach the café</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send to the café's number. The demo sends nothing.</p>
+  <button class="btn" type="button" id="dlgClose" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id), rs = n => "₹" + n.toLocaleString("en-IN");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* open now: 12:30 pm - 11:30 pm daily */
+(() => { const d = new Date(), m = d.getHours()*60 + d.getMinutes(), open = m >= 750 && m < 1410;
+  $("open").classList.toggle("closed", !open);
+  $("open").querySelector("span").textContent = open ? "Open now · until 11:30 pm" : "Closed now · opens 12:30 pm"; })();
+
+/* menu: placeholder items and prices, one photo tile each */
+const MENU = {
+  "Rolls":[["Paneer malai tikka roll","v",140],["Chicken tikka roll","n",160],["Egg roll","n",90],["Veg roll","v",80]],
+  "Starters":[["Honey chilli potato","v",150],["Paneer tikka","v",200],["Chicken tikka","n",240],["French fries","v",100]],
+  "Chinese":[["Veg Manchurian","v",150],["Veg fried rice","v",140],["Chilli chicken","n",220],["Hakka noodles","v",140]],
+  "Coffee & shakes":[["Hot coffee","v",60],["Cold coffee","v",110],["Oreo shake","v",140],["Chocolate shake","v",130]]
+};
+const TONES = {"Rolls":["#C9772B","#5A2E14"],"Starters":["#D9482B","#4A1A12"],"Chinese":["#B8860B","#3A2A0A"],"Coffee & shakes":["#8A5A3B","#24160E"]};
+const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg>';
+let tab = "Rolls";
+function renderTabs(){
+  $("tabs").innerHTML = Object.keys(MENU).map(k => `<button class="tab" role="tab" aria-selected="${k===tab}" data-k="${k}">${k}</button>`).join("");
+  $("tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => { tab = b.dataset.k; renderTabs(); renderItems(); burst(); });
+}
+function renderItems(){
+  const [a,b] = TONES[tab];
+  $("items").innerHTML = MENU[tab].map(([n,t,p],i) => `<article class="dish">
+    <div class="ph" style="background:linear-gradient(${135+i*20}deg,${a},${b})">${ICON}</div>
+    <div class="info"><h3><i class="dot ${t}" title="${t==="v"?"Veg":"Non-veg"}"></i>${n}</h3><span class="price">${rs(p)}</span></div></article>`).join("");
+}
+/* booking */
+const OCC = ["Just hanging out","Birthday","Farewell","Date"]; let occ = OCC[0];
+$("occ").innerHTML = OCC.map(o => `<button type="button" class="chip" aria-pressed="${o===occ}">${o}</button>`).join("");
+$("occ").querySelectorAll(".chip").forEach(b => b.onclick = () => { occ = b.textContent; $("occ").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x===b))); });
+const t = new Date(); t.setDate(t.getDate()+1); $("bDate").value = t.toISOString().slice(0,10); $("bDate").min = new Date().toISOString().slice(0,10);
+
+const dlg = $("dlg"), show = m => { $("bubble").textContent = m; dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); };
+$("dlgClose").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const d = new Date($("bDate").value + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  show(`Hi Jugnoo! I'd like to book the rooftop.\nName: ${$("bName").value}\nPeople: ${$("bPeople").value}\nWhen: ${d}, ${$("bTime").value}\nOccasion: ${occ}`); });
+renderTabs(); renderItems();
+
+/* the rooftop sky: fireflies drift, gather near the cursor, and flare when you add to the order */
+const cv = $("sky"), ctx = cv.getContext("2d"); let W, H, flies = [], mx = -999, my = -999, flare = 0;
+function size(){ const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1);
+  W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  flies = Array.from({length: Math.round(Math.min(90, W/14))}, () => ({x:Math.random()*W, y:Math.random()*H*.85, vx:0, vy:0, p:Math.random()*6.28, s:.6+Math.random()*1.4})); }
+function burst(){ flare = 1; }
+cv.parentElement.addEventListener("pointermove", e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+cv.parentElement.addEventListener("pointerleave", () => { mx = my = -999; });
+function frame(ts){
+  const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,"#0C0E22"); g.addColorStop(.75,"#1A1640"); g.addColorStop(1,"#2B1A3A");
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  // rooftop railing and string lights
+  const ry = H*.9; ctx.fillStyle = "#07081A"; ctx.fillRect(0, ry, W, H-ry);
+  ctx.strokeStyle = "#07081A"; ctx.lineWidth = 3; for (let x=0; x<W; x+=26){ ctx.beginPath(); ctx.moveTo(x, ry); ctx.lineTo(x, ry-34); ctx.stroke(); }
+  ctx.fillRect(0, ry-38, W, 5);
+  for (let i=0;i<=24;i++){ const x = i/24*W, y = 40 + Math.sin(i/24*Math.PI)*42 + H*.05; const on = .55 + .45*Math.sin(ts/700 + i);
+    ctx.fillStyle = `rgba(255,179,71,${on})`; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 6.28); ctx.fill(); }
+  ctx.strokeStyle = "rgba(255,179,71,.25)"; ctx.lineWidth = 1; ctx.beginPath();
+  for (let i=0;i<=48;i++){ const x = i/48*W, y = 40 + Math.sin(i/48*Math.PI)*42 + H*.05; i ? ctx.lineTo(x,y) : ctx.moveTo(x,y); } ctx.stroke();
+  // fireflies
+  flare *= .96;
+  flies.forEach(f => {
+    if (!reduce){
+      f.vx += Math.cos(f.p + ts/1800)*.02; f.vy += Math.sin(f.p*1.3 + ts/2100)*.02;
+      const dx = mx - f.x, dy = my - f.y, d = Math.hypot(dx,dy);
+      if (d < 220 && d > 30){ f.vx += dx/d*.035; f.vy += dy/d*.035; }
+      f.vx *= .97; f.vy *= .97; f.x += f.vx*f.s; f.y += f.vy*f.s;
+      if (f.x < -10) f.x = W+10; if (f.x > W+10) f.x = -10; if (f.y < 0) f.y = H*.8; if (f.y > ry-40) f.y = 10;
+    }
+    const a = Math.min(1, .15 + .85*Math.max(0, Math.sin(ts/500*f.s + f.p*3)) + flare);
+    const r = 2 + flare*2;
+    const gl = ctx.createRadialGradient(f.x,f.y,0,f.x,f.y,r*6); gl.addColorStop(0,`rgba(230,244,106,${a*.55})`); gl.addColorStop(1,"rgba(230,244,106,0)");
+    ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(f.x,f.y,r*6,0,6.28); ctx.fill();
+    ctx.fillStyle = `rgba(245,255,170,${a})`; ctx.beginPath(); ctx.arc(f.x,f.y,r*.8,0,6.28); ctx.fill();
+  });
+  requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
