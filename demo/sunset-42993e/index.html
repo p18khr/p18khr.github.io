@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hotel Sunset Orchha · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--plum:#2B1633;--coral:#FF7A59;--amber:#FFB347;--cream:#FFF6EC;--ink:#2A1A22;--muted:#6F5E66;--line:#EDDFD2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.6 "Work Sans",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+.demo{background:#000;color:var(--amber);font-size:14px;text-align:center;padding:9px 16px}
+.hero{background:var(--plum);color:var(--cream);padding-bottom:40px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
+.brand{font:400 26px "Abril Fatface",Georgia,serif}.brand span{color:var(--coral)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;border:0;border-radius:10px;padding:12px 20px;font:700 15px "Work Sans",system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:inherit;border:2px solid currentColor}
+.intro{padding-block:6px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px}
+h1{font:400 clamp(40px,6vw,76px)/1 "Abril Fatface",Georgia,serif;margin:0;max-width:14ch}
+h1 em{font-style:normal;color:var(--amber)}
+.intro p{max-width:36ch;color:#E6D3DC;margin:0}
+.pano{position:relative;border-radius:22px;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none}
+.pano:active{cursor:grabbing}
+#pano{width:100%;height:auto;display:block;aspect-ratio:16/7}
+.compass{position:absolute;left:16px;top:14px;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;font-weight:700;font-size:14px}
+.hint{position:absolute;right:16px;top:14px;background:rgba(0,0,0,.35);padding:6px 12px;border-radius:999px;font-size:14px}
+.look{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.look button{font:600 14px "Work Sans",system-ui,sans-serif;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:transparent;color:var(--cream);cursor:pointer}
+.look button:hover{border-color:var(--amber);color:var(--amber)}
+section{padding-block:76px}
+h2{font:400 clamp(32px,4.4vw,52px)/1.05 "Abril Fatface",Georgia,serif;margin:0 0 8px;color:var(--plum)}
+.sub{color:var(--muted);margin:0 0 26px;max-width:58ch}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.why div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.why b{display:block;font:400 24px "Abril Fatface",serif;color:var(--coral)}
+.why p{margin:6px 0 0;color:var(--muted)}
+.book{background:var(--plum);color:var(--cream);border-radius:24px;padding:30px;display:grid;grid-template-columns:.9fr 1.1fr;gap:26px}
+.book h2{color:var(--cream)}
+.book .sub{color:#D8C4CF}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book label{display:grid;gap:6px;font-size:14px;color:#D8C4CF}
+.book input,.book select{font:inherit;font-size:16px;padding:11px;border-radius:10px;border:1px solid #5A3A62;background:#3A2044;color:#fff;color-scheme:dark}
+.book .full{grid-column:1/-1}
+.book .check{grid-column:1/-1;display:flex;gap:10px;align-items:center;font-size:15px}
+.book .check input{width:18px;height:18px;accent-color:var(--coral)}
+.book button{grid-column:1/-1;justify-content:center}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(43,22,51,.65)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:400 24px "Abril Fatface",serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:900px){.why{grid-template-columns:1fr}.book{grid-template-columns:1fr;padding:22px}.hint{display:none}}
+@media (max-width:480px){.book form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Hotel Sunset Orchha by Prakhar Punj. Not the official site. The rooftop view is an illustration; photos are placeholders.</div>
+
+<header class="hero">
+  <div class="top"><div class="wrap"><div class="brand">Hotel <span>Sunset</span></div><a class="btn" href="#book">Ask for dates</a></div></div>
+  <div class="wrap">
+    <div class="intro">
+      <h1>All of Orchha, <em>from our roof.</em></h1>
+      <p>Guests talk about the 360° view from the rooftop. Drag the picture to look around, then come and see it at sunset.</p>
+    </div>
+    <div class="pano" id="panoBox">
+      <canvas id="pano" width="1400" height="612" aria-label="A drag-to-look-around view of Orchha from the rooftop"></canvas>
+      <div class="compass" id="compass">Facing: Ram Raja Temple</div>
+      <div class="hint">← Drag to look around →</div>
+    </div>
+    <div class="look" id="look" role="group" aria-label="Look towards"></div>
+  </div>
+</header>
+
+<main>
+<section><div class="wrap">
+  <h2>Why guests come back</h2>
+  <p class="sub">What reviews mention most.</p>
+  <div class="why">
+    <div><b>The rooftop</b><p>A sit-out with a view over the whole town and the Ram Raja Temple.</p></div>
+    <div><b>Helpful people</b><p>The team helps with plans, directions and onward travel.</p></div>
+    <div><b>Big, clean rooms</b><p>Attached bathrooms with hot and cold water round the clock.</p></div>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2>Ask for your dates</h2>
+    <p class="sub">Send your dates to the hotel. They reply on WhatsApp with availability and the rate.</p>
+  </div>
+  <form id="bookForm">
+    <label>Check-in<input id="cin" type="date" required></label>
+    <label>Check-out<input id="cout" type="date" required></label>
+    <label>Guests<select id="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
+    <label>Your name<input id="gName" required placeholder="e.g. Sam" autocomplete="name"></label>
+    <label class="check"><input type="checkbox" id="sunsetRoom" checked> A room close to the rooftop, please</label>
+    <label class="check"><input type="checkbox" id="travel"> We'd like help planning onward travel</label>
+    <button class="btn" type="submit">Ask on WhatsApp</button>
+  </form>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the hotel</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- 360° panorama: a world 3 screens wide that wraps around ---------- */
+const cv = $("pano"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height, WORLD = W*3;
+const LANDMARKS = [
+  {n:"Ram Raja Temple", at:.08, draw:"temple"},
+  {n:"Chaturbhuj Temple", at:.2, draw:"tall"},
+  {n:"Orchha Fort", at:.42, draw:"fort"},
+  {n:"Betwa river & chhatris", at:.62, draw:"chhatri"},
+  {n:"Laxmi Narayan Temple", at:.84, draw:"hill"}
+];
+let view = LANDMARKS[0].at*WORLD - W/2, vel = 0, target = null, drag = null;
+const hills = Array.from({length:60}, (_,i) => ({x:i/60*WORLD, h:40+((i*37)%50)}));
+const houses = Array.from({length:180}, (_,i) => ({x:(i*97.3)%WORLD, w:26+(i*13)%30, h:10+(i*29)%26, c:["#E8B98A","#D9A07A","#F2CBA0","#C98F6A"][i%4]}));
+function wx(x){ let v = ((x - view) % WORLD + WORLD) % WORLD; if (v > WORLD - W) v -= WORLD; return v; }
+function drawLandmark(l, x, base){
+  ctx.fillStyle = "#3A2440";
+  if (l.draw === "temple" || l.draw === "tall"){ const s = l.draw === "tall" ? 1.35 : 1;
+    ctx.fillRect(x-70*s, base-60*s, 140*s, 60*s); ctx.beginPath(); ctx.moveTo(x-50*s, base-60*s); ctx.quadraticCurveTo(x-50*s, base-150*s, x, base-200*s); ctx.quadraticCurveTo(x+50*s, base-150*s, x+50*s, base-60*s); ctx.fill();
+    [-60,60].forEach(o => { ctx.beginPath(); ctx.moveTo(x+(o-18)*s, base-60*s); ctx.quadraticCurveTo(x+o*s, base-110*s, x+(o+18)*s, base-60*s); ctx.fill(); });
+    ctx.fillRect(x-2, base-222*s, 4, 24*s); }
+  if (l.draw === "fort"){ ctx.fillRect(x-160, base-110, 320, 110); for (let i=-3;i<=3;i++){ ctx.beginPath(); ctx.arc(x+i*48, base-110, 18, Math.PI, 0); ctx.fill(); } [-150,150].forEach(o => { ctx.fillRect(x+o-16, base-150, 32, 150); ctx.beginPath(); ctx.arc(x+o, base-150, 22, Math.PI, 0); ctx.fill(); }); }
+  if (l.draw === "chhatri"){ for (let i=-2;i<=2;i++){ const cx = x + i*70; ctx.fillRect(cx-26, base-50, 52, 50); ctx.beginPath(); ctx.moveTo(cx-22, base-50); ctx.quadraticCurveTo(cx-22, base-110, cx, base-138); ctx.quadraticCurveTo(cx+22, base-110, cx+22, base-50); ctx.fill(); } }
+  if (l.draw === "hill"){ ctx.beginPath(); ctx.moveTo(x-220, base); ctx.quadraticCurveTo(x, base-150, x+220, base); ctx.fill(); ctx.fillRect(x-40, base-150, 80, 50); ctx.beginPath(); ctx.moveTo(x-30, base-150); ctx.quadraticCurveTo(x, base-200, x+30, base-150); ctx.fill(); }
+}
+function frame(now){
+  if (!drag){ if (target !== null){ let d = target - view; d = ((d % WORLD) + WORLD*1.5) % WORLD - WORLD/2; view += d*.08; if (Math.abs(d) < 1) target = null; }
+    else { view += vel; vel *= .88; if (!reduce && Math.abs(vel) < .05) view += .25; } }
+  view = ((view % WORLD) + WORLD) % WORLD;
+  const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,"#3B1F4A"); g.addColorStop(.45,"#C4506A"); g.addColorStop(.72,"#FF9A5C"); g.addColorStop(1,"#FFD08A"); ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  // the sun sits in one direction of the world
+  const sx = wx(.55*WORLD); if (sx > -100 && sx < W+100){ ctx.fillStyle = "rgba(255,226,160,.95)"; ctx.beginPath(); ctx.arc(sx, H*.58, 46, 0, 6.28); ctx.fill(); }
+  // far hills
+  ctx.fillStyle = "#7A4A6E"; hills.forEach(h => { const x = wx(h.x); if (x > -120 && x < W+120){ ctx.beginPath(); ctx.arc(x, H*.72, 90 + h.h, Math.PI, 0); ctx.fill(); } });
+  const base = H*.74;
+  // river band
+  const rx = wx(.62*WORLD); const rg = ctx.createLinearGradient(0,base,0,H); rg.addColorStop(0,"#E79B7A"); rg.addColorStop(1,"#8A4C6A");
+  ctx.fillStyle = rg; ctx.fillRect(rx - 480, base - 6, 960, 40);
+  LANDMARKS.forEach(l => { const x = wx(l.at*WORLD); if (x > -300 && x < W+300) drawLandmark(l, x, base); });
+  // town rooftops
+  houses.forEach(hs => { const x = wx(hs.x); if (x > -60 && x < W+60){ ctx.fillStyle = hs.c; ctx.fillRect(x, base - hs.h + 44, hs.w, hs.h + 40); ctx.fillStyle = "rgba(60,30,40,.35)"; ctx.fillRect(x, base - hs.h + 44, hs.w, 5); } });
+  // our own rooftop railing in front
+  ctx.fillStyle = "#2B1633"; ctx.fillRect(0, H-54, W, 54); for (let x=0;x<W;x+=26) ctx.fillRect(x, H-92, 5, 40); ctx.fillRect(0, H-96, W, 7);
+  // labels
+  ctx.font = "600 22px Work Sans, sans-serif"; ctx.textAlign = "center";
+  LANDMARKS.forEach(l => { const x = wx(l.at*WORLD); if (x > 40 && x < W-40){ const y = l.draw === "tall" ? base - 300 : base - 250; ctx.fillStyle = "rgba(43,22,51,.6)"; const tw = ctx.measureText(l.n).width + 24; ctx.fillRect(x - tw/2, y - 26, tw, 36); ctx.fillStyle = "#FFF6EC"; ctx.fillText(l.n, x, y); } });
+  // compass: nearest landmark to centre
+  let best = LANDMARKS[0], bd = 1e9; LANDMARKS.forEach(l => { const d = Math.abs(wx(l.at*WORLD) - W/2); if (d < bd){ bd = d; best = l; } });
+  $("compass").textContent = "Facing: " + best.n;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+const box = $("panoBox");
+box.addEventListener("pointerdown", e => { drag = {x:e.clientX, v:view, t:performance.now()}; box.setPointerCapture(e.pointerId); target = null; });
+box.addEventListener("pointermove", e => { if (!drag) return; const scale = W / box.clientWidth; const nv = drag.v - (e.clientX - drag.x)*scale; vel = (nv - view)*.35; view = nv; });
+box.addEventListener("pointerup", () => { drag = null; });
+$("look").innerHTML = LANDMARKS.map((l,i) => `<button type="button" data-i="${i}">${l.n}</button>`).join("");
+$("look").querySelectorAll("button").forEach(b => b.onclick = () => { target = LANDMARKS[+b.dataset.i].at*WORLD - W/2; vel = 0; });
+
+/* ---------- booking ---------- */
+const iso = d => d.toISOString().slice(0,10), a = new Date(); a.setDate(a.getDate()+10); const b2 = new Date(a); b2.setDate(b2.getDate()+2);
+$("cin").value = iso(a); $("cout").value = iso(b2); $("cin").min = iso(new Date());
+const dlg = $("dlg"), fmt = v => new Date(v+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  $("bubble").textContent = `Hi Hotel Sunset! Is a room free for these dates?\nName: ${$("gName").value}\nCheck-in: ${fmt($("cin").value)}\nCheck-out: ${fmt($("cout").value)}\nGuests: ${$("guests").value}` + ($("sunsetRoom").checked ? `\nA room close to the rooftop, please.` : "") + ($("travel").checked ? `\nWe'd also like help planning onward travel.` : "");
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
