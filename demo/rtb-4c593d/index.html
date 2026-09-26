@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raise The Bar · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{--steel:#1B1F24;--steel2:#252B32;--chalk:#F2F0EA;--orange:#FF5F1F;--dim:#9AA3AD;--line:#333B44}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--steel);color:var(--chalk);font:400 17px/1.6 "Manrope",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--orange);color:#111;font-size:14px;text-align:center;padding:9px 16px;font-weight:600}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
+.brand{font:900 26px/1 "Big Shoulders Display",Impact,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.brand span{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#111;border:0;border-radius:4px;padding:13px 22px;font:800 15px "Manrope",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .12s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--chalk);border:2px solid var(--chalk)}
+.hero{padding-block:20px 70px}
+.hero .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center}
+.kick{font:700 13px "Manrope",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+h1{font:900 clamp(56px,9vw,124px)/.85 "Big Shoulders Display",Impact,sans-serif;text-transform:uppercase;margin:12px 0 16px}
+h1 em{font-style:normal;color:var(--orange)}
+.lead{color:#C9CED4;font-size:18px;max-width:38ch;margin:0 0 22px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.status{display:inline-flex;gap:8px;align-items:center;margin-top:18px;color:var(--dim)}
+.status i{width:9px;height:9px;border-radius:50%;background:#4ADE80}.status.closed i{background:#666}
+.rack{background:var(--steel2);border:1px solid var(--line);border-radius:16px;padding:18px}
+.rack-head{display:flex;justify-content:space-between;align-items:baseline}
+.rack-head b{font:800 20px "Manrope",system-ui,sans-serif}
+.kg{font:900 58px/1 "Big Shoulders Display",sans-serif;color:var(--orange);font-variant-numeric:tabular-nums}
+.kg small{font:700 20px "Manrope",system-ui,sans-serif;color:var(--dim)}
+#barCv{width:100%;height:auto;display:block;margin:6px 0}
+.plates{display:flex;flex-wrap:wrap;gap:8px}
+.plate{font:800 15px "Manrope",system-ui,sans-serif;border:0;border-radius:6px;padding:10px 12px;cursor:pointer;color:#111}
+.plate:disabled{opacity:.35;cursor:not-allowed}
+.actions{display:flex;gap:8px;margin-top:10px}
+.actions button{flex:1}
+.say{min-height:52px;margin-top:10px;font-weight:600;color:#DDE2E7}
+section{padding-block:80px}
+h2{font:900 clamp(42px,6vw,76px)/.95 "Big Shoulders Display",Impact,sans-serif;text-transform:uppercase;margin:0 0 10px}
+.sub{color:var(--dim);margin:0 0 28px;max-width:56ch}
+.progs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.prog{background:var(--steel2);border:1px solid var(--line);border-top:4px solid var(--orange);border-radius:10px;padding:18px}
+.prog b{display:block;font:800 26px/1.05 "Big Shoulders Display",sans-serif;text-transform:uppercase}
+.prog p{margin:8px 0 0;color:var(--dim);font-size:15px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+table{width:100%;border-collapse:collapse}
+td{padding:10px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;color:var(--dim)}
+tr.today td{color:var(--orange);font-weight:700}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book label{display:grid;gap:6px;font-size:14px;color:var(--dim)}
+.book input,.book select{font:inherit;font-size:16px;padding:12px;border-radius:6px;border:1px solid var(--line);background:var(--steel2);color:var(--chalk);color-scheme:dark}
+.book .full{grid-column:1/-1}
+.book button{grid-column:1/-1;justify-content:center}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+dialog{border:0;border-radius:12px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+.dlg{padding:24px;display:grid;gap:14px;background:var(--chalk);color:#111}
+.dlg h3{margin:0;font:900 30px "Big Shoulders Display",sans-serif;text-transform:uppercase}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+@media (max-width:980px){.progs{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.hero .wrap,.info{grid-template-columns:1fr}}
+@media (max-width:480px){.progs,.book form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Raise The Bar Unisex Gym by Prakhar Punj. Not the official site. Details to be confirmed by the gym.</div>
+
+<header class="bar"><div class="wrap"><div class="brand">Raise <span>The</span> Bar</div><a class="btn" href="#book">Book a trial</a></div></header>
+
+<main>
+<section class="hero" style="padding-top:20px"><div class="wrap">
+  <div>
+    <div class="kick">Unisex gym · Gurudwara Road, Sipri Bazar</div>
+    <h1>Load it up. <em>Raise the bar.</em></h1>
+    <p class="lead">Strength, functional training, HIIT and Olympic lifting, with personal coaching. Try the bar on the right, then come lift the real one.</p>
+    <div class="row"><a class="btn" href="#book">Book a trial visit</a><a class="btn line" href="#train">What we train</a></div>
+    <div class="status" id="status"><i></i><span></span></div>
+  </div>
+  <div class="rack">
+    <div class="rack-head"><b>Load the bar</b><div class="kg"><span id="kg">20</span> <small>kg</small></div></div>
+    <canvas id="barCv" width="640" height="300" aria-label="A barbell. Add plates and press Lift."></canvas>
+    <div class="plates" id="plates" role="group" aria-label="Add plates (a pair each tap)"></div>
+    <div class="actions"><button class="btn" type="button" id="lift">Lift</button><button class="btn line" type="button" id="strip">Strip</button></div>
+    <div class="say" id="say" aria-live="polite">An empty Olympic bar weighs 20 kg. Tap plates to load both sides.</div>
+  </div>
+</div></section>
+
+<section id="train" style="padding-top:0"><div class="wrap">
+  <h2>What we train</h2>
+  <p class="sub">From the gym's listings. The gym confirms programs and fees.</p>
+  <div class="progs">
+    <div class="prog"><b>Strength</b><p>Squat, bench, deadlift, done right.</p></div>
+    <div class="prog"><b>Olympic lifting</b><p>Snatch and clean &amp; jerk technique.</p></div>
+    <div class="prog"><b>Functional</b><p>Move better for everyday life.</p></div>
+    <div class="prog"><b>HIIT</b><p>Short, hard sessions that burn.</p></div>
+    <div class="prog"><b>Personal training</b><p>A coach and a plan for you.</p></div>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap info">
+  <div>
+    <h2>Timings</h2>
+    <p class="sub">As listed online. Parking available.</p>
+    <table id="hours"></table>
+    <p class="sub" style="margin-top:20px">Gurudwara Road, Nanak Ganj, Sipri Bazar, Jhansi.</p>
+    <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Raise+The+Bar+Unisex+Gym+Sipri+Bazar+Jhansi" target="_blank" rel="noopener">Get directions ↗</a>
+  </div>
+  <div class="book">
+    <h2>Book a trial</h2>
+    <p class="sub">Send your details. The gym replies on WhatsApp with a time.</p>
+    <form id="bookForm">
+      <label>Your name<input id="bName" required placeholder="e.g. Ritesh" autocomplete="name"></label>
+      <label>Phone<input id="bPhone" required inputmode="tel" placeholder="10-digit mobile" autocomplete="tel"></label>
+      <label>Interested in<select id="bFor"><option>Strength</option><option>Olympic lifting</option><option>Functional</option><option>HIIT</option><option>Personal training</option></select></label>
+      <label>Day<input id="bDate" type="date" required></label>
+      <label class="full">Best time<select id="bTime"><option>Early morning</option><option>Morning</option><option>Evening</option><option>Late evening</option></select></label>
+      <button class="btn" type="submit">Send on WhatsApp</button>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the gym</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* open now: Mon-Sat 5:30 am - 11 pm */
+(() => { const d = new Date(), m = d.getHours()*60 + d.getMinutes(), open = d.getDay() !== 0 && m >= 330 && m < 1380;
+  $("status").classList.toggle("closed", !open); $("status").querySelector("span").textContent = open ? "Open now · until 11 pm" : (d.getDay() === 0 ? "Closed today (Sunday)" : "Closed now · opens 5:30 am"); })();
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], dow = (new Date().getDay()+6)%7;
+$("hours").innerHTML = DAYS.map((d,i) => `<tr class="${i===dow?"today":""}"><td>${d}</td><td>${i===6 ? "Closed" : "5:30 am – 11:00 pm"}</td></tr>`).join("");
+
+/* ---------- the barbell ---------- */
+const PLATES = [[25,"#E03A3A",120],[20,"#2F6FEB",112],[15,"#F2C230",100],[10,"#3BB273",88],[5,"#F2F0EA",66],[2.5,"#9AA3AD",52]];
+let loaded = [], lifting = null, liftY = 0;
+const cv = $("barCv"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height;
+$("plates").innerHTML = PLATES.map(([kg,c]) => `<button type="button" class="plate" data-kg="${kg}" style="background:${c}">+${kg*2} kg</button>`).join("");
+$("plates").querySelectorAll(".plate").forEach(b => b.onclick = () => { if (loaded.length >= 6) return; loaded.push(+b.dataset.kg); loaded.sort((a,b) => b-a); upd(); say(); });
+$("strip").onclick = () => { loaded = []; upd(); $("say").textContent = "Back to the empty bar: 20 kg."; };
+function total(){ return 20 + loaded.reduce((s,k) => s + k*2, 0); }
+function upd(){ $("kg").textContent = total(); $("plates").querySelectorAll(".plate").forEach(b => b.disabled = loaded.length >= 6); }
+function say(){ const t = total();
+  $("say").textContent = t < 60 ? "Good start. A coach checks your form before the weight goes up." :
+    t < 100 ? "Solid working weight. This is where a program makes the difference." :
+    t < 150 ? "Serious lifting. Olympic technique and a spotter matter here." : "That's elite territory. Come talk to the coaches."; }
+$("lift").onclick = () => { if (lifting) return; lifting = {t0: performance.now()}; };
+function draw(now){
+  // lift animation: up, hold with a shake, down
+  if (lifting){ const k = (now - lifting.t0)/1600, heavy = Math.min(1, (total()-20)/200);
+    if (k >= 1){ lifting = null; liftY = 0; }
+    else { const up = k < .35 ? k/.35 : k < .7 ? 1 : 1 - (k-.7)/.3; liftY = (reduce ? 1 : Math.sin(up*Math.PI/2)) * 110 * (1 - heavy*.45); } }
+  ctx.clearRect(0,0,W,H);
+  // platform
+  ctx.fillStyle = "#3A2A1E"; ctx.fillRect(40, H-26, W-80, 26); ctx.fillStyle = "#4A3626"; ctx.fillRect(W/2-120, H-26, 240, 26);
+  const shake = lifting && liftY > 100*(1 - Math.min(1,(total()-20)/200)*.45)*.95 && !reduce ? Math.sin(now/30)*2 : 0;
+  const y = H - 26 - 60 - liftY + shake;
+  // bar
+  ctx.fillStyle = "#B8BEC6"; ctx.fillRect(40, y-5, W-80, 10); ctx.fillStyle = "#8C939C"; ctx.fillRect(170, y-8, 16, 16); ctx.fillRect(W-186, y-8, 16, 16);
+  ctx.fillStyle = "#9AA3AD"; for (let x=W/2-60; x<W/2+60; x+=6) ctx.fillRect(x, y-5, 2, 10);
+  // plates, heaviest innermost
+  [-1,1].forEach(side => { let x = side < 0 ? 170 : W-170; loaded.forEach(kg => { const p = PLATES.find(q => q[0]===kg), h = p[2], w = kg >= 10 ? 22 : kg >= 5 ? 16 : 12;
+    x += side < 0 ? -w-2 : 2; ctx.fillStyle = p[1]; ctx.fillRect(side < 0 ? x : x, y - h/2, w, h); ctx.fillStyle = "rgba(0,0,0,.18)"; ctx.fillRect(side < 0 ? x : x, y - h/2, 3, h);
+    if (side > 0) x += w; }); });
+  // chalk puff when lifted
+  if (lifting && !reduce){ ctx.fillStyle = "rgba(242,240,234,.25)"; for (let i=0;i<6;i++){ ctx.beginPath(); ctx.arc(W/2 + Math.sin(now/200+i)*80, y + 30 + i*4, 6 + i, 0, 6.28); ctx.fill(); } }
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+/* ---------- booking ---------- */
+const nd = new Date(); nd.setDate(nd.getDate()+1); if (nd.getDay() === 0) nd.setDate(nd.getDate()+1);
+$("bDate").value = nd.toISOString().slice(0,10); $("bDate").min = new Date().toISOString().slice(0,10);
+const dlg = $("dlg");
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const d = new Date($("bDate").value+"T00:00"); const ds = d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Raise The Bar! I'd like a trial visit.\nName: ${$("bName").value}\nPhone: ${$("bPhone").value}\nInterested in: ${$("bFor").value}\nDay: ${ds}, ${$("bTime").value.toLowerCase()}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
