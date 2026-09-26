@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shubhi Fitness · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{--track:#C2462B;--track2:#A63A22;--grass:#1F6B3A;--ink:#141414;--paper:#FAF6EF;--lime:#D7FF3A;--dim:#5E5A55;--line:#E4DDD2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "Inter",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--lime);color:#111;font-size:14px;text-align:center;padding:9px 16px;font-weight:600}
+.bar{background:var(--ink);color:#fff}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.brand{font:400 24px/1 "Anton",Impact,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+.brand span{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--lime);color:#111;border:0;border-radius:10px;padding:13px 22px;font:700 15px "Inter",system-ui,sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;color:#fff;border:2px solid #fff}
+.hero{position:relative;background:var(--grass);color:#fff;overflow:hidden}
+#track{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-body{position:relative;padding-block:90px 100px;text-align:center}
+.hero h1{font:400 clamp(48px,9vw,112px)/.95 "Anton",Impact,sans-serif;text-transform:uppercase;margin:0 0 14px;letter-spacing:.01em;text-shadow:0 4px 0 rgba(0,0,0,.25)}
+.hero h1 em{font-style:normal;color:var(--lime)}
+.hero p{font-size:19px;max-width:40ch;margin:0 auto 26px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.lap{display:inline-block;margin-top:22px;font:600 13px "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.35);padding:6px 12px;border-radius:999px}
+section{padding-block:80px}
+h2{font:400 clamp(36px,5vw,60px)/1 "Anton",Impact,sans-serif;text-transform:uppercase;margin:0 0 10px}
+.sub{color:var(--dim);margin:0 0 30px;max-width:56ch}
+.lanes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.lane{border-radius:18px;padding:28px;color:#fff;position:relative;overflow:hidden;min-height:220px}
+.lane::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 46px,rgba(255,255,255,.35) 46px 49px);opacity:.35}
+.lane > *{position:relative}
+.lane .no{font:400 64px/1 "Anton",Impact,sans-serif;opacity:.9}
+.lane h3{font:700 24px "Inter",sans-serif;margin:6px 0}
+.lane p{margin:0;opacity:.92}
+.l1{background:var(--track)}.l2{background:var(--ink)}
+.picker{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.q{margin-bottom:20px}
+.q b{display:block;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:600 15px "Inter",system-ui,sans-serif;padding:10px 16px;border-radius:999px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--lime)}
+.plan{background:var(--ink);color:#fff;border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.plan .tag{color:var(--lime);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.plan h3{font:400 38px/1 "Anton",Impact,sans-serif;text-transform:uppercase;margin:0}
+.plan ul{margin:0;padding-left:20px;color:#DDD}
+.plan .btn{margin-top:auto;align-self:flex-start}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.form label{display:grid;gap:6px;font-size:14px;color:#BBB}
+.form input,.form select{font:inherit;font-size:16px;padding:11px;border-radius:10px;border:1px solid #444;background:#222;color:#fff;color-scheme:dark}
+footer{background:var(--ink);color:#AAA;padding-block:24px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.dlg{padding:24px;display:grid;gap:14px;background:#fff}
+.dlg h3{margin:0;font:700 22px "Inter",sans-serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+@media (max-width:860px){.lanes,.picker{grid-template-columns:1fr}.picker{padding:20px}}
+@media (max-width:480px){.form{grid-template-columns:1fr}.brand{font-size:20px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Shubhi Fitness and Sports Academy by Prakhar Punj. Not the official site. Details are placeholders.</div>
+
+<header class="bar"><div class="wrap"><div class="brand">Shubhi <span>Fitness</span></div><a class="btn" href="#start">Book a visit</a></div></header>
+
+<main>
+<section class="hero" aria-label="Intro">
+  <canvas id="track" aria-hidden="true"></canvas>
+  <div class="wrap hero-body">
+    <h1>Get on <em>track.</em></h1>
+    <p>A gym for grown-ups and a sports academy for kids, near Lehar Ki Devi, Sipri Bazar.</p>
+    <div class="row"><a class="btn" href="#start">Find my program</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Shubhi+Fitness+and+Sports+Academy+Sipri+Bazar+Jhansi" target="_blank" rel="noopener">Directions ↗</a></div>
+    <div class="lap" id="lap" aria-live="off">Lap 1</div>
+  </div>
+</section>
+
+<section><div class="wrap">
+  <h2>Two lanes, one place</h2>
+  <p class="sub">Whether you're training for yourself or bringing your child in.</p>
+  <div class="lanes">
+    <div class="lane l1"><div class="no">1</div><h3>The gym</h3><p>Strength, weight loss and general fitness, with trainers on the floor.</p></div>
+    <div class="lane l2"><div class="no">2</div><h3>Sports academy</h3><p>Coaching for kids and teens. Ask which sports and batches are running now.</p></div>
+  </div>
+</div></section>
+
+<section id="start" style="padding-top:0"><div class="wrap">
+  <h2>Which lane is yours?</h2>
+  <p class="sub">Two taps and we'll suggest where to start. Then book a visit.</p>
+  <div class="picker">
+    <div>
+      <div class="q"><b>Who's joining?</b><div class="chips" data-q="who"><button type="button" aria-pressed="true">Me</button><button type="button" aria-pressed="false">My child</button></div></div>
+      <div class="q"><b id="goalLabel">What's the goal?</b><div class="chips" data-q="goal" id="goals"></div></div>
+    </div>
+    <div class="plan">
+      <div class="tag" id="pTag">Your lane</div>
+      <h3 id="pName"></h3>
+      <ul id="pList"></ul>
+      <form class="form" id="form">
+        <label>Name<input id="fName" required placeholder="e.g. Rohan" autocomplete="name"></label>
+        <label>Preferred time<select id="fTime"><option>Morning</option><option>Evening</option></select></label>
+        <button class="btn" type="submit" style="grid-column:1/-1">Book a visit on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>Shubhi Fitness and Sports Academy · Sipri Bazar, Jhansi</span><span>Demo by Prakhar Punj · p18khr.github.io</span></div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the gym</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn dark" type="button" id="close">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* running track */
+const cv = $("track"), ctx = cv.getContext("2d");
+let W, H, dpr, laps = 1;
+const runners = [0,1,2,3,4,5].map(i => ({lane:i, t:Math.random(), v:.045 + Math.random()*.02, col: i===2 ? "#D7FF3A" : "#FFFFFF"}));
+function size(){ dpr = Math.min(devicePixelRatio||1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+function geom(lane){ const m = Math.min(W,H), lw = Math.max(14, m*.035), r = H*.34 + lane*lw, straight = Math.max(W*.62 - H*.68, 60); return {r, straight, lw}; }
+function pt(lane, t){ const {r, straight} = geom(lane), cx = W/2, cy = H/2, arc = Math.PI*r, total = 2*straight + 2*arc; let d = t*total;
+  if (d < straight) return [cx - straight/2 + d, cy + r];
+  d -= straight; if (d < arc){ const a = Math.PI/2 - d/r; return [cx + straight/2 + r*Math.cos(a), cy + r*Math.sin(a)]; }
+  d -= arc; if (d < straight) return [cx + straight/2 - d, cy - r];
+  d -= straight; const a = -Math.PI/2 - d/r; return [cx - straight/2 + r*Math.cos(a), cy + r*Math.sin(a)]; }
+function draw(){
+  ctx.fillStyle = "#1F6B3A"; ctx.fillRect(0,0,W,H);
+  const {lw} = geom(0), cx = W/2, cy = H/2;
+  const oval = (r, straight) => { ctx.beginPath(); ctx.moveTo(cx - straight/2, cy + r); ctx.lineTo(cx + straight/2, cy + r); ctx.arc(cx + straight/2, cy, r, Math.PI/2, -Math.PI/2, true); ctx.lineTo(cx - straight/2, cy - r); ctx.arc(cx - straight/2, cy, r, -Math.PI/2, Math.PI/2, true); ctx.closePath(); };
+  const outer = geom(6), inner = geom(0);
+  oval(outer.r - lw/2, outer.straight); ctx.fillStyle = "#C2462B"; ctx.fill();
+  oval(inner.r - lw/2, inner.straight); ctx.fillStyle = "#1F6B3A"; ctx.fill();
+  ctx.strokeStyle = "rgba(255,255,255,.55)"; ctx.lineWidth = 1.5;
+  for (let i = 0; i <= 6; i++){ const g = geom(i); oval(g.r - lw/2, g.straight); ctx.stroke(); }
+  ctx.strokeStyle = "#fff"; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx, cy + inner.r - lw/2); ctx.lineTo(cx, cy + outer.r - lw/2); ctx.stroke();
+  runners.forEach(rn => { const [x,y] = pt(rn.lane, rn.t); ctx.beginPath(); ctx.arc(x, y, lw*.32, 0, 6.28); ctx.fillStyle = rn.col; ctx.shadowColor = rn.col; ctx.shadowBlur = rn.col === "#D7FF3A" ? 14 : 0; ctx.fill(); ctx.shadowBlur = 0; });
+  ctx.fillStyle = "rgba(0,0,0,.28)"; ctx.fillRect(0,0,W,H);
+}
+let last = performance.now();
+function loop(now){ const dt = Math.min(.05, (now - last)/1000); last = now;
+  runners.forEach(rn => { rn.t += rn.v*dt; if (rn.t >= 1){ rn.t -= 1; if (rn.lane === 2){ laps++; $("lap").textContent = "Lap " + laps; } } });
+  draw(); requestAnimationFrame(loop); }
+size(); addEventListener("resize", () => { size(); draw(); });
+if (reduce) draw(); else requestAnimationFrame(loop);
+
+/* program picker */
+const GOALS = {
+  "Me": { "Lose weight":["Weight loss","Cardio plus strength, 5 days a week","Trainer checks your progress monthly","Simple food guidance"],
+          "Build strength":["Strength","Progressive weights plan","Form checks from the trainer","Track your lifts week to week"],
+          "Just get fit":["General fitness","Mixed workouts, never the same twice","Start easy, build up","Fits around office hours"] },
+  "My child": { "Learn a sport":["Sports academy","Coaching in small groups","Basics first, then match play","Ask which sports have open batches"],
+          "Get active":["Junior fitness","Games-based fitness for kids","Coordination, speed and stamina","Supervised the whole session"],
+          "Compete":["Academy squad","Regular practice schedule","Coach feedback after sessions","Ask about tournaments"] }
+};
+let who = "Me", goal = "Lose weight";
+function render(){
+  const g = GOALS[who]; if (!g[goal]) goal = Object.keys(g)[0];
+  $("goals").innerHTML = Object.keys(g).map(k => `<button type="button" aria-pressed="${k===goal}">${k}</button>`).join("");
+  $("goals").querySelectorAll("button").forEach(b => b.onclick = () => { goal = b.textContent; render(); });
+  const [name, ...pts] = g[goal];
+  $("pTag").textContent = who === "Me" ? "Your lane" : "Your child's lane";
+  $("pName").textContent = name; $("pList").innerHTML = pts.map(p => `<li>${p}</li>`).join("");
+  $("fName").placeholder = who === "Me" ? "e.g. Rohan" : "Child's name";
+}
+document.querySelector('[data-q="who"]').querySelectorAll("button").forEach(b => b.onclick = () => {
+  who = b.textContent; b.parentNode.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x===b))); render(); });
+render();
+
+const dlg = $("dlg");
+$("form").addEventListener("submit", e => { e.preventDefault();
+  $("bubble").textContent = `Hi Shubhi Fitness! I'd like to visit and try a session.\n${who === "Me" ? "Name" : "Child's name"}: ${$("fName").value}\nProgram: ${$("pName").textContent} (${goal.toLowerCase()})\nPreferred time: ${$("fTime").value}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
