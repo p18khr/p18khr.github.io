@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Bakers Factory · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#F7EFE3;--card:#FFFBF5;--ink:#2B1B12;--dim:#7A6352;--line:#E6D6C1;--acc:#B5541C;--body:"Work Sans";--disp:"DM Serif Display"}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body),system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--ink);color:var(--bg);font-size:14px;text-align:center;padding:9px 16px}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:16px}
+.brand{font:400 26px/1 var(--disp),Georgia,serif}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--acc);color:var(--on-acc,#fff);border:0;border-radius:999px;padding:13px 22px;font:700 15px var(--body),system-ui,sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+section{padding-block:72px}
+h1,h2{font-family:var(--disp),Georgia,serif;font-weight:400}
+h2{font-size:clamp(34px,5vw,56px);line-height:1.05;margin:0 0 10px}
+.sub{color:var(--dim);margin:0 0 28px;max-width:56ch}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form label{display:grid;gap:6px;font-size:14px;color:var(--dim)}
+.form input,.form select{width:100%;min-width:0;font:inherit;font-size:16px;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.form .full{grid-column:1/-1}
+.form .btn{grid-column:1/-1;white-space:normal}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tile{aspect-ratio:1/1;border-radius:18px;display:grid;align-items:end;padding:12px;font-weight:700;color:#fff;position:relative;overflow:hidden}
+.tile::after{content:"Photo";position:absolute;top:10px;right:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dlg{padding:24px;display:grid;gap:14px;background:#fff;color:#111}
+.dlg h3{margin:0;font:700 22px system-ui,sans-serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+.dlg .btn{background:#111;color:#fff}
+@media (max-width:860px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:18px}}
+@media (max-width:480px){.form{grid-template-columns:minmax(0,1fr)}.brand{font-size:21px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.hero{background:#1E1410;color:#F7EFE3;padding-block:50px 70px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(48px,7.5vw,92px);line-height:.98;margin:0 0 14px}
+.hero h1 em{color:#F2A541;font-style:italic}
+.hero p{font-size:19px;color:#D9C9B6;max-width:36ch;margin:0 0 24px}
+.hero .btn.line{color:#F7EFE3;border-color:#F7EFE3}
+.oven{position:relative;background:#3A2A22;border-radius:26px;padding:22px;box-shadow:inset 0 0 0 6px #4C382E}
+.oven .knobs{display:flex;gap:12px;margin-bottom:14px}
+.oven .knobs i{width:22px;height:22px;border-radius:50%;background:#8D7B70;box-shadow:inset 0 -3px 0 rgba(0,0,0,.3)}
+.window{position:relative;border-radius:16px;overflow:hidden;border:5px solid #1A110D}
+#ovenCv{width:100%;height:auto;display:block;touch-action:none;cursor:pointer}
+.hold{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;color:#D9C9B6;font-size:15px}
+.meter{flex:1;height:10px;border-radius:999px;background:#1A110D;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,#F2D08A,#B5541C,#5A2A0E)}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tabs button{font:700 15px "Work Sans",system-ui,sans-serif;padding:10px 18px;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.t1{background:linear-gradient(145deg,#C98B4A,#6B3A18)}.t2{background:linear-gradient(145deg,#6B4A36,#2B1B12)}.t3{background:linear-gradient(145deg,#E8B7A0,#9A4F3A)}.t4{background:linear-gradient(145deg,#A9B48A,#4F5A30)}
+@media (max-width:860px){.hero .wrap,.split{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for The Bakers Factory by Prakhar Punj. Not the official site. Photos are placeholders.</div>
+<header class="bar"><div class="wrap"><div class="brand">The Bakers Factory</div><a class="btn" href="#visit">Book or order</a></div></header>
+
+<main>
+<section class="hero" aria-label="Intro"><div class="wrap">
+  <div>
+    <h1>Warm from<br><em>the oven.</em></h1>
+    <p>Bakery and café on Court Road, Civil Lines. Cakes, fresh bakes and coffee, and a table to enjoy them at.</p>
+    <div class="row"><a class="btn" href="#visit">Order a cake</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=The+Bakers+Factory+Civil+Lines+Jhansi" target="_blank" rel="noopener">Directions ↗</a></div>
+  </div>
+  <div class="oven">
+    <div class="knobs" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="window"><canvas id="ovenCv" width="640" height="400" aria-label="Oven window. Press and hold to bake the loaf."></canvas></div>
+    <div class="hold"><span id="holdTxt">Press and hold the oven to bake</span><div class="meter" aria-hidden="true"><i id="bake"></i></div></div>
+  </div>
+</div></section>
+
+<section id="visit"><div class="wrap">
+  <h2>Order a cake or book a table</h2>
+  <p class="sub">Both go straight to the café on WhatsApp.</p>
+  <div class="split">
+    <div class="panel">
+      <div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-t="cake">Order a cake</button><button type="button" role="tab" aria-selected="false" data-t="table">Book a table</button></div>
+      <form class="form" id="form">
+        <label>Your name<input id="fName" required placeholder="e.g. Shruti" autocomplete="name"></label>
+        <label>Date<input id="fDate" type="date" required></label>
+        <label class="full" id="l1">Occasion<select id="f1"></select></label>
+        <label class="full" id="l2">Size<select id="f2"></select></label>
+        <button class="btn" type="submit" id="go">Send on WhatsApp</button>
+      </form>
+    </div>
+    <div>
+      <div class="tiles" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="tile t1">Fresh bakes</div><div class="tile t2">Coffee</div><div class="tile t3">Cakes</div><div class="tile t4">The café</div></div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>The Bakers Factory · Court Road, Civil Lines, Jhansi</span><span>Demo by Prakhar Punj · p18khr.github.io</span></div></footer>
+
+<dialog id="dlg"><div class="dlg"><h3>This message would reach the café</h3><div class="bubble" id="bubble"></div><p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p><button class="btn" type="button" id="close">Got it</button></div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* oven: hold to bake */
+const cv = $("ovenCv"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height;
+let bake = 0, holding = false, done = false, t = 0;
+function lerp(a,b,k){ return a + (b-a)*k; }
+function mix(c1, c2, k){ return `rgb(${c1.map((v,i) => Math.round(lerp(v, c2[i], k))).join(",")})`; }
+function draw(){
+  t += 1;
+  const glow = .55 + .1*Math.sin(t/20) + (holding ? .25 : 0);
+  const g = ctx.createRadialGradient(W/2, H*.35, 20, W/2, H/2, W*.7);
+  g.addColorStop(0, `rgba(255,170,70,${glow})`); g.addColorStop(1, "#2A120A");
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  // heating element
+  ctx.strokeStyle = `rgba(255,${90 + (holding?60:0)},40,${.6 + (holding ? .4 : .1*Math.sin(t/10))})`; ctx.lineWidth = 6;
+  ctx.beginPath(); for (let x = 40; x <= W-40; x += 10) ctx.lineTo(x, 40 + Math.sin(x/18)*6); ctx.stroke();
+  // rack
+  ctx.strokeStyle = "#6E5C52"; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(20, 320); ctx.lineTo(W-20, 320); ctx.stroke();
+  for (let x = 40; x < W; x += 40){ ctx.beginPath(); ctx.moveTo(x, 316); ctx.lineTo(x, 326); ctx.stroke(); }
+  // tray
+  ctx.fillStyle = "#4A4A4A"; ctx.fillRect(170, 306, 300, 12);
+  // loaf: rises and browns with bake
+  const k = Math.min(1, bake), rise = lerp(40, 120, Math.min(1, k*1.3)), col = k < .7 ? mix([240,221,180],[214,146,70], k/.7) : mix([214,146,70],[120,58,20], (k-.7)/.3);
+  ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(190, 306); ctx.bezierCurveTo(190, 306 - rise*1.1, 450, 306 - rise*1.1, 450, 306); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = mix([255,240,210],[180,110,50], k); ctx.lineWidth = 5; ctx.lineCap = "round";
+  for (let i = 0; i < 3; i++){ const x = 250 + i*70; ctx.beginPath(); ctx.moveTo(x-18, 306 - rise*.62); ctx.lineTo(x+18, 306 - rise*.86); ctx.stroke(); }
+  // steam when baked
+  if (k > .6){ ctx.strokeStyle = `rgba(255,255,255,${(k-.6)*.8})`; ctx.lineWidth = 3;
+    for (let i = 0; i < 3; i++){ const x = 260 + i*60; ctx.beginPath(); for (let y = 0; y < 60; y += 4) ctx.lineTo(x + Math.sin((y + t*2 + i*30)/10)*8, 300 - rise*.9 - y); ctx.stroke(); } }
+  if (holding && !done){ bake += .006; if (bake >= 1){ bake = 1; done = true; $("holdTxt").textContent = "Perfectly baked. That's how we do it every morning."; } else $("holdTxt").textContent = bake < .5 ? "Rising…" : "Browning…"; }
+  $("bake").style.width = (bake*100) + "%";
+  if (!reduce || holding) requestAnimationFrame(draw);
+}
+const start = e => { e.preventDefault(); if (done){ done = false; bake = 0; } holding = true; if (reduce) requestAnimationFrame(draw); };
+const stop = () => { holding = false; if (!done && bake > 0) $("holdTxt").textContent = "Keep holding, it's not done yet"; };
+cv.addEventListener("pointerdown", start); addEventListener("pointerup", stop); cv.addEventListener("pointerleave", stop);
+cv.tabIndex = 0; cv.addEventListener("keydown", e => { if (e.key === " " || e.key === "Enter"){ if (!holding) start(e); } }); cv.addEventListener("keyup", stop);
+requestAnimationFrame(draw);
+
+/* tabs */
+const MODES = {
+  cake: { l1:"Occasion", o1:["Birthday","Anniversary","Party","Just because"], l2:"Size", o2:["Half kg","1 kg","2 kg","Tell me what fits"], go:"Send cake order on WhatsApp", who:"Cake order" },
+  table:{ l1:"Time", o1:["Morning","Afternoon","Evening"], l2:"People", o2:["2","3–4","5–8","More than 8"], go:"Book on WhatsApp", who:"Table booking" }
+};
+let mode = "cake";
+function setMode(m){ mode = m; const c = MODES[m];
+  $("l1").firstChild.textContent = c.l1; $("l2").firstChild.textContent = c.l2;
+  $("f1").innerHTML = c.o1.map(o => `<option>${o}</option>`).join(""); $("f2").innerHTML = c.o2.map(o => `<option>${o}</option>`).join(""); $("go").textContent = c.go;
+  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.t === m))); }
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => setMode(b.dataset.t));
+setMode("cake");
+
+const today = new Date().toISOString().slice(0,10); $("fDate").value = today; $("fDate").min = today;
+const dlg = $("dlg");
+$("form").addEventListener("submit", e => { e.preventDefault(); const c = MODES[mode];
+  const when = new Date($("fDate").value + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Bakers Factory! ${c.who}:\nName: ${$("fName").value}\nDate: ${when}\n${c.l1}: ${$("f1").value}\n${c.l2}: ${$("f2").value}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>

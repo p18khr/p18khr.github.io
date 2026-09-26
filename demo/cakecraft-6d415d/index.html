@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cake Craft · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Karla:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#F4F7F2;--card:#fff;--ink:#1F2B24;--dim:#5E6E64;--line:#DCE5D8;--acc:#2F7D5B;--body:"Karla";--disp:"Playfair Display"}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body),system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--ink);color:var(--bg);font-size:14px;text-align:center;padding:9px 16px}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:16px}
+.brand{font:400 26px/1 var(--disp),Georgia,serif}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--acc);color:var(--on-acc,#fff);border:0;border-radius:999px;padding:13px 22px;font:700 15px var(--body),system-ui,sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+section{padding-block:72px}
+h1,h2{font-family:var(--disp),Georgia,serif;font-weight:400}
+h2{font-size:clamp(34px,5vw,56px);line-height:1.05;margin:0 0 10px}
+.sub{color:var(--dim);margin:0 0 28px;max-width:56ch}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form label{display:grid;gap:6px;font-size:14px;color:var(--dim)}
+.form input,.form select{width:100%;min-width:0;font:inherit;font-size:16px;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.form .full{grid-column:1/-1}
+.form .btn{grid-column:1/-1;white-space:normal}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tile{aspect-ratio:1/1;border-radius:18px;display:grid;align-items:end;padding:12px;font-weight:700;color:#fff;position:relative;overflow:hidden}
+.tile::after{content:"Photo";position:absolute;top:10px;right:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dlg{padding:24px;display:grid;gap:14px;background:#fff;color:#111}
+.dlg h3{margin:0;font:700 22px system-ui,sans-serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+.dlg .btn{background:#111;color:#fff}
+@media (max-width:860px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:18px}}
+@media (max-width:480px){.form{grid-template-columns:minmax(0,1fr)}.brand{font-size:21px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center;padding-block:30px 70px}
+.hero h1{font-size:clamp(46px,7vw,86px);line-height:1;margin:0 0 14px}
+.hero h1 em{color:var(--acc)}
+.hero p{font-size:19px;color:var(--dim);max-width:36ch;margin:0 0 22px}
+.board{background:#E6EDE2;border-radius:28px;padding:18px;border:1px solid var(--line)}
+#pipe{width:100%;height:auto;display:block;touch-action:none;cursor:crosshair;border-radius:20px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.sw{width:34px;height:34px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.tools .sp{flex:1}
+.tools button.txt{font:700 14px "Karla",system-ui,sans-serif;padding:8px 14px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.hint{font-size:14px;color:var(--dim);margin:8px 0 0}
+.order{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.steps{display:grid;gap:14px;counter-reset:s}
+.steps div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 16px 16px 60px;position:relative}
+.steps div::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:700}
+.t1{background:linear-gradient(145deg,#2F7D5B,#123B2A)}.t2{background:linear-gradient(145deg,#E7A6B8,#9C4A62)}.t3{background:linear-gradient(145deg,#E9C77B,#8A6A1E)}.t4{background:linear-gradient(145deg,#8FA7D9,#34508A)}
+@media (max-width:860px){.hero,.order{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Cake Craft by Prakhar Punj. Not the official site. Photos are placeholders.</div>
+<header class="bar"><div class="wrap"><div class="brand">Cake Craft</div><a class="btn" href="#order">Order</a></div></header>
+
+<main>
+<section class="wrap hero" aria-label="Intro">
+  <div>
+    <h1>You draw it.<br><em>We pipe it.</em></h1>
+    <p>Custom cakes from Sipri Bazar, Jhansi. Sketch your idea on the cake, pick the icing colours, and send it to us.</p>
+    <div class="row"><a class="btn" href="#order">Order this design</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Cake+Craft+Sipri+Bazar+Jhansi" target="_blank" rel="noopener">Directions ↗</a></div>
+  </div>
+  <div class="board">
+    <canvas id="pipe" width="720" height="600" aria-label="A cake seen from above. Draw on it with your finger or mouse to pipe icing."></canvas>
+    <div class="tools" role="group" aria-label="Icing colour">
+      <span id="sws" style="display:flex;gap:8px"></span><span class="sp"></span>
+      <button type="button" class="txt" id="undo">Undo</button><button type="button" class="txt" id="clear">Clear</button>
+    </div>
+    <p class="hint">Draw with your finger or mouse. Try a heart, a name, anything.</p>
+  </div>
+</section>
+
+<section id="order" style="padding-top:0"><div class="wrap">
+  <h2>How ordering works</h2>
+  <p class="sub">Your drawing is the brief. We turn it into the real thing.</p>
+  <div class="order">
+    <div class="steps">
+      <div><b>Draw your idea</b><br>On the cake above. Rough is fine.</div>
+      <div><b>Send it on WhatsApp</b><br>With the date and size. Attach a screenshot of your drawing.</div>
+      <div><b>We confirm and bake</b><br>We'll reply to confirm the design and the price.</div>
+    </div>
+    <div class="panel">
+      <form class="form" id="form">
+        <label>Your name<input id="fName" required placeholder="e.g. Megha" autocomplete="name"></label>
+        <label>Needed on<input id="fDate" type="date" required></label>
+        <label>Base cake<select id="fBase"><option>Vanilla</option><option>Chocolate</option><option>Red velvet</option><option>Fruit</option></select></label>
+        <label>Size<select id="fSize"><option>Half kg</option><option selected>1 kg</option><option>2 kg</option></select></label>
+        <button class="btn" type="submit">Send my design on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Cakes we've crafted</h2>
+  <p class="sub">Photos of real cakes go here.</p>
+  <div class="tiles"><div class="tile t1">Theme cakes</div><div class="tile t2">Floral</div><div class="tile t3">Name cakes</div><div class="tile t4">Kids</div></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>Cake Craft · Sipri Bazar, Jhansi</span><span>Demo by Prakhar Punj · p18khr.github.io</span></div></footer>
+
+<dialog id="dlg"><div class="dlg"><h3>This message would reach the shop</h3><div class="bubble" id="bubble"></div><p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p><button class="btn" type="button" id="close">Got it</button></div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const cv = $("pipe"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height, CX = W/2, CY = H/2, R = 250;
+const COLORS = [["Rose","#E7568A"],["Mint","#5FC9A3"],["Gold","#E3B341"],["Chocolate","#6B3B22"],["White","#FFFFFF"],["Sky","#6FA8E8"]];
+let color = COLORS[0][1], strokes = [], cur = null;
+$("sws").innerHTML = COLORS.map(([n,c],i) => `<button type="button" class="sw" style="background:${c}" aria-label="${n}" aria-pressed="${i===0}"></button>`).join("");
+document.querySelectorAll(".sw").forEach((b,i) => b.onclick = () => { color = COLORS[i][1]; document.querySelectorAll(".sw").forEach(x => x.setAttribute("aria-pressed", String(x===b))); });
+function base(){
+  ctx.fillStyle = "#E6EDE2"; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle = "rgba(0,0,0,.08)"; ctx.beginPath(); ctx.arc(CX+8, CY+12, R+18, 0, 6.28); ctx.fill();
+  ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(CX, CY, R+18, 0, 6.28); ctx.fill(); // board
+  const g = ctx.createRadialGradient(CX-60, CY-60, 20, CX, CY, R); g.addColorStop(0, "#FFF9EC"); g.addColorStop(1, "#F3E3C4");
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(CX, CY, R, 0, 6.28); ctx.fill();
+  for (let i = 0; i < 28; i++){ const a = i/28*6.28; ctx.fillStyle = "#F7D9DF"; ctx.beginPath(); ctx.arc(CX + Math.cos(a)*(R-8), CY + Math.sin(a)*(R-8), 12, 0, 6.28); ctx.fill(); ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(CX + Math.cos(a)*(R-8) - 3, CY + Math.sin(a)*(R-8) - 3, 3, 0, 6.28); ctx.fill(); }
+}
+function pipe(s){ if (s.pts.length < 1) return;
+  ctx.lineCap = "round"; ctx.lineJoin = "round";
+  const path = () => { ctx.beginPath(); ctx.moveTo(s.pts[0][0], s.pts[0][1]); s.pts.forEach(p => ctx.lineTo(p[0], p[1])); if (s.pts.length === 1) ctx.lineTo(s.pts[0][0]+.1, s.pts[0][1]); };
+  ctx.strokeStyle = "rgba(0,0,0,.18)"; ctx.lineWidth = 17; ctx.save(); ctx.translate(2,3); path(); ctx.stroke(); ctx.restore();
+  ctx.strokeStyle = s.c; ctx.lineWidth = 15; path(); ctx.stroke();
+  ctx.strokeStyle = "rgba(255,255,255,.55)"; ctx.lineWidth = 4; ctx.save(); ctx.translate(-3,-3); path(); ctx.stroke(); ctx.restore();
+}
+function redraw(){ base(); strokes.forEach(pipe); if (cur) pipe(cur); }
+function pt(e){ const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * W / r.width, (e.clientY - r.top) * H / r.height]; }
+const inside = ([x,y]) => Math.hypot(x-CX, y-CY) < R - 22;
+let demoRun = true;
+cv.addEventListener("pointerdown", e => { demoRun = false; const p = pt(e); if (!inside(p)) return; cv.setPointerCapture(e.pointerId); cur = {c: color, pts:[p]}; redraw(); });
+cv.addEventListener("pointermove", e => { if (!cur) return; const p = pt(e); if (!inside(p)) return; const l = cur.pts[cur.pts.length-1]; if (Math.hypot(p[0]-l[0], p[1]-l[1]) > 3){ cur.pts.push(p); redraw(); } });
+const end = () => { if (cur){ strokes.push(cur); cur = null; redraw(); } };
+cv.addEventListener("pointerup", end); cv.addEventListener("pointercancel", end);
+$("undo").onclick = () => { demoRun = false; strokes.pop(); redraw(); };
+$("clear").onclick = () => { demoRun = false; strokes = []; redraw(); };
+/* opening: a heart pipes itself */
+const heart = Array.from({length: 90}, (_,i) => { const t = i/89*6.283; return [CX + 9*16*Math.pow(Math.sin(t),3), CY - 20 - 9*(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t))]; });
+const dots = Array.from({length: 12}, (_,i) => { const a = i/12*6.283; return [CX + Math.cos(a)*175, CY + Math.sin(a)*175]; });
+if (reduce){ strokes = [{c:"#E7568A", pts:heart}, ...dots.map(d => ({c:"#5FC9A3", pts:[d]}))]; redraw(); }
+else { base(); let k = 0, s = {c:"#E7568A", pts:[]}; strokes.push(s);
+  (function step(){ if (!demoRun) return; if (k < heart.length){ s.pts.push(heart[k++]); redraw(); requestAnimationFrame(step); }
+    else if (k < heart.length + dots.length){ strokes.push({c:"#5FC9A3", pts:[dots[k - heart.length]]}); k++; redraw(); setTimeout(step, 70); } })(); }
+
+const today = new Date(Date.now() + 3*864e5).toISOString().slice(0,10); $("fDate").value = today; $("fDate").min = new Date().toISOString().slice(0,10);
+const dlg = $("dlg");
+$("form").addEventListener("submit", e => { e.preventDefault();
+  const used = [...new Set(strokes.map(s => (COLORS.find(c => c[1] === s.c) || ["Rose"])[0]))].join(", ") || "none yet";
+  const when = new Date($("fDate").value + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Cake Craft! Custom cake from my own design:\nName: ${$("fName").value}\nNeeded on: ${when}\nCake: ${$("fSize").value}, ${$("fBase").value}\nIcing colours: ${used}\n(Screenshot of my drawing attached)`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
