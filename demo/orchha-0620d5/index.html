@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orchha Best Homestay · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Karla:wght@400;500;600;700&display=swap">
+<style>
+:root{--dusk:#2A1B2E;--river:#1E3A4A;--sun:#F29E4C;--stone:#C9A27A;--paper:#FAF5EC;--ink:#2B211C;--muted:#6F6259;--line:#E6DACB;--leaf:#4F6B4A}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 "Karla",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:#000;color:#F3DDC0;font-size:14px;text-align:center;padding:9px 16px}
+.hero{position:relative;min-height:min(700px,92vh);color:#FFF6EA;overflow:hidden;display:grid}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+.top{position:relative;z-index:2}.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
+.brand{font:600 26px "Cormorant Garamond",Georgia,serif;letter-spacing:.02em}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--sun);color:#2A1B2E;border:0;border-radius:4px;padding:13px 22px;font:700 15px "Karla",system-ui,sans-serif;letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.dark{background:var(--river);color:#FFF6EA}
+.hero-body{position:relative;z-index:1;align-self:start;padding-block:40px 200px;width:100%}
+.hero-body > *{max-width:620px}
+.kick{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#FFD3A1}
+h1{font:600 clamp(48px,7.4vw,98px)/.95 "Cormorant Garamond",Georgia,serif;margin:12px 0 18px;text-wrap:balance;text-shadow:0 2px 24px rgba(42,27,46,.4)}
+.hero p{font-size:19px;margin:0 0 24px;color:#F6E6D2;text-shadow:0 1px 10px rgba(42,27,46,.5)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.score{margin-top:20px;font-size:15px;color:#F6E6D2}.score b{color:#fff}
+section{padding-block:84px}
+h2{font:600 clamp(38px,5vw,62px)/1 "Cormorant Garamond",Georgia,serif;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 28px;max-width:58ch}
+.plan{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
+.ctrl{display:grid;gap:18px;position:sticky;top:20px}
+.ctrl h4{margin:0 0 8px;font:700 13px "Karla",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 15px "Karla",system-ui,sans-serif;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--river);border-color:var(--river);color:#fff}
+.days{display:grid;gap:18px}
+.day{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;animation:rise .45s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}}
+.day h3{margin:0 0 10px;font:600 28px "Cormorant Garamond",serif}
+.stop{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 0;border-top:1px dashed var(--line)}
+.stop:first-of-type{border-top:0}
+.stop .t{font-weight:700;color:var(--sun);font-size:14px;letter-spacing:.04em}
+.stop b{display:block}
+.stop span{color:var(--muted);font-size:15px}
+.stay{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.feat{border-top:2px solid var(--stone);padding-top:14px}
+.feat b{display:block;font:600 24px "Cormorant Garamond",serif}
+.feat p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:170px 170px;gap:12px;margin-top:30px}
+.gallery div{border-radius:10px;display:grid;align-items:end;padding:12px;color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.g1{grid-row:1/3;background:linear-gradient(180deg,#F29E4C,#6B3A4A 70%,#2A1B2E)}.g2{background:linear-gradient(160deg,#C9A27A,#6F5238)}.g3{background:linear-gradient(160deg,#4F6B4A,#233327)}.g4{background:linear-gradient(160deg,#1E3A4A,#0F1E27)}.g5{background:linear-gradient(160deg,#E8C9A0,#A07850)}
+.book{background:var(--river);color:#FFF6EA;border-radius:18px;padding:34px;display:grid;grid-template-columns:.9fr 1.1fr;gap:30px}
+.book .sub{color:#C9D7DE}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book label{display:grid;gap:6px;font-size:14px;color:#C9D7DE}
+.book input,.book select{font:inherit;font-size:16px;padding:12px;border-radius:8px;border:1px solid #3B5A6A;background:#16303E;color:#fff;color-scheme:dark}
+.book .full{grid-column:1/-1}
+.book .nights{grid-column:1/-1;font-size:15px;color:#FFD3A1}
+.book button{grid-column:1/-1;justify-content:center;padding:14px}
+.book .alt{font-size:14px;color:#C9D7DE}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:14px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(42,27,46,.6)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:600 28px "Cormorant Garamond",serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:900px){.plan,.book{grid-template-columns:1fr}.ctrl{position:static}.stay{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr;grid-template-rows:190px 130px 130px}.g1{grid-column:1/-1;grid-row:auto}.book{padding:22px}}
+@media (max-width:480px){.book form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.day{animation:none}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Orchha Best Homestay by Prakhar Punj. Not the official site. Photos are placeholders.</div>
+
+<header class="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="top"><div class="wrap"><div class="brand">Orchha Best Homestay</div><a class="btn" href="#book">Check dates</a></div></div>
+  <div class="wrap hero-body">
+    <div class="kick">A family homestay in Orchha</div>
+    <h1>Walk to the fort. Come home to breakfast.</h1>
+    <p>A quiet homestay in the old town, a short walk from the fort and the temples. Plan your days below and ask for your dates on WhatsApp.</p>
+    <div class="row"><a class="btn" href="#plan">Plan my Orchha days</a><a class="btn line" href="#book">Ask for dates</a></div>
+    <div class="score"><b>8.5</b> on Booking.com · <b>4/5</b> on Tripadvisor</div>
+  </div>
+</header>
+
+<main>
+<section id="plan"><div class="wrap">
+  <h2>Plan your Orchha days</h2>
+  <p class="sub">Pick how long you're staying and what you enjoy. Your plan builds itself, and you can send it with your booking.</p>
+  <div class="plan">
+    <div class="ctrl">
+      <div><h4>Nights</h4><div class="chips" id="nightsC"></div></div>
+      <div><h4>I enjoy</h4><div class="chips" id="likes"></div></div>
+    </div>
+    <div class="days" id="days" aria-live="polite"></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>The stay</h2>
+  <p class="sub">What guests mention most in their reviews.</p>
+  <div class="stay">
+    <div class="feat"><b>Walk to the fort</b><p>A quiet lane in the old town, near the sights.</p></div>
+    <div class="feat"><b>Home breakfast</b><p>Guests single out the breakfast in their reviews.</p></div>
+    <div class="feat"><b>Family rooms</b><p>Air-conditioned, with private bathrooms and a terrace.</p></div>
+  </div>
+  <div class="gallery"><div class="g1">Terrace at sunset</div><div class="g2">Family room</div><div class="g3">Courtyard</div><div class="g4">View at night</div><div class="g5">Breakfast</div></div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2>Ask for your dates</h2>
+    <p class="sub">Send your dates straight to the family. They reply on WhatsApp with availability and the rate.</p>
+    <p class="alt">Prefer to book online? <a href="https://www.booking.com/hotel/in/orchha-best-homestay.html" target="_blank" rel="noopener">Also on Booking.com ↗</a></p>
+  </div>
+  <form id="bookForm">
+    <label>Check-in<input id="cin" type="date" required></label>
+    <label>Check-out<input id="cout" type="date" required></label>
+    <label>Guests<select id="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5+</option></select></label>
+    <label>Room<select id="room"><option>Family room</option><option>Double room</option><option>Not sure</option></select></label>
+    <label class="full">Your name<input id="gName" required placeholder="e.g. Neha" autocomplete="name"></label>
+    <div class="nights" id="nightsNote"></div>
+    <button class="btn" type="submit">Ask on WhatsApp</button>
+  </form>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the homestay</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn dark" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- itinerary builder ---------- */
+const PLACES = {
+  history:[["Orchha Fort and Jahangir Mahal","The palace complex across the bridge. Go early, before the day gets hot.","Morning"],["Raja Mahal","Painted ceilings and rooms inside the fort complex.","Late morning"],["Chaturbhuj Temple","Climb up for the view over the town.","Afternoon"]],
+  temples:[["Ram Raja Temple","The temple where Ram is worshipped as a king. Stay for the evening aarti.","Evening"],["Laxmi Narayan Temple","Old wall paintings, a short drive up the hill.","Morning"]],
+  river:[["Royal chhatris on the Betwa","The row of cenotaphs on the riverbank. Best at sunset.","Sunset"],["Betwa riverbank","Sit by the rocks and the water, or ask about rafting.","Morning"]],
+  food:[["Breakfast at home","Start the day slow at the homestay.","Breakfast"],["Bundeli food in the market","Ask the family where locals eat.","Lunch"]]
+};
+const LIKES = [["history","Forts & palaces"],["temples","Temples"],["river","River & sunsets"],["food","Local food"]];
+let nights = 2; const likes = new Set(["history","temples","river"]);
+function chips(){
+  $("nightsC").innerHTML = [1,2,3].map(n => `<button type="button" class="chip" aria-pressed="${n===nights}">${n} night${n>1?"s":""}</button>`).join("");
+  $("nightsC").querySelectorAll(".chip").forEach((b,i) => b.onclick = () => { nights = i+1; chips(); build(); });
+  $("likes").innerHTML = LIKES.map(([k,l]) => `<button type="button" class="chip" data-k="${k}" aria-pressed="${likes.has(k)}">${l}</button>`).join("");
+  $("likes").querySelectorAll(".chip").forEach(b => b.onclick = () => { const k = b.dataset.k; likes.has(k) && likes.size > 1 ? likes.delete(k) : likes.add(k); chips(); build(); });
+}
+const ORDER = {Breakfast:0,Morning:1,"Late morning":2,Lunch:3,Afternoon:4,Sunset:5,Evening:6};
+function plan(){
+  const pool = [...likes].flatMap(k => PLACES[k].map(p => ({p, k})));
+  const days = Array.from({length: nights + 1}, () => []);
+  pool.forEach((x,i) => days[i % days.length].push(x.p));
+  if (likes.has("food")) days.forEach((d,i) => { if (i>0 && !d.some(s => s[0]==="Breakfast at home")) d.push(PLACES.food[0]); });
+  return days.map(d => d.sort((a,b) => ORDER[a[2]] - ORDER[b[2]])).filter(d => d.length);
+}
+function build(){
+  const ds = plan(), names = ["Arrival day", "Day 2", "Day 3", "Day 4"];
+  $("days").innerHTML = ds.map((d,i) => `<article class="day" style="animation-delay:${i*80}ms"><h3>${i === ds.length-1 && ds.length > 1 ? "Last day" : names[i]}</h3>${d.map(([n,t,w]) => `<div class="stop"><div class="t">${w}</div><div><b>${n}</b><span>${t}</span></div></div>`).join("")}</article>`).join("");
+}
+chips(); build();
+
+/* ---------- booking ---------- */
+const iso = d => d.toISOString().slice(0,10), a = new Date(); a.setDate(a.getDate()+14); const b = new Date(a); b.setDate(b.getDate()+2);
+$("cin").value = iso(a); $("cout").value = iso(b); $("cin").min = iso(new Date());
+function nightsNote(){ const n = Math.round((new Date($("cout").value) - new Date($("cin").value))/864e5); $("nightsNote").textContent = n > 0 ? `${n} night${n>1?"s":""}` : "Check-out must be after check-in"; return n; }
+["cin","cout"].forEach(id => $(id).addEventListener("change", nightsNote)); nightsNote();
+const dlg = $("dlg"), fmt = v => new Date(v+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+$("bookForm").addEventListener("submit", e => { e.preventDefault(); if (nightsNote() <= 0) return;
+  $("bubble").textContent = `Namaste! Is a room free for these dates?\nName: ${$("gName").value}\nCheck-in: ${fmt($("cin").value)}\nCheck-out: ${fmt($("cout").value)}\nGuests: ${$("guests").value}\nRoom: ${$("room").value}\nWe'd like to see: ${[...likes].map(k => LIKES.find(l => l[0]===k)[1].toLowerCase()).join(", ")}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+
+/* ---------- hero: Orchha's chhatris on the Betwa at sunset, reflected in the river; vultures circle ---------- */
+const cv = $("sky"), ctx = cv.getContext("2d");
+let W, H, birds = [], mx = .5;
+function size(){ const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1);
+  W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  birds = Array.from({length:6}, (_,i) => ({cx: W*(.45+Math.random()*.45), cy: H*(.18+Math.random()*.2), r: 30+Math.random()*60, a: Math.random()*6.28, s: (.004+Math.random()*.004)*(i%2?1:-1)})); }
+addEventListener("pointermove", e => { mx = e.clientX / innerWidth; });
+function chhatri(x, base, s){
+  // a stepped plinth, a tall body, and a curved shikhara spire
+  ctx.beginPath();
+  ctx.moveTo(x - 46*s, base); ctx.lineTo(x - 46*s, base - 20*s); ctx.lineTo(x - 36*s, base - 20*s); ctx.lineTo(x - 36*s, base - 70*s);
+  ctx.lineTo(x - 30*s, base - 70*s); ctx.quadraticCurveTo(x - 30*s, base - 130*s, x, base - 175*s);
+  ctx.quadraticCurveTo(x + 30*s, base - 130*s, x + 30*s, base - 70*s); ctx.lineTo(x + 36*s, base - 70*s); ctx.lineTo(x + 36*s, base - 20*s);
+  ctx.lineTo(x + 46*s, base - 20*s); ctx.lineTo(x + 46*s, base); ctx.closePath(); ctx.fill();
+  ctx.fillRect(x - 2*s, base - 195*s, 4*s, 22*s); ctx.beginPath(); ctx.arc(x, base - 176*s, 6*s, 0, 6.28); ctx.fill();
+  // small corner domes
+  [-36, 36].forEach(o => { ctx.beginPath(); ctx.moveTo(x + (o-10)*s, base - 70*s); ctx.quadraticCurveTo(x + o*s, base - 100*s, x + (o+10)*s, base - 70*s); ctx.fill(); });
+}
+function skyline(base, off){
+  const s = Math.min(1.25, Math.max(.6, W/1300));
+  const xs = [.52,.64,.76,.88,.99].map(f => f*W + off);
+  xs.forEach((x,i) => chhatri(x, base, s*(i===1 ? 1.12 : i===3 ? 1 : .88)));
+  ctx.fillRect(0, base, W, H);
+  // riverbank trees
+  for (let x=-20; x<W*.5; x+=26){ ctx.beginPath(); ctx.arc(x + off*.6, base - 8, 18 + (x*7)%10, Math.PI, 0); ctx.fill(); }
+}
+function frame(t){
+  const off = reduce ? 0 : (mx - .5) * -30;
+  const g = ctx.createLinearGradient(0,0,0,H*.62); g.addColorStop(0,"#2A1B2E"); g.addColorStop(.45,"#8A3F52"); g.addColorStop(.8,"#E8804A"); g.addColorStop(1,"#F7B267");
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H*.62);
+  const sunY = H*.5 + (reduce ? 0 : Math.sin(t/9000)*4);
+  ctx.fillStyle = "rgba(255,214,150,.95)"; ctx.beginPath(); ctx.arc(W*.7 + off*.3, sunY, Math.min(W,H)*.07, 0, 6.28); ctx.fill();
+  const base = H*.62;
+  ctx.fillStyle = "#1F1420"; skyline(base, off);
+  // river with reflection
+  const rg = ctx.createLinearGradient(0, base, 0, H); rg.addColorStop(0,"#5A2F3E"); rg.addColorStop(1,"#1E1622");
+  ctx.fillStyle = rg; ctx.fillRect(0, base, W, H - base);
+  ctx.save(); ctx.globalAlpha = .28; ctx.translate(0, base*2); ctx.scale(1,-1); ctx.fillStyle = "#1F1420"; skyline(base, off); ctx.restore();
+  ctx.fillStyle = rg; ctx.globalAlpha = .55; ctx.fillRect(0, base + (H-base)*.55, W, H); ctx.globalAlpha = 1;
+  // shimmer lines on the water
+  ctx.strokeStyle = "rgba(255,200,140,.35)"; ctx.lineWidth = 1.5;
+  for (let i=0;i<14;i++){ const y = base + 10 + i*((H-base)/15), w = 30 + (i*37)%80, x = W*.7 + off*.3 + Math.sin(t/800 + i)*20*(reduce?0:1) - w/2;
+    ctx.globalAlpha = .5 - i*.03; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + w, y); ctx.stroke(); }
+  ctx.globalAlpha = 1;
+  // vultures circling the chhatris
+  ctx.strokeStyle = "#1F1420"; ctx.lineWidth = 2;
+  birds.forEach(b => { if (!reduce) b.a += b.s; const x = b.cx + Math.cos(b.a)*b.r + off*.5, y = b.cy + Math.sin(b.a)*b.r*.35, f = Math.sin(t/300 + b.cx)*3;
+    ctx.beginPath(); ctx.moveTo(x - 9, y - f); ctx.quadraticCurveTo(x - 4, y - 5, x, y); ctx.quadraticCurveTo(x + 4, y - 5, x + 9, y - f); ctx.stroke(); });
+  requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
