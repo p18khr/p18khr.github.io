@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Muscle Factory · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap">
+<style>
+:root{--steel:#1B1E22;--steel2:#262A30;--plate:#3A3F46;--hazard:#FFC400;--spark:#FF7A1A;--text:#EDEEF0;--dim:#9AA0A8;--line:#343941}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--steel);color:var(--text);font:400 17px/1.6 "Barlow",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hazard);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--hazard);color:#111;font-size:14px;text-align:center;padding:9px 16px;font-weight:600}
+.hazard{height:12px;background:repeating-linear-gradient(-45deg,var(--hazard) 0 16px,#111 16px 32px)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.brand{font:400 22px/1 "Black Ops One",Impact,sans-serif;letter-spacing:.03em}
+.brand span{color:var(--hazard)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--hazard);color:#111;border:0;border-radius:4px;padding:13px 22px;font:700 16px "Barlow Condensed",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--text);border:2px solid var(--text)}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding-block:40px 70px}
+.hero h1{font:400 clamp(46px,7.4vw,96px)/.95 "Black Ops One",Impact,sans-serif;margin:0 0 14px}
+.hero h1 em{font-style:normal;color:var(--hazard)}
+.hero p{font-size:19px;color:#C9CDD2;max-width:36ch;margin:0 0 24px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.press-box{position:relative;background:var(--steel2);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+#press{width:100%;height:auto;display:block}
+.counter{position:absolute;left:14px;bottom:12px;font:700 14px "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.counter b{color:var(--hazard)}
+section{padding-block:80px}
+h2{font:400 clamp(34px,5vw,58px)/1 "Black Ops One",Impact,sans-serif;margin:0 0 10px}
+.sub{color:var(--dim);margin:0 0 30px;max-width:56ch}
+.line-wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.step{margin-bottom:22px}
+.step .k{font:700 13px "Barlow Condensed",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--hazard)}
+.step b{display:block;font-size:19px;margin:2px 0 10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts button{font:700 15px "Barlow Condensed",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;border-radius:4px;border:2px solid var(--plate);background:var(--steel2);color:var(--text);cursor:pointer}
+.opts button[aria-pressed="true"]{border-color:var(--hazard);background:var(--hazard);color:#111}
+.card{background:#F2EFE6;color:#1B1E22;border-radius:6px;padding:24px;position:relative;font-family:"Barlow",sans-serif;box-shadow:0 20px 40px -20px rgba(0,0,0,.8)}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:repeating-linear-gradient(-45deg,var(--hazard) 0 10px,#111 10px 20px);border-radius:6px 6px 0 0}
+.card h3{font:700 14px "Barlow Condensed",sans-serif;letter-spacing:.24em;text-transform:uppercase;margin:6px 0 4px;color:#555}
+.card .title{font:400 34px/1.05 "Black Ops One",Impact,sans-serif;margin:0 0 12px}
+.card table{width:100%;border-collapse:collapse;font-size:16px}
+.card td{padding:8px 0;border-bottom:1px dashed #B9B4A6;vertical-align:top}
+.card td:first-child{font:700 14px "Barlow Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#666;width:36%}
+.stamp{position:absolute;right:18px;top:26px;border:3px solid #C0392B;color:#C0392B;font:400 18px "Black Ops One",Impact,sans-serif;padding:4px 10px;transform:rotate(-12deg) scale(1);opacity:.85;transition:transform .25s cubic-bezier(.3,1.6,.5,1),opacity .25s}
+.stamp.hit{transform:rotate(-12deg) scale(1.6);opacity:0;transition:none}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.form label{display:grid;gap:4px;font:700 13px "Barlow Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#666}
+.form input{width:100%;min-width:0;font:inherit;font-family:"Barlow",sans-serif;font-size:16px;letter-spacing:0;text-transform:none;padding:10px;border-radius:4px;border:1px solid #B9B4A6;background:#fff;color:#1B1E22}
+.form .btn{grid-column:1/-1;background:#1B1E22;color:var(--hazard)}
+.floor{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tile{aspect-ratio:4/3;border-radius:8px;background:linear-gradient(150deg,#3A3F46,#15171A);border:1px solid var(--line);display:grid;align-items:end;padding:14px;font:700 16px "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;position:relative}
+.tile::after{content:"Photo";position:absolute;top:10px;right:12px;font-size:11px;color:var(--dim)}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+dialog{border:0;border-radius:12px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+.dlg{padding:24px;display:grid;gap:14px;background:#fff;color:#111}
+.dlg h3{margin:0;font:700 22px "Barlow",sans-serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+@media (max-width:860px){.hero,.line-wrap{grid-template-columns:minmax(0,1fr)}.floor{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.form{grid-template-columns:minmax(0,1fr)}.form .btn{white-space:normal}.floor{grid-template-columns:1fr}.brand{font-size:18px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stamp{transition:none}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for The Muscle Factory by Prakhar Punj. Not the official site. Details are placeholders.</div>
+<header class="bar"><div class="wrap"><div class="brand">THE MUSCLE <span>FACTORY</span></div><a class="btn" href="#line">Visit the floor</a></div></header>
+<div class="hazard" aria-hidden="true"></div>
+
+<main>
+<section class="wrap hero" aria-label="Intro">
+  <div>
+    <h1>Built here.<br><em>Not bought.</em></h1>
+    <p>A lifting gym in Sipri Bazar, Jhansi. Heavy iron, honest work, and the people around you pushing the same way.</p>
+    <div class="row"><a class="btn" href="#line">Start your build</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=The+Muscle+Factory+gym+Sipri+Bazar+Jhansi" target="_blank" rel="noopener">Directions ↗</a></div>
+  </div>
+  <div class="press-box">
+    <canvas id="press" width="720" height="560" aria-label="A hydraulic press stamping steel plates"></canvas>
+    <div class="counter">Plates pressed today: <b id="count">0</b></div>
+  </div>
+</section>
+
+<section id="line" style="padding-top:20px"><div class="wrap">
+  <h2>Your build sheet</h2>
+  <p class="sub">Three quick choices. You get a job card to bring on your first day.</p>
+  <div class="line-wrap">
+    <div>
+      <div class="step"><div class="k">Station 1</div><b>Where are you starting?</b><div class="opts" data-k="start"></div></div>
+      <div class="step"><div class="k">Station 2</div><b>What are we building?</b><div class="opts" data-k="goal"></div></div>
+      <div class="step"><div class="k">Station 3</div><b>Which shift?</b><div class="opts" data-k="shift"></div></div>
+    </div>
+    <div class="card" aria-live="polite">
+      <div class="stamp" id="stamp">APPROVED</div>
+      <h3>Job card</h3>
+      <div class="title" id="cTitle"></div>
+      <table>
+        <tr><td>Starting</td><td id="cStart"></td></tr>
+        <tr><td>First 4 weeks</td><td id="cWeeks"></td></tr>
+        <tr><td>Shift</td><td id="cShift"></td></tr>
+      </table>
+      <form class="form" id="form">
+        <label>Name<input id="fName" required placeholder="e.g. Aman" autocomplete="name"></label>
+        <label>First day<input id="fDate" type="date" required></label>
+        <button class="btn" type="submit">Send job card on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>The floor</h2>
+  <p class="sub">Photos of the gym go here.</p>
+  <div class="floor"><div class="tile">Free weights</div><div class="tile">Racks</div><div class="tile">Cardio</div></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>The Muscle Factory · Sipri Bazar, Jhansi</span><span>Demo by Prakhar Punj · p18khr.github.io</span></div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the gym</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn" type="button" id="close" style="background:#111;color:#FFC400">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* hydraulic press */
+const cv = $("press"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height;
+const WORDS = ["STRENGTH","GRIT","POWER","DISCIPLINE","IRON"];
+const CYCLE = 1800, BELT_Y = 420, PRESS_X = W/2, GAP = 230;
+let sparks = [], lastStamp = -1;
+function ram(ph){ if (ph < .35) return 0; if (ph < .45) return (ph - .35)/.1; if (ph < .6) return 1; if (ph < .8) return 1 - (ph - .6)/.2; return 0; }
+function draw(t){
+  const cyc = Math.floor(t / CYCLE), ph = (t % CYCLE)/CYCLE, k = cyc + Math.min(1, ph/.35), r = ram(ph);
+  const stampedUpTo = ph >= .45 ? cyc + 1 : cyc; // plate i is stamped once i <= this
+  if (stampedUpTo !== lastStamp && ph >= .45){ lastStamp = stampedUpTo; $("count").textContent = stampedUpTo;
+    if (!reduce) for (let i = 0; i < 26; i++) sparks.push({x: PRESS_X + (Math.random()-.5)*200, y: BELT_Y - 30, vx:(Math.random()-.5)*9, vy:-Math.random()*7-2, life:1}); }
+  ctx.fillStyle = "#262A30"; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle = "#3A3F46"; ctx.fillRect(PRESS_X-210, 30, 40, BELT_Y-20); ctx.fillRect(PRESS_X+170, 30, 40, BELT_Y-20); ctx.fillRect(PRESS_X-210, 30, 420, 50);
+  ctx.save(); ctx.beginPath(); ctx.rect(PRESS_X-210, 30, 420, 12); ctx.clip(); ctx.fillStyle = "#FFC400"; for (let i = 0; i < 12; i++) ctx.fillRect(PRESS_X-210 + i*40 - 6, 30, 20, 12); ctx.restore();
+  const headY = 90 + r*(BELT_Y - 90 - 150);
+  ctx.fillStyle = "#8A9099"; ctx.fillRect(PRESS_X-18, 80, 36, headY - 80);
+  ctx.fillStyle = "#4B5159"; ctx.fillRect(PRESS_X-110, headY, 220, 60);
+  ctx.fillStyle = "#FFC400"; ctx.fillRect(PRESS_X-110, headY+50, 220, 10);
+  ctx.fillStyle = "#15171A"; ctx.fillRect(0, BELT_Y, W, 40);
+  const off = (k * GAP) % 40; ctx.fillStyle = "#2E3238"; for (let x = -40; x < W + 40; x += 40) ctx.fillRect(x + off, BELT_Y + 16, 20, 8);
+  for (let i = Math.floor(k) - 3; i <= Math.floor(k) + 2; i++){
+    const x = PRESS_X + (k - i)*GAP, atPress = Math.abs(k - i) < .001, y = BELT_Y - 34 + (atPress ? r*4 : 0);
+    ctx.fillStyle = "#5A6069"; ctx.beginPath(); ctx.ellipse(x, y, 100, 30, 0, 0, 6.28); ctx.fill();
+    ctx.fillStyle = "#6C737C"; ctx.beginPath(); ctx.ellipse(x, y-4, 100, 26, 0, 0, 6.28); ctx.fill();
+    ctx.fillStyle = "#2A2E33"; ctx.beginPath(); ctx.ellipse(x, y-4, 16, 6, 0, 0, 6.28); ctx.fill();
+    if (i >= 1 && i <= stampedUpTo){ ctx.fillStyle = "#FFC400"; ctx.font = "30px 'Black Ops One', Impact, sans-serif"; ctx.textAlign = "center"; ctx.fillText(WORDS[((i % 5) + 5) % 5], x, y - 40); }
+  }
+  sparks.forEach(s => { s.x += s.vx; s.y += s.vy; s.vy += .35; s.life -= .03; ctx.fillStyle = `rgba(255,${120 + Math.floor(s.life*100)},26,${Math.max(0,s.life)})`; ctx.fillRect(s.x, s.y, 3, 3); });
+  sparks = sparks.filter(s => s.life > 0);
+}
+const t0 = performance.now();
+if (reduce) draw(CYCLE*.5); else (function tick(now){ draw(now - t0); requestAnimationFrame(tick); })(t0);
+
+/* build sheet */
+const OPT = {
+  start: ["Never lifted","Coming back","Already lifting"],
+  goal: ["Size","Strength","Cut fat"],
+  shift: ["Morning","Evening"]
+};
+const WEEKS = {
+  "Never lifted": "Learn the big lifts with light weight. Form first, every session checked.",
+  "Coming back": "Rebuild slowly. Two weeks easy, then back to your old numbers.",
+  "Already lifting": "A proper split and progressive load. Log every set."
+};
+const TITLE = { "Size": "Hypertrophy build", "Strength": "Strength build", "Cut fat": "Lean build" };
+const sel = { start:"Never lifted", goal:"Strength", shift:"Evening" };
+document.querySelectorAll(".opts").forEach(g => { const k = g.dataset.k;
+  g.innerHTML = OPT[k].map(o => `<button type="button" aria-pressed="${o===sel[k]}">${o}</button>`).join("");
+  g.querySelectorAll("button").forEach(b => b.onclick = () => { sel[k] = b.textContent; g.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x===b))); card(true); }); });
+function card(anim){
+  $("cTitle").textContent = TITLE[sel.goal]; $("cStart").textContent = sel.start; $("cWeeks").textContent = WEEKS[sel.start]; $("cShift").textContent = sel.shift;
+  if (anim && !reduce){ const s = $("stamp"); s.classList.add("hit"); void s.offsetWidth; s.classList.remove("hit"); }
+}
+card(false);
+
+const today = new Date().toISOString().slice(0,10); $("fDate").value = today; $("fDate").min = today;
+const dlg = $("dlg");
+$("form").addEventListener("submit", e => { e.preventDefault();
+  const when = new Date($("fDate").value + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Muscle Factory! I'd like to join.\nName: ${$("fName").value}\nStarting: ${sel.start}\nGoal: ${sel.goal}\nShift: ${sel.shift}\nFirst day: ${when}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
