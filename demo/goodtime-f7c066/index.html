@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Good Time Cafe · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+:root{--ink:#120F1F;--ink2:#1C1830;--pink:#FF3EA5;--cyan:#39E6FF;--yellow:#FFE45C;--text:#F4F1FF;--dim:#A7A1C2;--line:#2E2848}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font:400 17px/1.6 "Poppins",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--yellow);color:#111;font-size:14px;text-align:center;padding:9px 16px;font-weight:600}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
+.brand{font:700 20px "Poppins",system-ui,sans-serif;letter-spacing:.04em}
+.brand span{color:var(--pink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;border:0;border-radius:999px;padding:13px 24px;font:700 15px "Poppins",system-ui,sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer;box-shadow:0 0 22px rgba(255,62,165,.45);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.cy{background:var(--cyan);color:#111;box-shadow:0 0 22px rgba(57,230,255,.45)}
+.btn.line{background:transparent;border:2px solid var(--text);box-shadow:none}
+.hero{padding-block:30px 70px;text-align:center}
+.neon{font:400 clamp(56px,11vw,150px)/1 "Monoton",Impact,sans-serif;color:#fff;margin:10px 0 6px;letter-spacing:.02em;
+  text-shadow:0 0 6px #fff,0 0 18px var(--pink),0 0 42px var(--pink),0 0 80px var(--pink)}
+.neon .c{text-shadow:0 0 6px #fff,0 0 18px var(--cyan),0 0 42px var(--cyan),0 0 80px var(--cyan)}
+.neon .off{animation:flick 5s infinite}
+@keyframes flick{0%,18%,22%,62%,64%,100%{opacity:1}20%,63%{opacity:.25}}
+.hero p{color:#CFC9E6;font-size:19px;max-width:44ch;margin:8px auto 24px}
+.row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.where{margin-top:16px;color:var(--dim);font-size:15px}
+section{padding-block:80px}
+h2{font:700 clamp(32px,4.6vw,54px)/1.1 "Poppins",system-ui,sans-serif;margin:0 0 8px}
+h2 em{font-style:normal;color:var(--cyan)}
+.sub{color:var(--dim);margin:0 0 28px;max-width:56ch}
+.spin{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;background:var(--ink2);border:1px solid var(--line);border-radius:26px;padding:28px}
+.wheel-box{position:relative;width:min(420px,100%);margin:0 auto}
+#wheel{width:100%;height:auto;display:block}
+.pointer{position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-top:28px solid var(--yellow);filter:drop-shadow(0 0 8px var(--yellow))}
+.result{min-height:150px}
+.result .tag{font-weight:700;color:var(--pink);letter-spacing:.12em;text-transform:uppercase;font-size:13px}
+.result h3{font:700 40px/1.1 "Poppins",sans-serif;margin:6px 0 8px}
+.result p{color:#CFC9E6;margin:0 0 16px}
+.mood{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.mood button{font:600 14px "Poppins",system-ui,sans-serif;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer}
+.mood button[aria-pressed="true"]{background:var(--cyan);border-color:var(--cyan);color:#111}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tile{aspect-ratio:1/1;border-radius:18px;display:grid;align-items:end;padding:12px;font-weight:600;position:relative;overflow:hidden}
+.tile::after{content:"Photo";position:absolute;top:10px;right:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.t1{background:linear-gradient(145deg,#FF3EA5,#5A1240)}.t2{background:linear-gradient(145deg,#39E6FF,#124A5A)}.t3{background:linear-gradient(145deg,#FFE45C,#6A5510);color:#111}.t4{background:linear-gradient(145deg,#8E6BFF,#2A1A5A)}
+.book{background:var(--ink2);border:1px solid var(--line);border-radius:26px;padding:30px;display:grid;grid-template-columns:.9fr 1.1fr;gap:26px}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book label{display:grid;gap:6px;font-size:14px;color:var(--dim)}
+.book input,.book select{font:inherit;font-size:16px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--ink);color:var(--text);color-scheme:dark}
+.book .full{grid-column:1/-1}
+.book button{grid-column:1/-1;justify-content:center}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+.dlg{padding:24px;display:grid;gap:14px;background:#fff;color:#111}
+.dlg h3{margin:0;font:700 22px "Poppins",sans-serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+@media (max-width:900px){.spin,.book{grid-template-columns:1fr;padding:20px}.tiles{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.book form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.neon .off{animation:none}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Good Time Cafe by Prakhar Punj. Not the official site. Dishes and photos are placeholders.</div>
+
+<header class="bar"><div class="wrap"><div class="brand">GOOD <span>TIME</span> CAFE</div><a class="btn" href="#book">Book a table</a></div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="neon" aria-label="Good Time">G<span class="off">o</span>od <span class="c">Ti<span class="off">m</span>e</span></div>
+  <p>Chinese and Indian food with friends, on the first floor of Metro Tower. Can't decide what to order? Let the wheel pick.</p>
+  <div class="row"><a class="btn cy" href="#spin">Spin the wheel</a><a class="btn line" href="#book">Book for the gang</a></div>
+  <div class="where">1st floor, Metro Tower, Jeevan Shah Tiraha, Jhansi</div>
+</div></section>
+
+<section id="spin" style="padding-top:0"><div class="wrap">
+  <h2>What should we <em>order?</em></h2>
+  <p class="sub">Pick a mood and spin. Placeholder dishes until the cafe shares its menu.</p>
+  <div class="spin">
+    <div class="wheel-box"><div class="pointer" aria-hidden="true"></div><canvas id="wheel" width="840" height="840" aria-label="A wheel of dishes"></canvas></div>
+    <div>
+      <div class="mood" id="mood" role="group" aria-label="Mood"></div>
+      <div class="result" aria-live="polite"><div class="tag" id="rTag">Ready?</div><h3 id="rName">Spin to decide</h3><p id="rText">The wheel picks something for the table.</p></div>
+      <button class="btn" type="button" id="spinBtn">Spin</button>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>The place</h2>
+  <p class="sub">Photos of the cafe and the food go here.</p>
+  <div class="tiles"><div class="tile t1">The seating</div><div class="tile t2">Chinese</div><div class="tile t3">Indian</div><div class="tile t4">With friends</div></div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2>Book for <em>the gang</em></h2>
+    <p class="sub">Birthdays, get-togethers or just the weekend. The cafe confirms on WhatsApp.</p>
+    <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Good+Time+Cafe+Metro+Tower+Jeevan+Shah+Jhansi" target="_blank" rel="noopener">Get directions ↗</a>
+  </div>
+  <form id="bookForm">
+    <label>Your name<input id="bName" required placeholder="e.g. Tanya" autocomplete="name"></label>
+    <label>People<select id="bPpl"><option>2</option><option selected>4</option><option>6</option><option>8</option><option>10+</option></select></label>
+    <label>Date<input id="bDate" type="date" required></label>
+    <label>Time<select id="bTime"><option>Afternoon</option><option selected>Evening</option><option>Late evening</option></select></label>
+    <label class="full">Occasion<select id="bOcc"><option>Just hanging out</option><option>Birthday</option><option>Farewell</option><option>Date</option></select></label>
+    <button class="btn" type="submit">Book on WhatsApp</button>
+  </form>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the cafe</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const MOODS = {
+  "Chinese":[["Chilli paneer","Crispy, saucy, gone in minutes."],["Veg Manchurian","The classic for the table."],["Hakka noodles","Everyone's safe bet."],["Chilli potato","Honey or dry, your call."],["Spring rolls","For sharing, in theory."],["Fried rice","Pairs with anything."]],
+  "Indian":[["Paneer tikka","Smoky, straight from the tandoor."],["Dal makhani","Slow-cooked comfort."],["Butter naan","Order more than you think."],["Veg biryani","One plate, whole meal."],["Chole bhature","The Sunday special feeling."],["Malai kofta","Rich and creamy."]],
+  "Snacks & drinks":[["Cold coffee","Thick, with ice cream."],["French fries","Peri peri or plain."],["Masala chai","For the long chats."],["Sandwich","Grilled, with chutney."],["Mocktail","Something bright and fizzy."],["Momos","Steamed or fried."]]
+};
+const COLS = ["#FF3EA5","#39E6FF","#FFE45C","#8E6BFF","#FF8A3D","#3DFFA2"];
+let mood = "Chinese", rot = 0, spinning = false;
+$("mood").innerHTML = Object.keys(MOODS).map(m => `<button type="button" aria-pressed="${m===mood}">${m}</button>`).join("");
+$("mood").querySelectorAll("button").forEach(b => b.onclick = () => { if (spinning) return; mood = b.textContent; $("mood").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x===b))); draw(); });
+const cv = $("wheel"), ctx = cv.getContext("2d"), S = cv.width, R = S/2 - 20;
+function draw(){
+  const items = MOODS[mood], n = items.length, seg = Math.PI*2/n;
+  ctx.clearRect(0,0,S,S); ctx.save(); ctx.translate(S/2, S/2);
+  ctx.beginPath(); ctx.arc(0,0,R+12,0,6.28); ctx.fillStyle = "#1C1830"; ctx.fill();
+  ctx.shadowColor = "#FF3EA5"; ctx.shadowBlur = 30; ctx.lineWidth = 6; ctx.strokeStyle = "#FF3EA5"; ctx.stroke(); ctx.shadowBlur = 0;
+  ctx.rotate(rot);
+  items.forEach(([name],i) => { ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,R, i*seg - Math.PI/2, (i+1)*seg - Math.PI/2); ctx.closePath();
+    ctx.fillStyle = COLS[i % COLS.length]; ctx.globalAlpha = .9; ctx.fill(); ctx.globalAlpha = 1; ctx.strokeStyle = "#120F1F"; ctx.lineWidth = 4; ctx.stroke();
+    ctx.save(); ctx.rotate(i*seg + seg/2 - Math.PI/2); ctx.textAlign = "right"; ctx.fillStyle = "#120F1F"; ctx.font = "700 34px Poppins, sans-serif"; ctx.fillText(name, R - 28, 12); ctx.restore(); });
+  ctx.beginPath(); ctx.arc(0,0,58,0,6.28); ctx.fillStyle = "#120F1F"; ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = "#39E6FF"; ctx.stroke();
+  ctx.fillStyle = "#fff"; ctx.font = "700 26px Poppins, sans-serif"; ctx.textAlign = "center"; ctx.fillText("GT", 0, 10);
+  ctx.restore();
+}
+draw();
+$("spinBtn").onclick = () => {
+  if (spinning) return; spinning = true;
+  const items = MOODS[mood], n = items.length, seg = Math.PI*2/n, pick = Math.floor(Math.random()*n);
+  const targetRot = Math.PI*2*(reduce ? 0 : 6) - (pick*seg + seg/2) + (Math.random()-.5)*seg*.6;
+  const start = rot % (Math.PI*2), end = targetRot + Math.ceil((start - targetRot)/(Math.PI*2)) * Math.PI*2 + (reduce ? 0 : Math.PI*2*5);
+  const t0 = performance.now(), dur = reduce ? 1 : 3800;
+  $("rTag").textContent = "Spinning…"; $("rName").textContent = "…"; $("rText").textContent = "";
+  const step = now => { const k = Math.min(1, (now - t0)/dur), e = 1 - Math.pow(1 - k, 4); rot = start + (end - start)*e; draw();
+    if (k < 1) requestAnimationFrame(step);
+    else { spinning = false; const [name, text] = items[pick]; $("rTag").textContent = "The wheel says"; $("rName").textContent = name; $("rText").textContent = text; } };
+  requestAnimationFrame(step);
+};
+
+/* booking */
+const d = new Date(); $("bDate").value = d.toISOString().slice(0,10); $("bDate").min = $("bDate").value;
+const dlg = $("dlg");
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const when = new Date($("bDate").value+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Good Time Cafe! Table booking:\nName: ${$("bName").value}\nPeople: ${$("bPpl").value}\nWhen: ${when}, ${$("bTime").value.toLowerCase()}\nOccasion: ${$("bOcc").value}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
