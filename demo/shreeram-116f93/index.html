@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shree Ram Homestay · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Hind:wght@400;500;600;700&display=swap">
+<style>
+:root{--saffron:#E8772E;--leaf:#3F7D4E;--sand:#F4E7CF;--paper:#FFFaF1;--ink:#2B2118;--muted:#6E6155;--line:#E9DCC4;--water:#7FB7C9}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.6 "Hind",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--ink);color:var(--sand);font-size:14px;text-align:center;padding:9px 16px}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.brand{font:400 28px "Yatra One",serif;color:var(--saffron)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--saffron);color:#fff;border:0;border-radius:999px;padding:12px 22px;font:600 16px "Hind",system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.leaf{background:var(--leaf)}
+.hero{padding-block:24px 64px}
+.hero .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:center}
+.kick{display:inline-flex;align-items:center;gap:8px;background:var(--sand);border-radius:999px;padding:6px 14px;font-weight:600;font-size:15px}
+h1{font:400 clamp(44px,6vw,76px)/1.02 "Yatra One",serif;margin:14px 0 14px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--leaf)}
+.lead{font-size:19px;color:var(--muted);max-width:36ch;margin:0 0 22px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.score{margin-top:18px;font-size:15px;color:var(--muted)}.score b{color:var(--ink)}
+.mapcard{background:#fff;border:2px solid var(--line);border-radius:26px;padding:16px;box-shadow:0 24px 50px -34px rgba(43,33,24,.5)}
+.map-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:0 4px 8px}
+.map-top b{font-size:18px}
+.map-top span{font-size:13px;color:var(--muted)}
+#map{width:100%;height:auto;display:block;border-radius:16px}
+.spot{cursor:pointer;outline:none}
+.spot:focus-visible .pin{stroke:#2B2118;stroke-width:3}
+.spot circle.hit{fill:transparent}
+.spot .pin{transition:transform .2s;transform-box:fill-box;transform-origin:50% 100%}
+.spot:hover .pin,.spot.on .pin{transform:scale(1.18)}
+.spot text{font:600 13px "Hind",sans-serif;fill:#2B2118;paint-order:stroke;stroke:#FFFaF1;stroke-width:4px}
+.info{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 6px 4px;min-height:62px}
+.info b{display:block;font-size:18px}
+.info span{color:var(--muted);font-size:15px}
+.info .dist{font:400 22px "Yatra One",serif;color:var(--leaf);white-space:nowrap}
+section{padding-block:80px}
+h2{font:400 clamp(34px,4.4vw,54px)/1.05 "Yatra One",serif;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 26px;max-width:58ch}
+.perks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.perk{background:#fff;border:2px solid var(--line);border-radius:20px;padding:18px}
+.perk svg{margin-bottom:6px}
+.perk b{display:block;font-size:18px}
+.perk p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.gallery div{aspect-ratio:4/3;border-radius:16px;display:grid;align-items:end;padding:10px;color:#fff;font-weight:600;font-size:14px}
+.q1{background:linear-gradient(150deg,#E8A45E,#9C5A2B)}.q2{background:linear-gradient(150deg,#8DBF8F,#3F7D4E)}.q3{background:linear-gradient(150deg,#C9A27A,#7A5A3A)}.q4{background:linear-gradient(150deg,#7FB7C9,#3E6E80)}
+.book{background:var(--leaf);color:#fff;border-radius:26px;padding:32px;display:grid;grid-template-columns:.85fr 1.15fr;gap:28px}
+.book .sub{color:#D8EAD9}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book label{display:grid;gap:6px;font-size:15px;color:#D8EAD9}
+.book input,.book select{font:inherit;font-size:16px;padding:11px;border-radius:12px;border:1px solid #6FA27B;background:#356B43;color:#fff;color-scheme:dark}
+.book .full{grid-column:1/-1}
+.book .check{grid-column:1/-1;display:flex;gap:10px;align-items:center;font-size:16px}
+.book .check input{width:20px;height:20px;accent-color:var(--saffron)}
+.book button{grid-column:1/-1;justify-content:center}
+.book .alt{font-size:15px;color:#D8EAD9}
+footer{border-top:2px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:20px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(43,33,24,.55)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:400 26px "Yatra One",serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:900px){.hero .wrap,.book{grid-template-columns:1fr}.perks,.gallery{grid-template-columns:1fr 1fr}.book{padding:22px}}
+@media (max-width:480px){.book form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Shree Ram Homestay by Prakhar Punj. Not the official site. Photos are placeholders; the map is an illustration.</div>
+
+<header class="bar"><div class="wrap"><div class="brand">Shree Ram Homestay</div><a class="btn" href="#book">Ask for dates</a></div></header>
+
+<main>
+<section class="hero" style="padding-top:24px"><div class="wrap">
+  <div>
+    <span class="kick"><svg width="22" height="16" viewBox="0 0 44 30" fill="none" stroke="#3F7D4E" stroke-width="3" aria-hidden="true"><circle cx="9" cy="21" r="7"/><circle cx="35" cy="21" r="7"/><path d="M9 21l8-12h12l6 12M17 9l6 12h6M26 5h6"/></svg>Free bicycles for guests</span>
+    <h1>All of Orchha is <em>a short ride</em> away.</h1>
+    <p class="lead">Stay with a family in Keshav Colony, take a bicycle, and ride to the fort and temples. Tap a place on the map to see the way.</p>
+    <div class="row"><a class="btn" href="#book">Ask for your dates</a><a class="btn line" href="#stay">See the stay</a></div>
+    <div class="score"><b>4/5</b> on Tripadvisor · on Booking.com and MakeMyTrip</div>
+  </div>
+  <div class="mapcard">
+    <div class="map-top"><b>Ride from the homestay</b><span>Illustration, not to scale</span></div>
+    <svg id="map" viewBox="0 0 600 420" role="group" aria-label="Map of Orchha. Tap a place to ride there.">
+      <rect width="600" height="420" fill="#F4E7CF"/>
+      <path d="M470 0 C 430 90, 520 150, 480 230 C 440 310, 520 360, 500 420 L 600 420 L 600 0 Z" fill="#7FB7C9"/>
+      <path d="M470 0 C 430 90, 520 150, 480 230 C 440 310, 520 360, 500 420" fill="none" stroke="#5E9BB0" stroke-width="3" opacity=".6"/>
+      <g fill="#C8DDB0" opacity=".9"><circle cx="90" cy="70" r="36"/><circle cx="130" cy="330" r="44"/><circle cx="560" cy="60" r="26"/><circle cx="400" cy="380" r="30"/></g>
+      <g stroke="#E3D1B0" stroke-width="16" stroke-linecap="round" fill="none"><path d="M150 300 C 220 260, 260 230, 300 200"/><path d="M300 200 C 340 170, 380 140, 420 120"/><path d="M300 200 C 330 250, 380 300, 440 330"/><path d="M300 200 C 280 150, 250 110, 230 80"/></g>
+      <g stroke="#fff" stroke-width="2" stroke-dasharray="6 8" fill="none" opacity=".8"><path d="M150 300 C 220 260, 260 230, 300 200"/><path d="M300 200 C 340 170, 380 140, 420 120"/><path d="M300 200 C 330 250, 380 300, 440 330"/><path d="M300 200 C 280 150, 250 110, 230 80"/></g>
+      <rect x="418" y="112" width="44" height="14" rx="3" fill="#B98F63"/>
+      <path id="route" d="" fill="none" stroke="#E8772E" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 0"/>
+      <g id="spots"></g>
+      <g id="home" transform="translate(150 300)"><circle r="18" fill="#3F7D4E"/><path d="M-9 4 L0 -7 L9 4 V10 H-9Z" fill="#fff"/><text y="36" text-anchor="middle" style="font:700 13px Hind,sans-serif;fill:#2B2118;paint-order:stroke;stroke:#FFFaF1;stroke-width:4px">Homestay</text></g>
+      <g id="bike" transform="translate(150 300)"><circle r="16" fill="#fff" stroke="#E8772E" stroke-width="3"/><g transform="translate(-11 -8) scale(.5)" fill="none" stroke="#E8772E" stroke-width="4"><circle cx="9" cy="21" r="7"/><circle cx="35" cy="21" r="7"/><path d="M9 21l8-12h12l6 12M17 9l6 12h6"/></g></g>
+    </svg>
+    <div class="info" aria-live="polite"><div><b id="iName">Tap a place</b><span id="iText">The bicycle rides there from the homestay.</span></div><div class="dist" id="iDist"></div></div>
+  </div>
+</div></section>
+
+<section id="stay" style="padding-top:0"><div class="wrap">
+  <h2>The stay</h2>
+  <p class="sub">What guests mention in their reviews.</p>
+  <div class="perks">
+    <div class="perk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><path d="M3 11l9-7 9 7v9H3z"/></svg><b>Feels like home</b><p>The host family looks after you.</p></div>
+    <div class="perk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M3 12h18"/></svg><b>Big rooms</b><p>Family rooms with AC and private bathrooms.</p></div>
+    <div class="perk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><path d="M4 20h16M6 20V9h12v11M9 9V5h6v4"/></svg><b>Balcony &amp; terrace</b><p>With a view over the town.</p></div>
+    <div class="perk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><circle cx="6" cy="16" r="4"/><circle cx="18" cy="16" r="4"/><path d="M6 16l4-7h5l3 7"/></svg><b>Free bicycles</b><p>Explore Orchha at your own pace.</p></div>
+  </div>
+  <div class="gallery"><div class="q1">Room</div><div class="q2">Balcony</div><div class="q3">Terrace</div><div class="q4">Bicycles</div></div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2>Ask for your dates</h2>
+    <p class="sub">Send your dates to the family. They reply on WhatsApp with availability and the rate.</p>
+    <p class="alt">House 202, Keshav Colony, near Keshav Bhavan School, Orchha.</p>
+  </div>
+  <form id="bookForm">
+    <label>Check-in<input id="cin" type="date" required></label>
+    <label>Check-out<input id="cout" type="date" required></label>
+    <label>Guests<select id="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5+</option></select></label>
+    <label>Your name<input id="gName" required placeholder="e.g. Karan" autocomplete="name"></label>
+    <label class="check full"><input type="checkbox" id="bikes" checked> Keep bicycles ready for us</label>
+    <button class="btn" type="submit">Ask on WhatsApp</button>
+  </form>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the homestay</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn leaf" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id), NS = "http://www.w3.org/2000/svg";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const HOME = [150,300];
+const SPOTS = [
+  {n:"Orchha Fort", x:440, y:108, d:"about 650 m", t:"Across the old bridge. Jahangir Mahal and Raja Mahal are inside.", path:"M150 300 C 220 260, 260 230, 300 200 C 340 170, 380 140, 440 110", c:"#B35A2A"},
+  {n:"Jahangir Mahal", x:470, y:150, d:"about 800 m", t:"The grand palace inside the fort complex.", path:"M150 300 C 220 260, 260 230, 300 200 C 340 170, 400 140, 470 150", c:"#9C4B21"},
+  {n:"Ram Raja Temple", x:300, y:200, d:"nearby", t:"The heart of Orchha. Stay for the evening aarti.", path:"M150 300 C 220 260, 260 230, 300 200", c:"#E8772E"},
+  {n:"Chaturbhuj Temple", x:230, y:78, d:"nearby", t:"Climb up for the view over the whole town.", path:"M150 300 C 220 260, 260 230, 300 200 C 280 150, 250 110, 230 80", c:"#C9A227"},
+  {n:"Chhatris on the Betwa", x:440, y:332, d:"a short ride", t:"The royal memorial domes by the river. Go at sunset.", path:"M150 300 C 220 260, 260 230, 300 200 C 330 250, 380 300, 440 330", c:"#6B5B95"}
+];
+const g = $("spots");
+SPOTS.forEach((s,i) => {
+  const el = document.createElementNS(NS,"g"); el.setAttribute("class","spot"); el.setAttribute("tabindex","0"); el.setAttribute("role","button"); el.setAttribute("aria-label", s.n);
+  el.innerHTML = `<circle class="hit" cx="${s.x}" cy="${s.y}" r="26"/><path class="pin" d="M${s.x} ${s.y} c-10 -12 -14 -18 -14 -24 a14 14 0 0 1 28 0 c0 6 -4 12 -14 24z" fill="${s.c}"/><circle cx="${s.x}" cy="${s.y-24}" r="5" fill="#fff"/><text x="${s.x + (s.x > 420 ? -12 : 14)}" y="${s.y + 18}" text-anchor="${s.x > 420 ? "end" : "start"}">${s.n}</text>`;
+  const go = () => ride(i, el); el.addEventListener("click", go); el.addEventListener("keydown", e => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } });
+  g.appendChild(el);
+});
+let anim = null;
+function ride(i, el){
+  const s = SPOTS[i]; g.querySelectorAll(".spot").forEach(x => x.classList.toggle("on", x===el));
+  $("iName").textContent = s.n; $("iText").textContent = s.t; $("iDist").textContent = s.d;
+  const route = $("route"); route.setAttribute("d", s.path); route.setAttribute("stroke", s.c);
+  const L = route.getTotalLength(); cancelAnimationFrame(anim);
+  if (reduce){ route.style.strokeDasharray = "none"; const p = route.getPointAtLength(L); $("bike").setAttribute("transform", `translate(${p.x} ${p.y-30})`); return; }
+  route.style.strokeDasharray = `${L} ${L}`; const t0 = performance.now(), dur = 1400 + L*2;
+  const step = now => { const k = Math.min(1, (now - t0)/dur), e = k<.5 ? 2*k*k : 1 - Math.pow(-2*k+2,2)/2, len = e*L, p = route.getPointAtLength(len), q = route.getPointAtLength(Math.min(L, len+1));
+    route.style.strokeDashoffset = L - len;
+    const bob = Math.sin(now/60)*1.5;
+    $("bike").setAttribute("transform", `translate(${p.x} ${p.y - 22 + bob}) scale(${q.x < p.x ? -1 : 1} 1)`);
+    if (k < 1) anim = requestAnimationFrame(step); };
+  anim = requestAnimationFrame(step);
+}
+// gentle idle hint: ride to the temple once on load
+setTimeout(() => ride(2, g.querySelectorAll(".spot")[2]), 700);
+
+/* booking */
+const iso = d => d.toISOString().slice(0,10), a = new Date(); a.setDate(a.getDate()+14); const b = new Date(a); b.setDate(b.getDate()+2);
+$("cin").value = iso(a); $("cout").value = iso(b); $("cin").min = iso(new Date());
+const dlg = $("dlg"), fmt = v => new Date(v+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  $("bubble").textContent = `Namaste! Is a room free for these dates?\nName: ${$("gName").value}\nCheck-in: ${fmt($("cin").value)}\nCheck-out: ${fmt($("cout").value)}\nGuests: ${$("guests").value}` + ($("bikes").checked ? `\nPlease keep bicycles ready for us.` : "");
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
