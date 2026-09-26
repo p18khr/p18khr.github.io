@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blush Salon · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--cream:#FFF7F3;--rose:#E8798F;--rose2:#C9546E;--plum:#3B1F2B;--dim:#7A5F68;--line:#F0DCD9;--gold:#C9A46A}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--plum);font:400 17px/1.6 "DM Sans",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose2);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--plum);color:#fff;font-size:14px;text-align:center;padding:9px 16px}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
+.brand{font:400 28px/1 "Italiana",Georgia,serif;letter-spacing:.08em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--plum);color:#fff;border:0;border-radius:999px;padding:13px 24px;font:700 15px "DM Sans",system-ui,sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.rose{background:var(--rose2)}
+.btn.line{background:transparent;color:var(--plum);border:1.5px solid var(--plum)}
+.hero{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;cursor:crosshair}
+#bloom{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-body{position:relative;text-align:center;pointer-events:none;padding-block:60px}
+.hero-body a{pointer-events:auto}
+.hero h1{font:400 clamp(80px,17vw,200px)/.9 "Italiana",Georgia,serif;margin:0;letter-spacing:.04em}
+.hero .kick{font-weight:700;letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--rose2)}
+.hero p{font-size:19px;max-width:38ch;margin:14px auto 26px}
+.hint{font-size:13px;color:var(--dim);margin-top:18px}
+.row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+section{padding-block:80px}
+h2{font:400 clamp(38px,5.4vw,64px)/1.05 "Italiana",Georgia,serif;margin:0 0 10px}
+.sub{color:var(--dim);margin:0 0 30px;max-width:56ch}
+.palette{background:#2A1620;border-radius:28px;padding:28px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;color:#fff;box-shadow:0 30px 60px -30px rgba(59,31,43,.6)}
+.pans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pan{display:block;width:100%;aspect-ratio:1/1;border-radius:50%;border:6px solid #1A0D14;box-shadow:inset 0 0 0 2px var(--gold),0 6px 14px rgba(0,0,0,.4);cursor:pointer;position:relative;overflow:hidden;padding:0;font:inherit}
+.pan::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.45),transparent 45%)}
+.pan .swipe{position:absolute;left:-30%;top:40%;width:160%;height:26%;background:rgba(0,0,0,.18);border-radius:50%;transform:rotate(-20deg) scaleX(0);transform-origin:left;transition:transform .5s ease}
+.pan[aria-pressed="true"] .swipe{transform:rotate(-20deg) scaleX(1)}
+.pan[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--gold),0 0 0 4px #fff}
+.pan-label{display:block;text-align:center;font-size:14px;margin-top:8px;color:#EBD9DE}
+.card{background:#fff;color:var(--plum);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.card .tag{font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--rose2)}
+.card h3{font:400 40px/1 "Italiana",Georgia,serif;margin:0}
+.card p{margin:0;color:var(--dim)}
+.swatch{height:10px;border-radius:999px;transition:background .4s}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.form label{display:grid;gap:6px;font-size:14px;color:var(--dim)}
+.form input,.form select{font:inherit;font-size:16px;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--cream);color:var(--plum)}
+.form .btn{grid-column:1/-1}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.photo{aspect-ratio:4/3;border-radius:24px;background:linear-gradient(140deg,#F6C9D0,#E8798F 60%,#9C3D57);display:grid;place-items:center;color:#fff;font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(59,31,43,.55)}
+.dlg{padding:24px;display:grid;gap:14px;background:#fff}
+.dlg h3{margin:0;font:700 22px "DM Sans",sans-serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+@media (max-width:860px){.palette,.visit{grid-template-columns:1fr}.palette{padding:20px}}
+@media (max-width:480px){.form{grid-template-columns:1fr}.pans{gap:10px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pan .swipe{transition:none}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Blush Hair &amp; Beauty Salon by Prakhar Punj. Not the official site. Photos are placeholders.</div>
+
+<header class="bar"><div class="wrap"><div class="brand">BLUSH</div><a class="btn" href="#book">Book</a></div></header>
+
+<main>
+<section class="hero" id="hero" aria-label="Intro">
+  <canvas id="bloom" aria-hidden="true"></canvas>
+  <div class="wrap hero-body">
+    <div class="kick">Hair &amp; Beauty · Civil Lines, Jhansi</div>
+    <h1>Blush</h1>
+    <p>Haircuts, colour and makeup for every occasion, from a Saturday party to your engagement.</p>
+    <div class="row"><a class="btn rose" href="#book">Pick your look</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Blush+Hair+%26+Beauty+Salon+Civil+Lines+Jhansi" target="_blank" rel="noopener">Directions ↗</a></div>
+    <div class="hint">Move or tap anywhere to add colour</div>
+  </div>
+</section>
+
+<section id="book"><div class="wrap">
+  <h2>Pick your look</h2>
+  <p class="sub">Tap a shade. Each one is a service. Then send the booking straight to the salon.</p>
+  <div class="palette">
+    <div>
+      <div class="pans" id="pans"></div>
+    </div>
+    <div class="card">
+      <div class="swatch" id="sw"></div>
+      <div class="tag" id="cTag">Your shade</div>
+      <h3 id="cName"></h3>
+      <p id="cText"></p>
+      <form class="form" id="form">
+        <label>Your name<input id="fName" required placeholder="e.g. Neha" autocomplete="name"></label>
+        <label>Date<input id="fDate" type="date" required></label>
+        <label style="grid-column:1/-1">Time<select id="fTime"><option>Morning</option><option selected>Afternoon</option><option>Evening</option></select></label>
+        <button class="btn rose" type="submit">Book on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap visit">
+  <div class="photo">Salon photo</div>
+  <div>
+    <h2>Come by</h2>
+    <p class="sub">1st floor, Elite Crossing, near 48 Chamber, Civil Lines, Jhansi.</p>
+    <div class="row" style="justify-content:flex-start">
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Blush+Hair+%26+Beauty+Salon+Civil+Lines+Jhansi" target="_blank" rel="noopener">Get directions ↗</a>
+      <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Blush+Hair+%26+Beauty+Salon+Jhansi+reviews" target="_blank" rel="noopener">Read reviews ↗</a>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>Blush Hair &amp; Beauty Salon · Civil Lines, Jhansi</span><span>Demo by Prakhar Punj · p18khr.github.io</span></div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the salon</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn" type="button" id="close">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* watercolour blush blooms */
+const hero = $("hero"), cv = $("bloom"), ctx = cv.getContext("2d");
+const SHADES = ["232,121,143","246,170,160","201,84,110","250,200,190","214,140,170","240,150,120"];
+let W, H, dpr, blooms = [], lastAdd = 0;
+function size(){ dpr = Math.min(devicePixelRatio||1, 2); W = hero.clientWidth; H = hero.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+function add(x, y, big){ blooms.push({x, y, r: 4, max: (big ? 170 : 90) + Math.random()*60, c: SHADES[Math.floor(Math.random()*SHADES.length)], a: .38 + Math.random()*.14}); if (blooms.length > 70) blooms.shift(); }
+function drawBloom(b){ const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r); g.addColorStop(0, `rgba(${b.c},${b.a})`); g.addColorStop(.7, `rgba(${b.c},${b.a*.45})`); g.addColorStop(1, `rgba(${b.c},0)`); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 6.28); ctx.fill(); }
+function frame(){ ctx.clearRect(0,0,W,H);
+  blooms.forEach(b => { if (b.r < b.max) b.r += (b.max - b.r)*.05; else b.a *= .996; drawBloom(b); });
+  blooms = blooms.filter(b => b.a > .02);
+  if (!reduce) requestAnimationFrame(frame); }
+function pos(e){ const r = hero.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+hero.addEventListener("pointermove", e => { const now = performance.now(); if (now - lastAdd > 70){ lastAdd = now; add(...pos(e), false); if (reduce) frame(); } });
+hero.addEventListener("pointerdown", e => { add(...pos(e), true); if (reduce) frame(); });
+size(); addEventListener("resize", size);
+[[.18,.3],[.82,.25],[.3,.8],[.75,.78],[.5,.15]].forEach(([x,y],i) => setTimeout(() => { add(W*x, H*y, true); if (reduce) frame(); }, reduce ? 0 : i*350));
+if (!reduce) requestAnimationFrame(frame);
+
+/* palette */
+const LOOKS = [
+  ["Haircut", "#B98472", "A fresh cut, shaped to your face. Come with a photo of what you like."],
+  ["Hair colour", "#8E3B4F", "Global colour, highlights or just covering greys."],
+  ["Party makeup", "#E8798F", "For a wedding function, a birthday or a night out."],
+  ["Engagement", "#D9A0A8", "Makeup and hair for the big day before the big day."],
+  ["Bridal", "#B0243F", "Your full look for the day. Dates fill up, so book early."],
+  ["Skin & facial", "#F3C4B5", "Clean-up or facial before an event, or just because."]
+];
+let pick = 2;
+$("pans").innerHTML = LOOKS.map(([n,c],i) => `<div><button type="button" class="pan" style="background:${c}" aria-pressed="${i===pick}" aria-label="${n}"><span class="swipe"></span></button><span class="pan-label">${n}</span></div>`).join("");
+const pans = [...document.querySelectorAll(".pan")];
+function show(){ const [n,c,t] = LOOKS[pick]; $("cName").textContent = n; $("cText").textContent = t; $("sw").style.background = `linear-gradient(90deg, ${c}, ${c}55)`; pans.forEach((p,i) => p.setAttribute("aria-pressed", String(i===pick))); }
+pans.forEach((p,i) => p.onclick = () => { pick = i; show(); });
+show();
+
+const today = new Date().toISOString().slice(0,10); $("fDate").value = today; $("fDate").min = today;
+const dlg = $("dlg");
+$("form").addEventListener("submit", e => { e.preventDefault();
+  const when = new Date($("fDate").value + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Blush! I'd like to book.\nName: ${$("fName").value}\nService: ${LOOKS[pick][0]}\nWhen: ${when}, ${$("fTime").value.toLowerCase()}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
