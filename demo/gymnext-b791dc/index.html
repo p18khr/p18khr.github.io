@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GymNext Fitness Club · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+:root{--black:#0E0E10;--char:#18181C;--lime:#C6FF3D;--white:#F4F4F0;--dim:#9A9AA2;--line:#2A2A31;--hot:#FF4D4D}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--white);font:400 18px/1.55 "Barlow",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--lime);color:var(--black);font-size:14px;text-align:center;padding:9px 16px;font-weight:600}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
+.brand{font:400 28px/1 "Anton",Impact,sans-serif;letter-spacing:.04em}
+.brand span{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--black);border:0;border-radius:6px;padding:13px 22px;font:700 16px "Barlow",system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .12s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--white);border:2px solid var(--white)}
+.hero{position:relative;overflow:hidden}
+#ecg{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:1;padding-block:50px 90px}
+.hero .wrap > *{max-width:680px}
+.kick{display:inline-flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--lime)}
+h1{font:400 clamp(58px,10vw,140px)/.88 "Anton",Impact,sans-serif;text-transform:uppercase;margin:16px 0 18px;letter-spacing:.01em}
+h1 em{font-style:normal;color:var(--lime)}
+.hero p{font-size:20px;color:#CFCFD4;margin:0 0 26px;max-width:38ch}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.bpm{margin-top:26px;display:flex;gap:14px;align-items:baseline}
+.bpm b{font:400 56px/1 "Anton",sans-serif;color:var(--hot);font-variant-numeric:tabular-nums;min-width:3ch}
+.bpm span{color:var(--dim);font-size:15px}
+.heart{display:inline-block;animation:beat 1s infinite}
+@keyframes beat{15%{transform:scale(1.25)}30%{transform:scale(1)}}
+section{padding-block:84px}
+h2{font:400 clamp(40px,5.6vw,72px)/.95 "Anton",Impact,sans-serif;text-transform:uppercase;margin:0 0 10px}
+.sub{color:var(--dim);margin:0 0 28px;max-width:56ch}
+.finder{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--char);border:1px solid var(--line);border-radius:14px;padding:30px}
+.q h4{margin:0 0 10px;font:700 14px "Barlow",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{font:600 16px "Barlow",system-ui,sans-serif;padding:10px 16px;border-radius:6px;border:2px solid var(--line);background:transparent;color:var(--white);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--lime);background:var(--lime);color:var(--black)}
+.plan{border-left:4px solid var(--lime);padding-left:22px;display:grid;gap:12px;align-content:start}
+.plan .tag{font:700 13px "Barlow";letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.plan h3{margin:0;font:400 44px/1 "Anton",sans-serif;text-transform:uppercase}
+.plan ul{margin:0;padding-left:20px;color:#CFCFD4}
+.plan li{margin:4px 0}
+.plates{display:flex;align-items:center;gap:4px;height:70px;margin:4px 0}
+.plates .barl{height:8px;background:#B8B8C0;border-radius:4px;flex:0 0 40px}
+.plates .p{width:14px;border-radius:3px;transition:height .35s cubic-bezier(.3,1.6,.5,1),opacity .3s}
+.progs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.prog{border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--char);transition:border-color .2s,transform .2s}
+.prog:hover{border-color:var(--lime);transform:translateY(-3px)}
+.prog b{display:block;font:400 26px "Anton",sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.prog p{margin:6px 0 0;color:var(--dim);font-size:16px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+table{width:100%;border-collapse:collapse}
+td{padding:10px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;color:var(--dim)}
+tr.today td{color:var(--lime);font-weight:700}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book label{display:grid;gap:6px;font-size:15px;color:var(--dim)}
+.book input,.book select{font:inherit;font-size:16px;padding:12px;border-radius:6px;border:1px solid var(--line);background:var(--char);color:var(--white);color-scheme:dark}
+.book .full{grid-column:1/-1}
+.book button{grid-column:1/-1;justify-content:center}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+dialog{border:0;border-radius:14px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+.dlg{padding:24px;display:grid;gap:14px;background:var(--white);color:var(--black)}
+.dlg h3{margin:0;font:400 28px "Anton",sans-serif;text-transform:uppercase}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+@media (max-width:900px){.finder,.info{grid-template-columns:1fr}.progs{grid-template-columns:1fr 1fr}.finder{padding:22px}}
+@media (max-width:480px){.progs,.book form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.heart{animation:none}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for GymNext Fitness Club by Prakhar Punj. Not the official site. Timings and programs to be confirmed by the gym.</div>
+
+<header class="bar"><div class="wrap"><div class="brand">GYM<span>NEXT</span></div><a class="btn" href="#book">Book a trial visit</a></div></header>
+
+<main>
+<section class="hero" style="padding:0"><canvas id="ecg" aria-hidden="true"></canvas><div class="wrap">
+  <div class="kick">Unisex gym · Sipri Bazar, Jhansi</div>
+  <h1>Get your heart <em>racing.</em></h1>
+  <p>Certified trainers, personal training, nutrition help and a separate ladies batch. Tell us your goal and we'll find your batch.</p>
+  <div class="row"><a class="btn" href="#finder">Find my batch</a><a class="btn line" href="#book">Book a trial visit</a></div>
+  <div class="bpm" aria-live="off"><b id="bpm">72</b><span><span class="heart" id="heart">♥</span> bpm. Move your cursor fast to warm up.</span></div>
+</div></section>
+
+<section id="finder"><div class="wrap">
+  <h2>Find your batch</h2>
+  <p class="sub">Pick your goal and when you can come. We'll suggest where to start.</p>
+  <div class="finder">
+    <div class="q">
+      <h4>My goal</h4><div class="chips" id="goal"></div>
+      <h4>I'd train</h4><div class="chips" id="who"></div>
+      <h4>I'm a</h4><div class="chips" id="lvl"></div>
+    </div>
+    <div class="plan" aria-live="polite">
+      <div class="tag">Your starting plan</div>
+      <h3 id="pTitle"></h3>
+      <div class="plates" id="plates" aria-hidden="true"></div>
+      <ul id="pList"></ul>
+      <div><a class="btn" href="#book" id="pCta">Book a trial visit</a></div>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>What we offer</h2>
+  <p class="sub">From the gym's listing. The gym confirms details and fees.</p>
+  <div class="progs">
+    <div class="prog"><b>Personal training</b><p>One-on-one with a certified trainer.</p></div>
+    <div class="prog"><b>Nutrition help</b><p>Diet guidance that fits your goal.</p></div>
+    <div class="prog"><b>Modern equipment</b><p>Weights, machines and cardio.</p></div>
+    <div class="prog"><b>Ladies batch</b><p>A separate batch for women.</p></div>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap info">
+  <div>
+    <h2>Timings</h2>
+    <p class="sub">As listed online. The gym confirms its full hours.</p>
+    <table id="hours"></table>
+    <p class="sub" style="margin-top:20px">Near Lehar Ki Devi Mandir, Brahm Nagar Colony, ITI Main Road, Jhansi.</p>
+    <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=GymNext+Fitness+Club+Jhansi" target="_blank" rel="noopener">Get directions ↗</a>
+  </div>
+  <div class="book">
+    <h2>Book a trial visit</h2>
+    <p class="sub">Send your details. The gym replies on WhatsApp with a time.</p>
+    <form id="bookForm">
+      <label>Your name<input id="bName" required placeholder="e.g. Aditya" autocomplete="name"></label>
+      <label>Phone<input id="bPhone" required inputmode="tel" placeholder="10-digit mobile" autocomplete="tel"></label>
+      <label class="full">Day<input id="bDate" type="date" required></label>
+      <button class="btn" type="submit">Send on WhatsApp</button>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the gym</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- ECG hero: heart rate rises with how fast you move ---------- */
+const cv = $("ecg"), ctx = cv.getContext("2d");
+let W, H, bpm = 72, target = 72, lastMove = {x:0, y:0, t:0}, trace = [], phase = 0;
+function size(){ const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio||1); W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); trace = new Array(Math.ceil(W/2)).fill(0); }
+addEventListener("pointermove", e => { const now = performance.now(), dt = Math.max(16, now - lastMove.t), v = Math.hypot(e.clientX - lastMove.x, e.clientY - lastMove.y) / dt;
+  target = Math.min(170, target + v * 6); lastMove = {x:e.clientX, y:e.clientY, t:now}; });
+function beatShape(p){ // one heartbeat: small bump, sharp spike, dip, recovery
+  if (p < .08) return Math.sin(p/.08*Math.PI)*.12;
+  if (p < .14) return 0;
+  if (p < .17) return -(p-.14)/.03*.25;
+  if (p < .21) return -.25 + (p-.17)/.04*1.35;
+  if (p < .25) return 1.1 - (p-.21)/.04*1.5;
+  if (p < .29) return -.4 + (p-.25)/.04*.4;
+  if (p < .45) return Math.sin((p-.29)/.16*Math.PI)*.22;
+  return 0; }
+let last = performance.now();
+function frame(now){
+  const dt = Math.min(50, now - last); last = now;
+  target += (72 - target) * .006 * (dt/16); bpm += (target - bpm) * .05;
+  $("bpm").textContent = Math.round(bpm); $("heart").style.animationDuration = (60/bpm) + "s";
+  if (!reduce){ phase += dt/1000 * bpm/60; const steps = Math.max(1, Math.round(dt/8));
+    for (let i=0;i<steps;i++){ trace.shift(); const p = (phase - (steps-i-1)*(bpm/60)*.008) % 1; trace.push(beatShape((p+1)%1)); } }
+  ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle = "rgba(255,255,255,.05)"; ctx.lineWidth = 1;
+  for (let x=0;x<W;x+=40){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (let y=0;y<H;y+=40){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+  const base = H*.62, amp = H*.28, heat = Math.min(1, (bpm-72)/90);
+  ctx.lineWidth = 3; ctx.lineJoin = "round";
+  ctx.strokeStyle = `rgb(${198 + 57*heat|0},${255 - 178*heat|0},${61 + 16*heat|0})`;
+  ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 12;
+  ctx.beginPath(); trace.forEach((v,i) => { const x = i*2, y = base - v*amp; i ? ctx.lineTo(x,y) : ctx.moveTo(x,y); }); ctx.stroke();
+  ctx.shadowBlur = 0;
+  const g = ctx.createLinearGradient(0,0,W*.6,0); g.addColorStop(0,"rgba(14,14,16,.92)"); g.addColorStop(1,"rgba(14,14,16,0)"); ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+
+/* ---------- batch finder ---------- */
+const GOALS = {"Lose weight":{t:"Burn & build",plates:[40,34,28],l:["Cardio and circuit training, 4–5 days a week","Diet guidance from the trainer","Weekly weight and measurement check"]},
+  "Build muscle":{t:"Strength block",plates:[60,56,50,44],l:["Split training: push, pull, legs","Progressive weights with a trainer","Protein-focused diet plan"]},
+  "Get fit & active":{t:"All-round fitness",plates:[44,36],l:["Mix of weights, cardio and mobility","3–4 days a week","Pick up form before adding weight"]}};
+const WHO = ["Morning batch","Ladies batch","Other time"], LVL = ["Beginner","Been to a gym before"];
+const sel = {goal:"Lose weight", who:"Morning batch", lvl:"Beginner"};
+function chips(id, list, key){ $(id).innerHTML = list.map(x => `<button type="button" class="chip" aria-pressed="${sel[key]===x}">${x}</button>`).join("");
+  $(id).querySelectorAll(".chip").forEach(b => b.onclick = () => { sel[key] = b.textContent; chips(id, list, key); plan(); }); }
+function plan(){
+  const g = GOALS[sel.goal]; $("pTitle").textContent = g.t;
+  const extra = sel.lvl === "Beginner" ? ["First week: the trainer shows you every machine"] : ["Trainer checks your current lifts on day one"];
+  const when = sel.who === "Morning batch" ? "Morning batch, 6–11 am" : sel.who === "Ladies batch" ? "Ladies batch (timing from the gym)" : "Ask the gym for other timings";
+  $("pList").innerHTML = [when, ...g.l, ...extra].map(x => `<li>${x}</li>`).join("");
+  const cols = ["#C6FF3D","#FF4D4D","#3DD6FF","#FFB23D"];
+  $("plates").innerHTML = `<div class="barl"></div>` + g.plates.map((h,i) => `<div class="p" style="height:0;background:${cols[i%4]}"></div>`).join("") + `<div class="barl" style="flex:1"></div>`;
+  requestAnimationFrame(() => $("plates").querySelectorAll(".p").forEach((p,i) => { setTimeout(() => p.style.height = g.plates[i] + "px", reduce ? 0 : i*90); }));
+}
+chips("goal", Object.keys(GOALS), "goal"); chips("who", WHO, "who"); chips("lvl", LVL, "lvl"); plan();
+
+/* ---------- timings + booking ---------- */
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], dow = (new Date().getDay()+6)%7;
+$("hours").innerHTML = DAYS.map((d,i) => `<tr class="${i===dow?"today":""}"><td>${d}</td><td>${i===6 ? "Closed" : "6:00 – 11:00 am"}</td></tr>`).join("");
+const nd = new Date(); nd.setDate(nd.getDate()+1); if (nd.getDay() === 0) nd.setDate(nd.getDate()+1);
+$("bDate").value = nd.toISOString().slice(0,10); $("bDate").min = new Date().toISOString().slice(0,10);
+const dlg = $("dlg");
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const d = new Date($("bDate").value+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi GymNext! I'd like a trial visit.\nName: ${$("bName").value}\nPhone: ${$("bPhone").value}\nDay: ${d}\nGoal: ${sel.goal.toLowerCase()}\nBatch: ${sel.who.toLowerCase()} · ${sel.lvl.toLowerCase()}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
