@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Paradise Garden · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Mukta:wght@400;500;600;700&display=swap">
+<style>
+:root{--emerald:#0F4D3A;--emerald2:#15634B;--gold:#D9A94E;--blush:#F6C9C4;--ivory:#FFFBF4;--ink:#1D2A24;--muted:#66736C;--line:#E5DFD0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 18px/1.6 "Mukta",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+.demo{background:#000;color:var(--gold);font-size:14px;text-align:center;padding:9px 16px}
+.bar{background:var(--emerald);color:var(--ivory)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.brand{font:700 24px "Playfair Display",Georgia,serif}.brand span{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--ink);border:0;border-radius:999px;padding:13px 24px;font:700 16px "Mukta",system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:inherit;border:2px solid currentColor}
+.btn.em{background:var(--emerald);color:var(--ivory)}
+.hero{background:var(--emerald);color:var(--ivory);padding-block:26px 60px}
+.hero h1{font:700 clamp(40px,5.6vw,72px)/1.05 "Playfair Display",Georgia,serif;margin:6px 0 10px;text-wrap:balance}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p.lead{font-size:19px;color:#CFE3D9;max-width:52ch;margin:0 0 20px}
+.stage{border-radius:24px;overflow:hidden;position:relative;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+#scene{width:100%;height:auto;display:block;aspect-ratio:16/8}
+.dial{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;margin-top:16px}
+.dial span{font-weight:700;font-size:15px}
+.dial input{width:100%;accent-color:var(--gold)}
+.fn{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.fn button{font:600 15px "Mukta",system-ui,sans-serif;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:transparent;color:var(--ivory);cursor:pointer}
+.fn button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.caption{margin-top:8px;color:#CFE3D9;min-height:28px}
+section{padding-block:80px}
+h2{font:700 clamp(32px,4.4vw,52px)/1.1 "Playfair Display",Georgia,serif;margin:0 0 10px;color:var(--emerald)}
+.sub{color:var(--muted);margin:0 0 28px;max-width:58ch}
+.caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cap{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px}
+.cap b{display:block;font:700 24px "Playfair Display",serif;color:var(--emerald)}
+.cap .n{font:700 44px/1 "Playfair Display",serif;margin:10px 0 2px;font-variant-numeric:tabular-nums}
+.cap .n small{font:500 16px "Mukta",sans-serif;color:var(--muted)}
+.cap p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.enq{background:var(--emerald);color:var(--ivory);border-radius:26px;padding:32px;display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+.enq h2{color:var(--ivory)}
+.enq .sub{color:#CFE3D9}
+.enq form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.enq label{display:grid;gap:6px;font-size:15px;color:#CFE3D9}
+.enq input,.enq select{font:inherit;font-size:16px;padding:12px;border-radius:12px;border:1px solid #2E7A60;background:var(--emerald2);color:#fff;color-scheme:dark}
+.enq .full{grid-column:1/-1}
+.enq button{grid-column:1/-1;justify-content:center}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
+dialog{border:0;border-radius:20px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(15,77,58,.6)}
+.dlg{padding:24px;display:grid;gap:14px}
+.dlg h3{margin:0;font:700 24px "Playfair Display",serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:var(--muted);margin:0}
+@media (max-width:900px){.caps{grid-template-columns:1fr}.enq{grid-template-columns:1fr;padding:22px}}
+@media (max-width:480px){.enq form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for The Paradise Garden by Prakhar Punj. Not the official site. Capacities from public listings; photos are placeholders.</div>
+
+<header class="bar"><div class="wrap"><div class="brand">The Paradise <span>Garden</span></div><a class="btn" href="#enq">Check a date</a></div></header>
+
+<main>
+<section class="hero" style="padding-top:26px"><div class="wrap">
+  <h1>One garden, <em>every function</em>, morning to midnight.</h1>
+  <p class="lead">Haldi in the morning sun, mehendi in the afternoon, the wedding under the lights. Slide through the day and watch the lawn change.</p>
+  <div class="stage"><canvas id="scene" width="1280" height="640" aria-label="The lawn changing from morning to night"></canvas></div>
+  <div class="dial"><span>☀ Morning</span><input id="time" type="range" min="0" max="100" value="95" aria-label="Time of day"><span>☾ Night</span></div>
+  <div class="fn" id="fn" role="group" aria-label="Function"></div>
+  <div class="caption" id="caption" aria-live="polite"></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Room for everyone</h2>
+  <p class="sub">Capacities as listed publicly. Seated is with chairs and tables; floating is a standing crowd. The venue confirms.</p>
+  <div class="caps">
+    <div class="cap"><b>The lawn</b><div class="n">950 <small>seated</small></div><p>Up to 1,500 floating. For the big evening.</p></div>
+    <div class="cap"><b>Banquet hall</b><div class="n">450 <small>seated</small></div><p>Up to 700 floating. Indoors, for any weather.</p></div>
+    <div class="cap"><b>Together</b><div class="n">1,500 <small>seated</small></div><p>Up to 2,000 floating, using both.</p></div>
+  </div>
+</div></section>
+
+<section id="enq" style="padding-top:0"><div class="wrap"><div class="enq">
+  <div>
+    <h2>Is your date free?</h2>
+    <p class="sub">Send your date, function and guest count. The venue replies on WhatsApp with availability and packages.</p>
+    <p class="sub" style="margin:0">Mauranipur Road, Jhansi Cantt.</p>
+    <p style="margin:14px 0 0"><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=The+Paradise+Garden+Mauranipur+Road+Jhansi" target="_blank" rel="noopener">Get directions ↗</a></p>
+  </div>
+  <form id="enqForm">
+    <label>Date<input id="eDate" type="date" required></label>
+    <label>Function<select id="eFn"><option>Wedding</option><option>Reception</option><option>Haldi</option><option>Mehendi</option><option>Engagement</option><option>Other</option></select></label>
+    <label>Guests<input id="eGuests" type="number" min="50" step="50" value="600" required></label>
+    <label>Space<select id="eSpace"><option>Lawn</option><option>Banquet hall</option><option>Both</option><option>Not sure</option></select></label>
+    <label class="full">Your name<input id="eName" required placeholder="e.g. Agarwal family" autocomplete="name"></label>
+    <button class="btn" type="submit">Ask on WhatsApp</button>
+  </form>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">Demo by Prakhar Punj · p18khr.github.io</div></footer>
+
+<dialog id="dlg"><div class="dlg">
+  <h3>This message would reach the venue</h3>
+  <div class="bubble" id="bubble"></div>
+  <p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p>
+  <button class="btn em" type="button" id="close" style="justify-content:center">Got it</button>
+</div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const FNS = [["Haldi",8,"Morning: yellow drapes, marigolds and sunlight for the haldi."],["Mehendi",38,"Afternoon: shade canopies and bright colours for the mehendi."],["Sangeet",64,"Evening: the stage lights up for the sangeet."],["Wedding",90,"Night: fairy lights, the mandap glows, and the baraat arrives."]];
+$("fn").innerHTML = FNS.map(([n]) => `<button type="button" aria-pressed="false">${n}</button>`).join("");
+let tv = 95, tgt = 95;
+$("fn").querySelectorAll("button").forEach((b,i) => b.onclick = () => { tgt = FNS[i][1]; $("time").value = tgt; update(); });
+$("time").addEventListener("input", e => { tgt = +e.target.value; update(); });
+function update(){ let best = 0; FNS.forEach((f,i) => { if (Math.abs(f[1]-tgt) < Math.abs(FNS[best][1]-tgt)) best = i; });
+  $("fn").querySelectorAll("button").forEach((b,i) => b.setAttribute("aria-pressed", String(i===best))); $("caption").textContent = FNS[best][2]; }
+update();
+
+/* ---------- the lawn scene, day to night ---------- */
+const cv = $("scene"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height;
+const mix = (a,b,t) => { const pa = parseInt(a.slice(1),16), pb = parseInt(b.slice(1),16); const c = k => Math.round(((pa>>k)&255)*(1-t) + ((pb>>k)&255)*t); return `rgb(${c(16)},${c(8)},${c(0)})`; };
+function sky(t){ // t: 0 morning .. 1 night
+  const stops = [[0,"#9ED3F5","#FDF2C9"],[.45,"#7FB9E6","#FFE1A8"],[.7,"#E27D60","#F6C177"],[1,"#101838","#2B2350"]];
+  let i = 0; while (i < stops.length-2 && t > stops[i+1][0]) i++;
+  const [t0,a0,b0] = stops[i], [t1,a1,b1] = stops[i+1], k = (t - t0)/(t1 - t0);
+  return [mix(a0,a1,k), mix(b0,b1,k)];
+}
+function frame(now){
+  tv += (tgt - tv) * (reduce ? 1 : .08); const t = tv/100;
+  const [top, bot] = sky(t); const g = ctx.createLinearGradient(0,0,0,H*.55); g.addColorStop(0, top); g.addColorStop(1, bot); ctx.fillStyle = g; ctx.fillRect(0,0,W,H*.55);
+  // sun / moon arc
+  const ang = Math.PI*(1 - t*1.05), sx = W/2 + Math.cos(ang)*W*.42, sy = H*.52 - Math.sin(ang)*H*.42;
+  if (t < .82){ ctx.fillStyle = t < .6 ? "#FFE58A" : "#FFB36B"; ctx.beginPath(); ctx.arc(sx, sy, 34, 0, 6.28); ctx.fill(); }
+  else { ctx.fillStyle = "#F4F1E6"; ctx.beginPath(); ctx.arc(W*.82, H*.14, 26, 0, 6.28); ctx.fill(); ctx.fillStyle = top; ctx.beginPath(); ctx.arc(W*.82 + 10, H*.12, 24, 0, 6.28); ctx.fill();
+    for (let i=0;i<60;i++){ const x = (i*197)%W, y = (i*71)%(H*.4); ctx.fillStyle = `rgba(255,255,255,${(.3+.5*Math.abs(Math.sin(now/700+i)))*(t-.82)/.18})`; ctx.fillRect(x, y, 2, 2); } }
+  // trees
+  const tree = mix("#2E6B3E","#0B1E16",Math.max(0,(t-.55)/.45));
+  ctx.fillStyle = tree; for (let x=-20;x<W+40;x+=70){ ctx.beginPath(); ctx.arc(x, H*.55, 50 + (x*13)%30, Math.PI, 0); ctx.fill(); }
+  // lawn
+  const lg = ctx.createLinearGradient(0,H*.55,0,H); lg.addColorStop(0, mix("#6FB05A","#12301F",t)); lg.addColorStop(1, mix("#3F8A3E","#0A1D13",t)); ctx.fillStyle = lg; ctx.fillRect(0,H*.55,W,H*.45);
+  // stage + mandap
+  const mx = W*.5, my = H*.58;
+  ctx.fillStyle = mix("#F5E6C8","#5A1E3A",Math.min(1,t*1.3)); ctx.fillRect(mx-200, my-10, 400, 30);
+  const drape = t < .3 ? "#F4C430" : t < .55 ? "#2FA36B" : "#C2185B";
+  ctx.fillStyle = drape; ctx.beginPath(); ctx.moveTo(mx-150, my-10); ctx.lineTo(mx-150, my-150); ctx.quadraticCurveTo(mx, my-230, mx+150, my-150); ctx.lineTo(mx+150, my-10); ctx.lineTo(mx+120, my-10); ctx.lineTo(mx+120, my-140); ctx.quadraticCurveTo(mx, my-200, mx-120, my-140); ctx.lineTo(mx-120, my-10); ctx.closePath(); ctx.fill();
+  [-150,150].forEach(o => { ctx.fillStyle = "#D9A94E"; ctx.fillRect(mx+o-6, my-150, 12, 140); });
+  // marigold strings on the mandap
+  for (let k=0;k<9;k++){ const x = mx-120+k*30; for (let j=0;j<5;j++){ ctx.fillStyle = (j+k)%2 ? "#FFA41B" : "#FFD34E"; ctx.beginPath(); ctx.arc(x, my-150 + j*16 + Math.sin(now/600+k)*(reduce?0:2), 6, 0, 6.28); ctx.fill(); } }
+  // round tables with guests
+  for (let r=0;r<2;r++) for (let c=0;c<7;c++){ const x = W*.12 + c*W*.126 + (r%2)*40, y = H*.78 + r*H*.12, s = .8 + r*.2;
+    ctx.fillStyle = mix("#FFFFFF","#E8D9C0",t); ctx.beginPath(); ctx.ellipse(x, y, 42*s, 14*s, 0, 0, 6.28); ctx.fill();
+    for (let p=0;p<5;p++){ const px = x - 36*s + p*18*s; ctx.fillStyle = ["#C2185B","#FFA41B","#3E7BD6","#2FA36B","#8E44AD"][(p+c)%5]; ctx.beginPath(); ctx.arc(px, y - 22*s, 7*s, 0, 6.28); ctx.fill(); ctx.fillRect(px-6*s, y-16*s, 12*s, 14*s); } }
+  // canopy for afternoon
+  const shade = Math.max(0, 1 - Math.abs(t-.38)/.2);
+  if (shade > 0){ ctx.globalAlpha = shade*.85; for (let i=0;i<4;i++){ const x = W*.08 + i*W*.24; ctx.fillStyle = ["#F48FB1","#FFD34E","#80CBC4","#FFAB91"][i]; ctx.beginPath(); ctx.moveTo(x, H*.66); ctx.lineTo(x+W*.1, H*.6); ctx.lineTo(x+W*.2, H*.66); ctx.closePath(); ctx.fill(); } ctx.globalAlpha = 1; }
+  // fairy lights at night
+  const lit = Math.max(0,(t-.6)/.4);
+  if (lit > 0){ for (let s=0;s<3;s++){ for (let i=0;i<=40;i++){ const x = i/40*W, y = 30 + s*40 + Math.sin(i/40*Math.PI)*60; const a = lit*(.5+.5*Math.abs(Math.sin(now/400 + i + s))); ctx.fillStyle = `rgba(255,220,140,${a})`; ctx.beginPath(); ctx.arc(x, y, 3, 0, 6.28); ctx.fill(); ctx.fillStyle = `rgba(255,220,140,${a*.2})`; ctx.beginPath(); ctx.arc(x, y, 10, 0, 6.28); ctx.fill(); } }
+    const glow = ctx.createRadialGradient(mx, my-80, 0, mx, my-80, 260); glow.addColorStop(0, `rgba(255,200,120,${.35*lit})`); glow.addColorStop(1,"rgba(255,200,120,0)"); ctx.fillStyle = glow; ctx.fillRect(0,0,W,H); }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* ---------- enquiry ---------- */
+const d = new Date(); d.setMonth(d.getMonth()+3); $("eDate").value = d.toISOString().slice(0,10); $("eDate").min = new Date().toISOString().slice(0,10);
+const dlg = $("dlg");
+$("enqForm").addEventListener("submit", e => { e.preventDefault();
+  const when = new Date($("eDate").value+"T00:00").toLocaleDateString("en-IN",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  $("bubble").textContent = `Namaste! Is The Paradise Garden free on ${when}?\nFunction: ${$("eFn").value}\nGuests: about ${(+$("eGuests").value).toLocaleString("en-IN")}\nSpace: ${$("eSpace").value}\nName: ${$("eName").value}\nPlease share packages.`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
