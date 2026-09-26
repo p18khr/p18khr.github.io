@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap">
 <style>
-:root{--teal:#0E7C7B;--teal2:#0B5E5D;--lemon:#FFE066;--peach:#FFB4A2;--coral:#F25F5C;--ink:#1D2B2B;--muted:#5F7070;--cream:#FFFBF2;--line:#E7E1D2}
+:root{--teal:#0E7C7B;--teal2:#0B5E5D;--lemon:#FFE066;--coral:#F25F5C;--ink:#1D2B2B;--muted:#5F7070;--cream:#FFFBF2;--line:#E7E1D2}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.6 "Nunito",system-ui,sans-serif}
@@ -17,49 +17,49 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--coral);outline-offset:3px}
 .wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
 .demo{background:var(--ink);color:var(--lemon);font-size:14px;text-align:center;padding:9px 16px}
-.hero{background:var(--teal);color:#fff;overflow:hidden;position:relative}
+.hero{background:var(--teal);color:#fff}
 .top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
 .brand{font:800 24px/1 "Baloo 2",system-ui,sans-serif}
 .brand small{display:block;font:600 13px "Nunito",sans-serif;opacity:.85}
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--lemon);color:var(--ink);border:0;border-radius:16px;padding:13px 22px;font:700 16px "Nunito",system-ui,sans-serif;text-decoration:none;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.18);transition:transform .12s,box-shadow .12s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,.18)}
-.btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
 .btn.line{background:transparent;color:inherit;border:2px solid currentColor;box-shadow:none}
 .btn.teal{background:var(--teal);color:#fff}
-.hero-body{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-block:30px 70px}
-.kick{display:inline-block;background:rgba(255,255,255,.14);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px}
-h1{font:800 clamp(42px,6.2vw,80px)/1 "Baloo 2",system-ui,sans-serif;margin:14px 0 16px;text-wrap:balance}
+.hero-body{display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;align-items:center;padding-block:26px 70px}
+h1{font:800 clamp(42px,6vw,78px)/1 "Baloo 2",system-ui,sans-serif;margin:6px 0 16px;text-wrap:balance}
 h1 em{font-style:normal;color:var(--lemon)}
 .hero p{font-size:19px;opacity:.92;max-width:38ch;margin:0 0 24px}
 .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .rate{margin-top:18px;font-weight:700}.rate span{opacity:.8;font-weight:400}
-.face{justify-self:center;width:min(360px,100%)}
-.face svg{width:100%;height:auto;overflow:visible}
+.game{background:#0B5E5D;border-radius:28px;padding:18px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.08)}
+.game-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+.game-head b{font:800 22px "Baloo 2",sans-serif}
+.game-head span{font-size:14px;opacity:.8}
+#mouth{width:100%;height:auto;display:block;border-radius:18px;background:#7A2A34;touch-action:none;cursor:none}
+.meter{height:12px;border-radius:999px;background:rgba(255,255,255,.15);overflow:hidden;margin-top:12px}
+.meter i{display:block;height:100%;width:0;background:var(--lemon);transition:width .2s}
+.msg{min-height:52px;margin-top:10px;font-weight:600}
+.msg a{color:var(--lemon)}
 section{padding-block:80px}
 h2{font:800 clamp(34px,4.6vw,54px)/1.05 "Baloo 2",system-ui,sans-serif;margin:0 0 8px;color:var(--teal2)}
 .sub{color:var(--muted);margin:0 0 26px;max-width:58ch}
-.planner{background:#fff;border:2px solid var(--line);border-radius:28px;padding:28px;display:grid;grid-template-columns:.95fr 1.05fr;gap:30px}
-.add{display:grid;gap:12px;align-content:start}
-.add label{display:grid;gap:6px;font-weight:700;font-size:14px;color:var(--muted)}
-.add input,.add select{font:inherit;font-size:16px;padding:12px;border-radius:14px;border:2px solid var(--line);background:var(--cream);color:var(--ink)}
-.who{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:700 14px "Nunito",system-ui,sans-serif;padding:8px 14px;border-radius:999px;border:2px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
-.fam{display:grid;gap:10px;align-content:start}
-.member{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:12px 14px;border-radius:18px;background:var(--cream);border:2px solid var(--line);animation:in .35s cubic-bezier(.3,1.5,.5,1)}
-@keyframes in{from{opacity:0;transform:scale(.9)}}
-.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:800 18px "Baloo 2",sans-serif;color:#fff}
-.member b{display:block}
-.member small{color:var(--muted)}
-.due{font-weight:800;font-size:13px;padding:5px 10px;border-radius:999px;white-space:nowrap}
-.due.late{background:#FDE2E1;color:#B3302D}.due.soon{background:#FFF3C4;color:#7A5B00}.due.ok{background:#DDF3EE;color:#0B5E5D}
-.x{border:0;background:transparent;font-size:20px;cursor:pointer;color:var(--muted)}
-.summary{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px;padding-top:14px;border-top:2px dashed var(--line)}
-.summary b{font:800 22px "Baloo 2",sans-serif}
+.shade{background:#fff;border:2px solid var(--line);border-radius:28px;padding:28px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.shade svg{width:100%;height:auto}
+.shade input[type=range]{width:100%;accent-color:var(--teal)}
+.shade .lbl{display:flex;justify-content:space-between;font-weight:700;color:var(--muted);font-size:14px}
+.shade .now{font:800 30px "Baloo 2",sans-serif;color:var(--teal2);margin:6px 0 2px}
 .svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .svc div{background:#fff;border:2px solid var(--line);border-radius:22px;padding:18px;display:grid;gap:4px}
 .svc h3{margin:0;font:800 20px "Baloo 2",sans-serif;color:var(--teal2)}
 .svc p{margin:0;color:var(--muted);font-size:15px}
+.book{background:var(--teal2);color:#fff;border-radius:28px;padding:30px;display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+.book h2{color:#fff}
+.book .sub{color:#CDE7E4}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book label{display:grid;gap:6px;font-size:14px;font-weight:700;color:#CDE7E4}
+.book input,.book select{font:inherit;font-size:16px;padding:12px;border-radius:14px;border:2px solid #2E7F7C;background:#0E6E6C;color:#fff;color-scheme:dark}
+.book .full{grid-column:1/-1}
+.book button{grid-column:1/-1;justify-content:center}
 .visit{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
 footer{border-top:2px solid var(--line);padding-block:24px;font-size:14px;color:var(--muted)}
 dialog{border:0;border-radius:22px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
@@ -68,50 +68,43 @@ dialog::backdrop{background:rgba(11,94,93,.6)}
 .dlg h3{margin:0;font:800 24px "Baloo 2",sans-serif}
 .bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
 .dlg .note{font-size:13px;color:var(--muted);margin:0}
-@media (max-width:900px){.hero-body,.planner,.visit{grid-template-columns:1fr}.svc{grid-template-columns:1fr 1fr}.face{width:240px}}
-@media (max-width:480px){.svc{grid-template-columns:1fr}.member{grid-template-columns:auto 1fr auto}.member .x{grid-column:3;grid-row:1}.member .due{grid-column:2/-1}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.member{animation:none}}
+@media (max-width:900px){.hero-body,.shade,.book,.visit{grid-template-columns:1fr}.svc{grid-template-columns:1fr 1fr}.book{padding:22px}}
+@media (max-width:480px){.svc,.book form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <div class="demo">Demo made for Dr. Anand Poly Dental Care by Prakhar Punj. Not the clinic's official site. Treatments listed are examples.</div>
 
 <header class="hero">
-  <div class="top"><div class="wrap"><div class="brand">Dr. Anand<small>Poly Dental Care</small></div><a class="btn" href="#family">Plan a visit</a></div></div>
+  <div class="top"><div class="wrap"><div class="brand">Dr. Anand<small>Poly Dental Care</small></div><a class="btn" href="#book">Book a visit</a></div></div>
   <div class="wrap hero-body">
     <div>
-      <span class="kick">A family practice on New Road</span>
-      <h1>One visit. <em>The whole family's</em> check-up.</h1>
-      <p>Add everyone at home, see who's due for a check-up, and book them together. Kids, parents and grandparents.</p>
-      <div class="row"><a class="btn" href="#family">Plan my family's visit</a><a class="btn line" href="#services">Treatments</a></div>
-      <div class="rate">4.9★ <span>from 330+ ratings on Justdial</span></div>
+      <h1>Brush all you like. <em>Some of it</em> only we can remove.</h1>
+      <p>Try it: scrub the teeth clean with your finger or mouse. Then book a professional cleaning for the part a brush can't reach.</p>
+      <div class="row"><a class="btn" href="#book">Book a cleaning</a><a class="btn line" href="#whiten">Try the shade slider</a></div>
+      <div class="rate">4.9★ <span>from 330+ ratings on Justdial · New Road, Jhansi</span></div>
     </div>
-    <div class="face" aria-hidden="true">
-      <svg viewBox="0 0 300 300">
-        <circle cx="150" cy="150" r="130" fill="#FFE066"/>
-        <g id="eyes"><ellipse cx="108" cy="118" rx="12" ry="16" fill="#1D2B2B"/><ellipse cx="192" cy="118" rx="12" ry="16" fill="#1D2B2B"/></g>
-        <circle cx="86" cy="168" r="14" fill="#FFB4A2" opacity=".8"/><circle cx="214" cy="168" r="14" fill="#FFB4A2" opacity=".8"/>
-        <path id="mouth" d="M90 180 Q150 180 210 180 Q150 180 90 180Z" fill="#8C2F39"/>
-        <path id="teeth" d="M100 182 L200 182 L200 182 L100 182Z" fill="#fff"/>
-      </svg>
+    <div class="game">
+      <div class="game-head"><b>Scrub the plaque off</b><span id="pct">0% clean</span></div>
+      <canvas id="mouth" width="560" height="360" aria-label="Teeth covered in plaque. Drag across them to brush it off."></canvas>
+      <div class="meter" aria-hidden="true"><i id="bar"></i></div>
+      <div class="msg" id="msg" aria-live="polite">Drag across the teeth to brush.</div>
     </div>
   </div>
 </header>
 
 <main>
-<section id="family"><div class="wrap">
-  <h2>Who's due for a check-up?</h2>
-  <p class="sub">Dentists usually suggest a check-up every six months. Add your family and see who's overdue.</p>
-  <div class="planner">
-    <form class="add" id="addForm">
-      <label>Name<input id="mName" placeholder="e.g. Aarav" required></label>
-      <div><div style="font-weight:700;font-size:14px;color:var(--muted);margin-bottom:6px">Who</div><div class="who" id="who" role="group" aria-label="Who"></div></div>
-      <label>Last dental visit<select id="mLast"><option value="1">About a month ago</option><option value="3">3 months ago</option><option value="6">6 months ago</option><option value="12" selected>About a year ago</option><option value="24">2+ years ago</option><option value="99">Never / can't remember</option></select></label>
-      <button class="btn teal" type="submit">Add to family</button>
-    </form>
+<section id="whiten"><div class="wrap">
+  <h2>Thinking about whitening?</h2>
+  <p class="sub">Dentists match tooth colour against a shade guide. Slide to see the range. The dentist advises what's realistic for your teeth.</p>
+  <div class="shade">
+    <svg viewBox="0 0 420 180" aria-hidden="true"><rect width="420" height="180" rx="22" fill="#8C2F39"/><g id="shadeTeeth"></g></svg>
     <div>
-      <div class="fam" id="fam" aria-live="polite"></div>
-      <div class="summary"><div><b id="sumN">0 due</b><div style="color:var(--muted);font-size:14px" id="sumT">Add someone to start.</div></div><button class="btn" type="button" id="send" disabled>Book together on WhatsApp</button></div>
+      <div class="lbl"><span>Natural</span><span>Brighter</span></div>
+      <input type="range" id="shadeIn" min="0" max="100" value="0" aria-label="Tooth shade">
+      <div class="now" id="shadeName">Shade A3.5</div>
+      <p class="sub" style="margin:0" id="shadeNote">A common natural shade, slightly yellow.</p>
     </div>
   </div>
 </div></section>
@@ -120,15 +113,31 @@ dialog::backdrop{background:rgba(11,94,93,.6)}
   <h2>Treatments</h2>
   <p class="sub">Examples. The clinic confirms its full list and fees.</p>
   <div class="svc">
-    <div><h3>Check-ups</h3><p>For every age, including first visits for kids.</p></div>
-    <div><h3>Root canals</h3><p>To save a badly decayed tooth.</p></div>
+    <div><h3>Cleaning</h3><p>Scaling and polishing to remove tartar.</p></div>
     <div><h3>Fillings</h3><p>Tooth-coloured, for cavities.</p></div>
+    <div><h3>Root canals</h3><p>To save a badly decayed tooth.</p></div>
     <div><h3>Whitening</h3><p>For a brighter smile.</p></div>
   </div>
 </div></section>
 
+<section id="book" style="padding-top:0"><div class="wrap"><div class="book">
+  <div>
+    <h2>Book a visit</h2>
+    <p class="sub">Pick a day and send the request. The clinic confirms the time on WhatsApp.</p>
+    <p class="sub" style="margin:0">38 Dr. Raj Ki Dhal, New Road, opposite Hotel Bhawna, Jhansi.</p>
+  </div>
+  <form id="bookForm">
+    <label>Your name<input id="bName" required placeholder="e.g. Rohit" autocomplete="name"></label>
+    <label>Phone<input id="bPhone" required inputmode="tel" placeholder="10-digit mobile" autocomplete="tel"></label>
+    <label class="full">For<select id="bFor"><option>Cleaning</option><option>Check-up</option><option>Tooth pain</option><option>Filling</option><option>Root canal</option><option>Whitening</option></select></label>
+    <label>Date<input id="bDate" type="date" required></label>
+    <label>Time<select id="bTime"><option>Morning</option><option selected>Afternoon</option><option>Evening</option></select></label>
+    <button class="btn" type="submit">Send on WhatsApp</button>
+  </form>
+</div></div></section>
+
 <section style="padding-top:0"><div class="wrap visit">
-  <div><h2>Find us</h2><p class="sub">38 Dr. Raj Ki Dhal, New Road, opposite Hotel Bhawna, Jhansi.</p></div>
+  <div><h2>Find us</h2><p class="sub">New Road, opposite Hotel Bhawna, Jhansi.</p></div>
   <div class="row"><a class="btn teal" href="https://www.google.com/maps/search/?api=1&query=Dr+Anand+Poly+Dental+Care+New+Road+Jhansi" target="_blank" rel="noopener">Get directions ↗</a><a class="btn line" style="color:var(--teal2)" href="https://www.google.com/maps/search/?api=1&query=Dr+Anand+Poly+Dental+Care+New+Road+Jhansi" target="_blank" rel="noopener">Read reviews on Google ↗</a></div>
 </div></section>
 </main>
@@ -146,48 +155,89 @@ dialog::backdrop{background:rgba(11,94,93,.6)}
 const $ = id => document.getElementById(id);
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* the smile: it widens as the family list grows, and follows the cursor with its eyes */
-let smile = .35, target = .35;
-function drawSmile(){
-  smile += (target - smile) * .08;
-  const w = 60 + smile*55, depth = 10 + smile*70, y = 178;
-  $("mouth").setAttribute("d", `M${150-w} ${y} Q150 ${y+depth*1.3} ${150+w} ${y} Q150 ${y+depth*.35} ${150-w} ${y}Z`);
-  const tw = w*.78, ty = y + depth*.18;
-  $("teeth").setAttribute("d", `M${150-tw} ${y+2} Q150 ${ty+6} ${150+tw} ${y+2} L${150+tw*.92} ${ty+8} Q150 ${ty+14} ${150-tw*.92} ${ty+8}Z`);
-  if (!reduce) requestAnimationFrame(drawSmile);
+/* ---------- the brushing game ---------- */
+const cv = $("mouth"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height;
+const plaque = document.createElement("canvas"); plaque.width = W; plaque.height = H; const pctx = plaque.getContext("2d");
+const teeth = [];
+function toothRow(y, up){
+  const n = 8, span = 460, x0 = (W - span)/2;
+  for (let i=0;i<n;i++){ const k = Math.abs(i - 3.5), w = k < 1 ? 58 : k < 2 ? 54 : k < 3 ? 52 : 50, h = (k < 1 ? 104 : k < 2 ? 96 : k < 3 ? 100 : 88);
+    const x = x0 + i*(span/n) + (span/n - w)/2, yy = up ? y + (k*k*1.6) : y - h - (k*k*1.6); teeth.push({x, y:yy, w, h, up}); }
 }
-drawSmile(); if (reduce){ smile = target; }
-addEventListener("pointermove", e => { if (reduce) return; const dx = (e.clientX/innerWidth - .5)*10, dy = (e.clientY/innerHeight - .5)*8;
-  $("eyes").setAttribute("transform", `translate(${dx} ${dy})`); });
+toothRow(40, true); toothRow(H-40, false);
+function toothPath(c, t, keep){ const r = 16; if (!keep) c.beginPath();
+  if (t.up){ c.moveTo(t.x, t.y); c.lineTo(t.x+t.w, t.y); c.lineTo(t.x+t.w, t.y+t.h-r); c.quadraticCurveTo(t.x+t.w, t.y+t.h, t.x+t.w-r, t.y+t.h); c.lineTo(t.x+r, t.y+t.h); c.quadraticCurveTo(t.x, t.y+t.h, t.x, t.y+t.h-r); }
+  else { c.moveTo(t.x, t.y+t.h); c.lineTo(t.x+t.w, t.y+t.h); c.lineTo(t.x+t.w, t.y+r); c.quadraticCurveTo(t.x+t.w, t.y, t.x+t.w-r, t.y); c.lineTo(t.x+r, t.y); c.quadraticCurveTo(t.x, t.y, t.x, t.y+r); }
+  c.closePath(); }
+// plaque: blotches concentrated near the gum line, clipped to the teeth
+function seedPlaque(){
+  pctx.clearRect(0,0,W,H); pctx.save(); pctx.beginPath(); teeth.forEach(t => { toothPath(pctx, t, true); }); pctx.clip();
+  for (let i=0;i<520;i++){ const t = teeth[i % teeth.length], gx = t.x + Math.random()*t.w, near = Math.pow(Math.random(), 1.8)*t.h;
+    const gy = t.up ? t.y + near : t.y + t.h - near, r = 6 + Math.random()*14;
+    pctx.fillStyle = `rgba(${196+Math.random()*20|0},${160+Math.random()*25|0},${70+Math.random()*30|0},${.55+Math.random()*.35})`;
+    pctx.beginPath(); pctx.arc(gx, gy, r, 0, 6.28); pctx.fill(); }
+  pctx.restore();
+}
+seedPlaque();
+const total = (() => { const d = pctx.getImageData(0,0,W,H).data; let n = 0; for (let i=3;i<d.length;i+=16) if (d[i] > 40) n++; return n; })();
+let brush = {x:W*.7, y:H*.5, on:false}, last = null, clean = 0, done = false, bubbles = [];
+function pos(e){ const r = cv.getBoundingClientRect(); return {x:(e.clientX - r.left)*W/r.width, y:(e.clientY - r.top)*H/r.height}; }
+function scrub(p){
+  pctx.save(); pctx.globalCompositeOperation = "destination-out"; pctx.lineCap = "round"; pctx.lineWidth = 34;
+  pctx.beginPath(); pctx.moveTo((last||p).x, (last||p).y); pctx.lineTo(p.x, p.y); pctx.stroke(); pctx.restore();
+  if (!reduce && Math.random() < .5) bubbles.push({x:p.x + (Math.random()-.5)*30, y:p.y + (Math.random()-.5)*20, r:3+Math.random()*6, life:1});
+  last = p;
+}
+cv.addEventListener("pointerdown", e => { cv.setPointerCapture(e.pointerId); brush.on = true; last = null; const p = pos(e); brush.x = p.x; brush.y = p.y; scrub(p); });
+cv.addEventListener("pointermove", e => { const p = pos(e); brush.x = p.x; brush.y = p.y; if (brush.on || e.pointerType === "mouse" && e.buttons) scrub(p); else if (e.pointerType === "mouse") { scrub(p); } });
+cv.addEventListener("pointerup", () => { brush.on = false; last = null; });
+cv.addEventListener("pointerleave", () => { last = null; });
+let frameN = 0;
+function measure(){
+  const d = pctx.getImageData(0,0,W,H).data; let n = 0; for (let i=3;i<d.length;i+=16) if (d[i] > 40) n++;
+  clean = Math.max(0, Math.min(100, Math.round((1 - n/total) * 100)));
+  $("pct").textContent = clean + "% clean"; $("bar").style.width = clean + "%";
+  if (clean >= 92 && !done){ done = true;
+    $("msg").innerHTML = `Sparkling! In real life, plaque you miss hardens into tartar, and a brush can't remove that. <a href="#book">Book a cleaning →</a>`;
+    for (let i=0;i<40;i++) bubbles.push({x:Math.random()*W, y:Math.random()*H, r:2+Math.random()*4, life:1, star:true}); }
+  else if (!done && clean > 0) $("msg").textContent = clean < 50 ? "Keep going. Don't forget near the gums." : "Nearly there. Check the corners.";
+}
+function draw(){
+  ctx.fillStyle = "#7A2A34"; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle = "#E88A93"; ctx.beginPath(); ctx.ellipse(W/2, 22, W*.55, 48, 0, 0, 6.28); ctx.fill(); ctx.beginPath(); ctx.ellipse(W/2, H-22, W*.55, 48, 0, 0, 6.28); ctx.fill();
+  teeth.forEach(t => { toothPath(ctx, t); const g = ctx.createLinearGradient(t.x, 0, t.x+t.w, 0); g.addColorStop(0,"#EDE6D8"); g.addColorStop(.45,"#FFFFFF"); g.addColorStop(1,"#E4DCCB"); ctx.fillStyle = g; ctx.fill(); ctx.strokeStyle = "rgba(0,0,0,.08)"; ctx.lineWidth = 2; ctx.stroke(); });
+  ctx.drawImage(plaque, 0, 0);
+  bubbles = bubbles.filter(b => (b.life -= b.star ? .012 : .03) > 0);
+  bubbles.forEach(b => { ctx.globalAlpha = b.life; if (b.star){ ctx.fillStyle = "#FFE066"; ctx.beginPath(); for (let k=0;k<8;k++){ const a = k*Math.PI/4, r = k%2 ? b.r*.4 : b.r*1.6; ctx.lineTo(b.x + Math.cos(a)*r, b.y + Math.sin(a)*r); } ctx.fill(); }
+    else { ctx.strokeStyle = "#FFFFFF"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(b.x, b.y - (1-b.life)*10, b.r, 0, 6.28); ctx.stroke(); } ctx.globalAlpha = 1; });
+  // the toothbrush follows the pointer
+  ctx.save(); ctx.translate(brush.x, brush.y); ctx.rotate(-.5 + (reduce ? 0 : Math.sin(performance.now()/60)*.06*(brush.on ? 1 : .3)));
+  ctx.fillStyle = "#0E7C7B"; ctx.beginPath(); ctx.roundRect ? ctx.roundRect(10, -9, 150, 18, 9) : ctx.rect(10, -9, 150, 18); ctx.fill();
+  ctx.fillStyle = "#F25F5C"; ctx.beginPath(); ctx.roundRect ? ctx.roundRect(-34, -14, 48, 12, 4) : ctx.rect(-34, -14, 48, 12); ctx.fill();
+  ctx.fillStyle = "#FFFFFF"; for (let k=0;k<7;k++) ctx.fillRect(-32 + k*6.5, -30, 4, 17);
+  ctx.restore();
+  if (++frameN % 10 === 0) measure();
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
 
-/* family planner */
-const WHO = [["Child","#F25F5C"],["Teen","#FFB703"],["Adult","#0E7C7B"],["Senior","#6C63FF"]]; let who = "Adult";
-$("who").innerHTML = WHO.map(([w]) => `<button type="button" class="chip" aria-pressed="${w===who}">${w}</button>`).join("");
-$("who").querySelectorAll(".chip").forEach(b => b.onclick = () => { who = b.textContent; $("who").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x===b))); });
-const fam = [
-  {name:"Papa", who:"Adult", months:12},
-  {name:"Chhotu", who:"Child", months:24}
-];
-const colour = w => (WHO.find(x => x[0]===w) || WHO[2])[1];
-function status(m){ if (m >= 99) return ["late","Never checked"]; if (m >= 6) return ["late", `Overdue by ${m-6 >= 1 ? (m-6)+" mo" : "a bit"}`]; if (m >= 5) return ["soon","Due soon"]; return ["ok", `Due in ${6-m} mo`]; }
-function render(){
-  $("fam").innerHTML = fam.map((f,i) => { const [cls, txt] = status(f.months);
-    return `<div class="member"><div class="av" style="background:${colour(f.who)}">${f.name.slice(0,1).toUpperCase()}</div><div><b>${f.name.replace(/[<>&]/g,"")}</b><small>${f.who}</small></div><span class="due ${cls}">${txt}</span><button class="x" type="button" data-i="${i}" aria-label="Remove ${f.name.replace(/[<>&"]/g,"")}">×</button></div>`; }).join("");
-  $("fam").querySelectorAll(".x").forEach(b => b.onclick = () => { fam.splice(+b.dataset.i, 1); render(); });
-  const due = fam.filter(f => f.months >= 5).length;
-  $("sumN").textContent = `${due} due`;
-  $("sumT").textContent = fam.length ? `${fam.length} in the family · book everyone in one visit` : "Add someone to start.";
-  $("send").disabled = !fam.length;
-  target = Math.min(1, .35 + fam.length*.16);
-}
-$("addForm").addEventListener("submit", e => { e.preventDefault(); const n = $("mName").value.trim(); if (!n) return;
-  fam.push({name:n, who, months:+$("mLast").value}); $("mName").value = ""; render(); });
-render();
+/* ---------- shade slider ---------- */
+const SHADES = [["A3.5","#E7D2A6","A common natural shade, slightly yellow."],["A3","#EDDBB4","Natural, a little warm."],["A2","#F2E4C4","A typical healthy shade."],["A1","#F6ECD6","Light and natural."],["B1","#FAF4E6","Among the brightest natural shades."]];
+const st = $("shadeTeeth");
+for (let i=0;i<7;i++){ const w = 50, x = 25 + i*54, h = i===3 ? 118 : i===2||i===4 ? 110 : 100; st.insertAdjacentHTML("beforeend", `<rect class="st" x="${x}" y="${30}" width="${w}" height="${h}" rx="14"/>`); }
+function lerp(a,b,t){ const pa = parseInt(a.slice(1),16), pb = parseInt(b.slice(1),16); const c = k => Math.round(((pa>>k)&255)*(1-t) + ((pb>>k)&255)*t); return `rgb(${c(16)},${c(8)},${c(0)})`; }
+function shade(){ const v = +$("shadeIn").value/100*(SHADES.length-1), i = Math.min(SHADES.length-2, Math.floor(v)), t = v - i, near = SHADES[Math.round(v)];
+  st.querySelectorAll(".st").forEach(r => r.setAttribute("fill", lerp(SHADES[i][1], SHADES[i+1][1], t)));
+  $("shadeName").textContent = "Shade " + near[0]; $("shadeNote").textContent = near[2]; }
+$("shadeIn").addEventListener("input", shade); shade();
+
+/* ---------- booking ---------- */
+const nd = new Date(); nd.setDate(nd.getDate()+1); $("bDate").value = nd.toISOString().slice(0,10); $("bDate").min = new Date().toISOString().slice(0,10);
 const dlg = $("dlg");
-$("send").onclick = () => {
-  $("bubble").textContent = `Hi Doctor, I'd like to book check-ups for my family, together if possible:\n` + fam.map(f => `• ${f.name} (${f.who.toLowerCase()}) – ${status(f.months)[1].toLowerCase()}`).join("\n") + `\nWhat time works this week?`;
-  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open","");
-};
+$("bookForm").addEventListener("submit", e => { e.preventDefault();
+  const d = new Date($("bDate").value+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Doctor, I'd like to book a visit.\nName: ${$("bName").value}\nPhone: ${$("bPhone").value}\nFor: ${$("bFor").value}\nWhen: ${d}, ${$("bTime").value.toLowerCase()}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
 $("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
 </script>
 </body>
