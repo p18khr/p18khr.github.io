@@ -87,15 +87,15 @@ dialog::backdrop{background:rgba(43,33,24,.55)}
 <main>
 <section class="hero" style="padding-top:24px"><div class="wrap">
   <div>
-    <span class="kick"><svg width="22" height="16" viewBox="0 0 44 30" fill="none" stroke="#3F7D4E" stroke-width="3" aria-hidden="true"><circle cx="9" cy="21" r="7"/><circle cx="35" cy="21" r="7"/><path d="M9 21l8-12h12l6 12M17 9l6 12h6M26 5h6"/></svg>Free bicycles for guests</span>
-    <h1>All of Orchha is <em>a short ride</em> away.</h1>
-    <p class="lead">Stay with a family in Keshav Colony, take a bicycle, and ride to the fort and temples. Tap a place on the map to see the way.</p>
+    <span class="kick"><svg width="16" height="20" viewBox="0 0 24 30" fill="none" stroke="#3F7D4E" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="13" cy="4" r="3"/><path d="M12 9l-3 9 5 5v6M9 18l-4 6M12 9l5 5 4-2M12 9l-4 3-3 5"/></svg>A short walk to the fort</span>
+    <h1>All of Orchha is <em>a short walk</em> away.</h1>
+    <p class="lead">Stay with a family in Keshav Colony and walk to the fort and temples. Tap a place on the map to see the way.</p>
     <div class="row"><a class="btn" href="#book">Ask for your dates</a><a class="btn line" href="#stay">See the stay</a></div>
     <div class="score"><b>4/5</b> on Tripadvisor · on Booking.com and MakeMyTrip</div>
   </div>
   <div class="mapcard">
-    <div class="map-top"><b>Ride from the homestay</b><span>Illustration, not to scale</span></div>
-    <svg id="map" viewBox="0 0 600 420" role="group" aria-label="Map of Orchha. Tap a place to ride there.">
+    <div class="map-top"><b>Walk from the homestay</b><span>Illustration, not to scale</span></div>
+    <svg id="map" viewBox="0 0 600 420" role="group" aria-label="Map of Orchha. Tap a place to see the walk there.">
       <rect width="600" height="420" fill="#F4E7CF"/>
       <path d="M470 0 C 430 90, 520 150, 480 230 C 440 310, 520 360, 500 420 L 600 420 L 600 0 Z" fill="#7FB7C9"/>
       <path d="M470 0 C 430 90, 520 150, 480 230 C 440 310, 520 360, 500 420" fill="none" stroke="#5E9BB0" stroke-width="3" opacity=".6"/>
@@ -106,9 +106,9 @@ dialog::backdrop{background:rgba(43,33,24,.55)}
       <path id="route" d="" fill="none" stroke="#E8772E" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 0"/>
       <g id="spots"></g>
       <g id="home" transform="translate(150 300)"><circle r="18" fill="#3F7D4E"/><path d="M-9 4 L0 -7 L9 4 V10 H-9Z" fill="#fff"/><text y="36" text-anchor="middle" style="font:700 13px Hind,sans-serif;fill:#2B2118;paint-order:stroke;stroke:#FFFaF1;stroke-width:4px">Homestay</text></g>
-      <g id="bike" transform="translate(150 300)"><circle r="16" fill="#fff" stroke="#E8772E" stroke-width="3"/><g transform="translate(-11 -8) scale(.5)" fill="none" stroke="#E8772E" stroke-width="4"><circle cx="9" cy="21" r="7"/><circle cx="35" cy="21" r="7"/><path d="M9 21l8-12h12l6 12M17 9l6 12h6"/></g></g>
+      <g id="bike" transform="translate(150 300)"><circle r="16" fill="#fff" stroke="#E8772E" stroke-width="3"/><g transform="translate(-6 -10) scale(.6)" fill="none" stroke="#E8772E" stroke-width="3.2" stroke-linecap="round"><circle cx="13" cy="4" r="3"/><path d="M12 9l-3 9 5 5v6M9 18l-4 6M12 9l5 5 4-2M12 9l-4 3-3 5"/></g></g>
     </svg>
-    <div class="info" aria-live="polite"><div><b id="iName">Tap a place</b><span id="iText">The bicycle rides there from the homestay.</span></div><div class="dist" id="iDist"></div></div>
+    <div class="info" aria-live="polite"><div><b id="iName">Tap a place</b><span id="iText">See the way on foot from the homestay.</span></div><div class="dist" id="iDist"></div></div>
   </div>
 </div></section>
 
@@ -119,9 +119,9 @@ dialog::backdrop{background:rgba(43,33,24,.55)}
     <div class="perk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><path d="M3 11l9-7 9 7v9H3z"/></svg><b>Feels like home</b><p>The host family looks after you.</p></div>
     <div class="perk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M3 12h18"/></svg><b>Big rooms</b><p>Family rooms with AC and private bathrooms.</p></div>
     <div class="perk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><path d="M4 20h16M6 20V9h12v11M9 9V5h6v4"/></svg><b>Balcony &amp; terrace</b><p>With a view over the town.</p></div>
-    <div class="perk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><circle cx="6" cy="16" r="4"/><circle cx="18" cy="16" r="4"/><path d="M6 16l4-7h5l3 7"/></svg><b>Free bicycles</b><p>Explore Orchha at your own pace.</p></div>
+    <div class="perk"><svg width="28" height="28" viewBox="0 0 24 30" fill="none" stroke="#E8772E" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="13" cy="4" r="3"/><path d="M12 9l-3 9 5 5v6M9 18l-4 6M12 9l5 5 4-2M12 9l-4 3-3 5"/></svg><b>Near the sights</b><p>The fort is about 650 m away.</p></div>
   </div>
-  <div class="gallery"><div class="q1">Room</div><div class="q2">Balcony</div><div class="q3">Terrace</div><div class="q4">Bicycles</div></div>
+  <div class="gallery"><div class="q1">Room</div><div class="q2">Balcony</div><div class="q3">Terrace</div><div class="q4">Old town lanes</div></div>
 </div></section>
 
 <section id="book" style="padding-top:0"><div class="wrap"><div class="book">
@@ -135,7 +135,6 @@ dialog::backdrop{background:rgba(43,33,24,.55)}
     <label>Check-out<input id="cout" type="date" required></label>
     <label>Guests<select id="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5+</option></select></label>
     <label>Your name<input id="gName" required placeholder="e.g. Karan" autocomplete="name"></label>
-    <label class="check full"><input type="checkbox" id="bikes" checked> Keep bicycles ready for us</label>
     <button class="btn" type="submit">Ask on WhatsApp</button>
   </form>
 </div></div></section>
@@ -155,11 +154,11 @@ const $ = id => document.getElementById(id), NS = "http://www.w3.org/2000/svg";
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const HOME = [150,300];
 const SPOTS = [
-  {n:"Orchha Fort", x:440, y:108, d:"about 650 m", t:"Across the old bridge. Jahangir Mahal and Raja Mahal are inside.", path:"M150 300 C 220 260, 260 230, 300 200 C 340 170, 380 140, 440 110", c:"#B35A2A"},
-  {n:"Jahangir Mahal", x:470, y:150, d:"about 800 m", t:"The grand palace inside the fort complex.", path:"M150 300 C 220 260, 260 230, 300 200 C 340 170, 400 140, 470 150", c:"#9C4B21"},
+  {n:"Orchha Fort", x:440, y:108, d:"about 650 m · ~8 min", t:"Across the old bridge. Jahangir Mahal and Raja Mahal are inside.", path:"M150 300 C 220 260, 260 230, 300 200 C 340 170, 380 140, 440 110", c:"#B35A2A"},
+  {n:"Jahangir Mahal", x:470, y:150, d:"about 800 m · ~10 min", t:"The grand palace inside the fort complex.", path:"M150 300 C 220 260, 260 230, 300 200 C 340 170, 400 140, 470 150", c:"#9C4B21"},
   {n:"Ram Raja Temple", x:300, y:200, d:"nearby", t:"The heart of Orchha. Stay for the evening aarti.", path:"M150 300 C 220 260, 260 230, 300 200", c:"#E8772E"},
   {n:"Chaturbhuj Temple", x:230, y:78, d:"nearby", t:"Climb up for the view over the whole town.", path:"M150 300 C 220 260, 260 230, 300 200 C 280 150, 250 110, 230 80", c:"#C9A227"},
-  {n:"Chhatris on the Betwa", x:440, y:332, d:"a short ride", t:"The royal memorial domes by the river. Go at sunset.", path:"M150 300 C 220 260, 260 230, 300 200 C 330 250, 380 300, 440 330", c:"#6B5B95"}
+  {n:"Chhatris on the Betwa", x:440, y:332, d:"a short walk", t:"The royal memorial domes by the river. Go at sunset.", path:"M150 300 C 220 260, 260 230, 300 200 C 330 250, 380 300, 440 330", c:"#6B5B95"}
 ];
 const g = $("spots");
 SPOTS.forEach((s,i) => {
@@ -175,10 +174,10 @@ function ride(i, el){
   const route = $("route"); route.setAttribute("d", s.path); route.setAttribute("stroke", s.c);
   const L = route.getTotalLength(); cancelAnimationFrame(anim);
   if (reduce){ route.style.strokeDasharray = "none"; const p = route.getPointAtLength(L); $("bike").setAttribute("transform", `translate(${p.x} ${p.y-30})`); return; }
-  route.style.strokeDasharray = `${L} ${L}`; const t0 = performance.now(), dur = 1400 + L*2;
+  route.style.strokeDasharray = `${L} ${L}`; const t0 = performance.now(), dur = 2200 + L*3.5;
   const step = now => { const k = Math.min(1, (now - t0)/dur), e = k<.5 ? 2*k*k : 1 - Math.pow(-2*k+2,2)/2, len = e*L, p = route.getPointAtLength(len), q = route.getPointAtLength(Math.min(L, len+1));
     route.style.strokeDashoffset = L - len;
-    const bob = Math.sin(now/60)*1.5;
+    const bob = Math.abs(Math.sin(now/120))*-3;
     $("bike").setAttribute("transform", `translate(${p.x} ${p.y - 22 + bob}) scale(${q.x < p.x ? -1 : 1} 1)`);
     if (k < 1) anim = requestAnimationFrame(step); };
   anim = requestAnimationFrame(step);
@@ -191,7 +190,7 @@ const iso = d => d.toISOString().slice(0,10), a = new Date(); a.setDate(a.getDat
 $("cin").value = iso(a); $("cout").value = iso(b); $("cin").min = iso(new Date());
 const dlg = $("dlg"), fmt = v => new Date(v+"T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
 $("bookForm").addEventListener("submit", e => { e.preventDefault();
-  $("bubble").textContent = `Namaste! Is a room free for these dates?\nName: ${$("gName").value}\nCheck-in: ${fmt($("cin").value)}\nCheck-out: ${fmt($("cout").value)}\nGuests: ${$("guests").value}` + ($("bikes").checked ? `\nPlease keep bicycles ready for us.` : "");
+  $("bubble").textContent = `Namaste! Is a room free for these dates?\nName: ${$("gName").value}\nCheck-in: ${fmt($("cin").value)}\nCheck-out: ${fmt($("cout").value)}\nGuests: ${$("guests").value}`;
   dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
 $("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
 </script>
