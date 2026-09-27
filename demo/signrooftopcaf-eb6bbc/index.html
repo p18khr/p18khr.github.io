@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign Roof Top Cafe · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;600;700&display=swap">
+<style>
+:root{--night:#0E1230;--night2:#171C45;--glow:#FFB547;--rose:#FF7A6B;--text:#F3EFFF;--dim:#A9A6C9;--line:#2A2F63}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--text);font:400 17px/1.6 "Manrope",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.demo{background:var(--glow);color:#1A1200;font-size:14px;text-align:center;padding:9px 16px;font-weight:600}
+.bar{position:absolute;top:0;left:0;right:0;z-index:3}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:16px}
+.brand{font:700 26px/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.14em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--glow);color:#1A1200;border:0;border-radius:999px;padding:13px 22px;font:700 15px "Manrope",system-ui,sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .15s;box-shadow:0 0 24px rgba(255,181,71,.35)}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--text);border:1.5px solid var(--text);box-shadow:none}
+.hero{position:relative;min-height:92vh;overflow:hidden;display:grid;align-items:center}
+#sky{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:pointer;touch-action:manipulation}
+.hero-body{position:relative;z-index:2;pointer-events:none;padding-block:110px 170px}
+.hero-body a{pointer-events:auto}
+.lift{display:inline-flex;align-items:center;gap:10px;font:700 13px "Manrope",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--glow);border:1px solid rgba(255,181,71,.4);border-radius:6px;padding:6px 12px;background:rgba(14,18,48,.5)}
+.lift b{font:700 22px/1 "Manrope",monospace;min-width:1.4em;text-align:center}
+.hero h1{font:500 clamp(54px,10vw,128px)/.95 "Cormorant Garamond",Georgia,serif;margin:18px 0 12px}
+.hero h1 em{color:var(--glow);font-style:italic}
+.hero p{text-shadow:0 1px 10px rgba(7,6,26,.9);font-size:19px;color:#D4D0EE;max-width:38ch;margin:0 0 24px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.hint{margin-top:18px;font-size:14px;color:var(--dim)}
+section{padding-block:80px}
+h2{font:500 clamp(38px,5.6vw,64px)/1.02 "Cormorant Garamond",Georgia,serif;margin:0 0 10px}
+h2 em{color:var(--glow);font-style:italic}
+.sub{color:var(--dim);margin:0 0 30px;max-width:56ch}
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.panel{background:var(--night2);border:1px solid var(--line);border-radius:24px;padding:26px}
+.q{margin-bottom:18px}
+.q b{display:block;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:600 15px "Manrope",system-ui,sans-serif;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--glow);border-color:var(--glow);color:#1A1200}
+.ticket{background:linear-gradient(160deg,#241C4F,#141836);border:1px solid var(--line);border-radius:24px;padding:26px;position:relative;overflow:hidden}
+.ticket::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,181,71,.35),transparent 70%)}
+.ticket .tag{font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--glow)}
+.ticket h3{font:500 40px/1.05 "Cormorant Garamond",Georgia,serif;margin:6px 0 12px}
+.ticket dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0 0 18px}
+.ticket dt{color:var(--dim)}
+.ticket dd{margin:0;font-weight:600}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form label{display:grid;gap:6px;font-size:14px;color:var(--dim)}
+.form input{width:100%;min-width:0;font:inherit;font-size:16px;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--night);color:var(--text);color-scheme:dark}
+.form .btn{grid-column:1/-1;white-space:normal}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tile{aspect-ratio:1/1;border-radius:18px;display:grid;align-items:end;padding:12px;font-weight:700;position:relative;overflow:hidden}
+.tile::after{content:"Photo";position:absolute;top:10px;right:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.t1{background:linear-gradient(160deg,#FF7A6B,#3B1D5A)}.t2{background:linear-gradient(160deg,#FFB547,#5A2E12)}.t3{background:linear-gradient(160deg,#6B7BFF,#1A1F55)}.t4{background:linear-gradient(160deg,#3FC9B0,#133D4A)}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:14px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+dialog::backdrop{background:rgba(5,6,20,.7)}
+.dlg{padding:24px;display:grid;gap:14px;background:#fff;color:#111}
+.dlg h3{margin:0;font:700 22px "Manrope",sans-serif}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:15px}
+.dlg .note{font-size:13px;color:#555;margin:0}
+.dlg .btn{box-shadow:none}
+@media (max-width:860px){.plan{grid-template-columns:minmax(0,1fr)}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.panel,.ticket{padding:20px}}
+@media (max-width:480px){.form{grid-template-columns:minmax(0,1fr)}.brand{font-size:21px}.hero-body{padding-block:90px 150px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Sign Roof Top Cafe by Prakhar Punj. Not the official site. Photos are placeholders.</div>
+
+<section class="hero" aria-label="Intro" style="padding:0">
+  <header class="bar"><div class="wrap"><div class="brand">SIGN ROOF TOP CAFE</div><a class="btn" href="#plan">Book a table</a></div></header>
+  <canvas id="sky" aria-label="The city at night from the rooftop. Tap to release a sky lantern."></canvas>
+  <div class="wrap hero-body">
+    <span class="lift" aria-label="Rooftop"><span aria-hidden="true">▲</span><b id="floor">G</b><span id="floorTxt">Going up</span></span>
+    <h1>Leave the city<br><em>below you.</em></h1>
+    <p>A rooftop in Sipri Bazar. Food, the night sky, and the whole of Jhansi at your feet.</p>
+    <div class="row"><a class="btn" href="#plan">Plan your evening</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Sign+Roof+Top+Cafe+Sipri+Bazar+Jhansi" target="_blank" rel="noopener">Directions ↗</a></div>
+    <div class="hint">Tap the sky to let a lantern go</div>
+  </div>
+</section>
+
+<main>
+<section id="plan"><div class="wrap">
+  <h2>Plan your <em>evening</em></h2>
+  <p class="sub">Three taps. The rooftop gets your request on WhatsApp and confirms your table.</p>
+  <div class="plan">
+    <div class="panel">
+      <div class="q"><b>What's the occasion?</b><div class="chips" data-k="occ"></div></div>
+      <div class="q"><b>How many of you?</b><div class="chips" data-k="ppl"></div></div>
+      <div class="q"><b>When do you want to go up?</b><div class="chips" data-k="time"></div></div>
+    </div>
+    <div class="ticket">
+      <div class="tag">Your evening</div>
+      <h3 id="tTitle"></h3>
+      <dl><dt>Guests</dt><dd id="tPpl"></dd><dt>Time</dt><dd id="tTime"></dd><dt>Where</dt><dd>Sipri Bazar</dd></dl>
+      <form class="form" id="form">
+        <label>Your name<input id="fName" required placeholder="e.g. Nikhil" autocomplete="name"></label>
+        <label>Date<input id="fDate" type="date" required></label>
+        <button class="btn" type="submit">Book on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Up here</h2>
+  <p class="sub">Photos of the rooftop, the view and the food go here. The full menu stays on Zomato.</p>
+  <div class="tiles"><div class="tile t1">The view</div><div class="tile t2">Evenings</div><div class="tile t3">Indian &amp; Chinese</div><div class="tile t4">Continental</div></div>
+  <div class="links">
+    <a class="btn line" href="https://www.zomato.com/jhansi/sign-roof-top-cafe-and-family-restaurant-sipri-bazaar" target="_blank" rel="noopener">Menu on Zomato ↗</a>
+    <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Sign+Roof+Top+Cafe+Jhansi+reviews" target="_blank" rel="noopener">Read reviews ↗</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>Sign Roof Top Cafe · Sipri Bazar, Jhansi</span><span>Demo by Prakhar Punj · p18khr.github.io</span></div></footer>
+
+<dialog id="dlg"><div class="dlg"><h3>This message would reach the rooftop</h3><div class="bubble" id="bubble"></div><p class="note">On the real site, this opens WhatsApp with the message ready to send. The demo sends nothing.</p><button class="btn" type="button" id="close">Got it</button></div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* lift indicator: G → 4 */
+(function(){ const fl = ["G","1","2","3","R"]; let i = 0;
+  const go = () => { $("floor").textContent = fl[i]; if (i === fl.length-1){ $("floorTxt").textContent = "Rooftop"; return; } i++; setTimeout(go, reduce ? 0 : 420); };
+  go(); })();
+
+/* sky: stars, skyline, lanterns */
+const cv = $("sky"), ctx = cv.getContext("2d");
+let W, H, dpr, stars = [], towers = [], lanterns = [], t = 0;
+function build(){
+  dpr = Math.min(devicePixelRatio||1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  stars = Array.from({length: Math.round(W*H/5000)}, () => ({x: Math.random()*W, y: Math.random()*H*.6, r: Math.random()*1.4 + .3, p: Math.random()*6.28}));
+  towers = []; let x = -10; const base = baseY(); const small = W < 600;
+  while (x < W + 20){ const w = 24 + Math.random()*60, h = 30 + Math.random()*(H*(small ? .09 : .2)); const wins = [];
+    for (let yy = base - h + 10; yy < base - 8; yy += 14) for (let xx = x + 6; xx < x + w - 6; xx += 12) if (Math.random() < .35) wins.push([xx, yy, Math.random()]);
+    towers.push({x, w, h, wins}); x += w + 2 + Math.random()*6; }
+  // the fort on its hill, far left
+}
+function baseY(){ return W < 600 ? H*.91 : H*.84; }
+function sky(){
+  const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#0B0F2B"); g.addColorStop(.55, "#1D1A4A"); g.addColorStop(.82, "#5A2E5E"); g.addColorStop(1, "#C45B55");
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  stars.forEach(s => { ctx.globalAlpha = .4 + .6*Math.abs(Math.sin(s.p + t*.02)); ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.28); ctx.fill(); }); ctx.globalAlpha = 1;
+  // moon
+  ctx.fillStyle = "#FFF3D6"; ctx.shadowColor = "#FFF3D6"; ctx.shadowBlur = 30; ctx.beginPath(); ctx.arc(W*.82, H*.2, Math.min(W,H)*.045, 0, 6.28); ctx.fill(); ctx.shadowBlur = 0;
+  // fort silhouette on a hill
+  const fx = W*.16, fy = H*.74; ctx.fillStyle = "#15122F";
+  if (W >= 600){ ctx.beginPath(); ctx.moveTo(fx - 160, H*.84); ctx.quadraticCurveTo(fx, fy - 10, fx + 170, H*.84); ctx.fill();
+  ctx.fillRect(fx - 70, fy - 48, 140, 40); for (let i = 0; i < 8; i++) ctx.fillRect(fx - 70 + i*19, fy - 58, 10, 12); ctx.fillRect(fx - 20, fy - 80, 26, 34); }
+  // skyline
+  const base = baseY();
+  towers.forEach(o => { ctx.fillStyle = "#0D0B24"; ctx.fillRect(o.x, base - o.h, o.w, o.h);
+    o.wins.forEach(([x,y,p]) => { const on = Math.sin(t*.01 + p*20) > -.6; if (on){ ctx.fillStyle = p > .8 ? "#9FD3FF" : "#FFC96B"; ctx.globalAlpha = .75; ctx.fillRect(x, y, 5, 6); } }); ctx.globalAlpha = 1; });
+  // rooftop railing (foreground)
+  ctx.fillStyle = "#07061A"; ctx.fillRect(0, base, W, H - base);
+  ctx.strokeStyle = "rgba(255,181,71,.55)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, base + 6); ctx.lineTo(W, base + 6); ctx.stroke();
+  for (let x = 0; x < W; x += 36){ ctx.beginPath(); ctx.moveTo(x, base + 6); ctx.lineTo(x, H); ctx.stroke(); }
+  // string lights along the railing
+  for (let x = 12; x < W; x += 28){ const y = base - 10 + Math.sin(x/60)*6; ctx.fillStyle = `rgba(255,${190 + Math.round(40*Math.sin(t*.05 + x)) },110,.95)`; ctx.beginPath(); ctx.arc(x, y, 3, 0, 6.28); ctx.fill(); }
+}
+function lanternDraw(l){
+  ctx.save(); ctx.translate(l.x, l.y); ctx.rotate(Math.sin(l.p + t*.03)*.08);
+  const s = l.s; const g = ctx.createRadialGradient(0, 0, 2, 0, 0, 34*s); g.addColorStop(0, `rgba(255,190,90,${.5*l.a})`); g.addColorStop(1, "rgba(255,160,60,0)");
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, 34*s, 0, 6.28); ctx.fill();
+  ctx.globalAlpha = l.a; ctx.fillStyle = "#FF9C3A"; ctx.beginPath(); ctx.moveTo(-10*s, -14*s); ctx.lineTo(10*s, -14*s); ctx.lineTo(7*s, 14*s); ctx.lineTo(-7*s, 14*s); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = "#FFE3A3"; ctx.fillRect(-4*s, 4*s, 8*s, 8*s); ctx.restore(); ctx.globalAlpha = 1;
+}
+function add(x, y){ lanterns.push({x, y, s: .8 + Math.random()*.6, vy: .5 + Math.random()*.5, p: Math.random()*6, a: 1}); if (lanterns.length > 40) lanterns.shift(); }
+function frame(){ t++; sky();
+  lanterns.forEach(l => { l.y -= l.vy; l.x += Math.sin(l.p + t*.02)*.3; if (l.y < H*.25) l.a -= .004; lanternDraw(l); });
+  lanterns = lanterns.filter(l => l.a > 0);
+  if (!reduce) requestAnimationFrame(frame); }
+cv.addEventListener("pointerdown", e => { const r = cv.getBoundingClientRect(); add(e.clientX - r.left, e.clientY - r.top); if (reduce) frame(); });
+build(); addEventListener("resize", () => { build(); if (reduce) frame(); });
+if (!reduce){ [[.3,.8],[.55,.75],[.72,.85]].forEach(([x,y],i) => setTimeout(() => add(W*x, H*y), 600 + i*700)); requestAnimationFrame(frame); }
+else { add(W*.55, H*.45); frame(); }
+
+/* plan your evening */
+const OPT = { occ:["Birthday","Date night","Friends' night","Family dinner","Anniversary"], ppl:["2","3–4","5–8","9–15","Bigger group"], time:["Sunset","Dinner","Late evening"] };
+const TITLE = {"Birthday":"A birthday under the sky","Date night":"A table for two, up top","Friends' night":"The gang's night out","Family dinner":"Dinner with the family","Anniversary":"An anniversary with a view"};
+const sel = { occ:"Date night", ppl:"2", time:"Sunset" };
+document.querySelectorAll(".chips").forEach(g => { const k = g.dataset.k;
+  g.innerHTML = OPT[k].map(o => `<button type="button" aria-pressed="${o===sel[k]}">${o}</button>`).join("");
+  g.querySelectorAll("button").forEach(b => b.onclick = () => { sel[k] = b.textContent; g.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x===b))); ticket(); }); });
+function ticket(){ $("tTitle").textContent = TITLE[sel.occ]; $("tPpl").textContent = sel.ppl; $("tTime").textContent = sel.time; }
+ticket();
+const today = new Date().toISOString().slice(0,10); $("fDate").value = today; $("fDate").min = today;
+const dlg = $("dlg");
+$("form").addEventListener("submit", e => { e.preventDefault();
+  const when = new Date($("fDate").value + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+  $("bubble").textContent = `Hi Sign Roof Top Cafe! Table booking:\nName: ${$("fName").value}\nOccasion: ${sel.occ}\nGuests: ${sel.ppl}\nWhen: ${when}, ${sel.time.toLowerCase()}`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open",""); });
+$("close").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
