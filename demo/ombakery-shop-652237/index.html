@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Om Bakery · Online cakes · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap">
+<style>
+:root{--brand:#C2185B;--brand2:#E91E63;--ink:#1F1A1C;--dim:#6B6166;--bg:#FFF7F9;--card:#fff;--line:#F2DDE4;--ok:#1B8A5A;--gold:#F6B73C}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 "Poppins",system-ui,sans-serif}
+a{color:inherit}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
+.demo{background:#1F1A1C;color:#fff;font-size:13px;text-align:center;padding:8px 14px}
+/* header */
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding-block:12px}
+.logo{font:400 26px/1 "Pacifico",cursive;color:var(--brand);text-decoration:none;white-space:nowrap}
+.search{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:0 12px}
+.search input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:15px;padding:11px 0;color:var(--ink);outline:none}
+.hright{display:flex;gap:10px;align-items:center}
+.loc{font-size:12px;color:var(--dim);line-height:1.2;white-space:nowrap}
+.loc b{display:block;color:var(--ink);font-size:14px}
+.cartbtn{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:#fff;border:0;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+.cartbtn .n{background:#fff;color:var(--brand);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;font-weight:700}
+.bump{animation:bump .35s}
+@keyframes bump{50%{transform:scale(1.12)}}
+/* banner */
+.banner{margin-top:16px;border-radius:18px;overflow:hidden;position:relative;height:220px;background:#FCE4EC}
+.slide{position:absolute;inset:0;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;padding:0 34px;opacity:0;transition:opacity .6s}
+.slide.on{opacity:1}
+.slide h2{font:700 clamp(22px,3.4vw,38px)/1.15 "Poppins",sans-serif;margin:0 0 6px}
+.slide p{margin:0 0 14px;color:inherit;opacity:.85}
+.slide .go{display:inline-block;background:#fff;color:var(--ink);border-radius:999px;padding:9px 18px;font-weight:600;text-decoration:none;cursor:pointer;border:0}
+.slide svg{width:100%;max-height:190px}
+.dots{position:absolute;left:34px;bottom:14px;display:flex;gap:6px}
+.dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5)}
+.dots i.on{background:#fff;width:20px;border-radius:4px}
+/* occasions */
+.occ{display:flex;gap:14px;overflow-x:auto;padding:18px 2px 6px;scrollbar-width:none}
+.occ::-webkit-scrollbar{display:none}
+.occ button{flex:0 0 auto;display:grid;justify-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);font-size:13px;font-weight:500}
+.occ .ic{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:#fff;border:2px solid var(--line);transition:border-color .2s,transform .2s}
+.occ button[aria-pressed="true"] .ic{border-color:var(--brand);transform:translateY(-2px)}
+.occ button[aria-pressed="true"]{color:var(--brand)}
+/* toolbar */
+.tool{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:14px 0}
+.tool h3{margin:0;font-size:20px}
+.tool .f{display:flex;gap:8px;flex-wrap:wrap}
+.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer;color:var(--ink)}
+.pill[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+select.pill{appearance:auto}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s;text-align:left;padding:0}
+.p:hover{transform:translateY(-3px);box-shadow:0 12px 24px -16px rgba(194,24,91,.5)}
+.p .img{aspect-ratio:1/1;display:grid;place-items:center;position:relative}
+.p .img svg{width:70%;height:auto}
+.p .tag{position:absolute;left:8px;top:8px;background:#fff;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:600}
+.p .egg{position:absolute;right:8px;top:8px;width:16px;height:16px;border:2px solid var(--ok);border-radius:3px;display:grid;place-items:center;background:#fff}
+.p .egg::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.p .info{padding:10px 12px 12px;display:grid;gap:2px}
+.p .nm{font-weight:600;font-size:14px;line-height:1.3}
+.p .pr{font-weight:700}
+.p .pr s{color:var(--dim);font-weight:400;font-size:12px;margin-left:6px}
+.p .del{font-size:12px;color:var(--ok)}
+.empty{grid-column:1/-1;text-align:center;color:var(--dim);padding:40px}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:34px 0}
+.why div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;font-size:13px;color:var(--dim)}
+.why b{display:block;color:var(--ink);font-size:14px}
+footer{background:#1F1A1C;color:#CFC6CA;padding:26px 0;font-size:13px;margin-top:30px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:#fff}
+/* product sheet */
+.sheet,.drawer{position:fixed;inset:0;z-index:50;display:none}
+.sheet.open,.drawer.open{display:block}
+.scrim{position:absolute;inset:0;background:rgba(31,26,28,.55)}
+.sheet .box{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(880px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;background:#fff;border-radius:18px;display:grid;grid-template-columns:1fr 1fr}
+.sheet .pic{display:grid;place-items:center;min-height:320px;position:relative}
+.sheet .pic svg{width:72%}
+.sheet .pic img{position:absolute;width:34%;aspect-ratio:1/1;object-fit:cover;border-radius:50%;border:4px solid #fff;top:34%;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.sheet .body{padding:22px;display:grid;gap:14px;align-content:start}
+.sheet h3{margin:0;font-size:22px}
+.price{font-size:26px;font-weight:700}
+.opt b{display:block;font-size:13px;margin-bottom:6px}
+.opt .row{display:flex;flex-wrap:wrap;gap:8px}
+.opt input[type=text],.opt input[type=date],.opt input[type=file],.fld{width:100%;min-width:0;font:inherit;font-size:15px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.sw{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer}
+.sw input{width:18px;height:18px;accent-color:var(--ok)}
+.cta{display:flex;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:13px 18px;font-weight:600;cursor:pointer;background:var(--brand);color:#fff;flex:1;text-decoration:none}
+.btn.ghost{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+.btn.wa{background:#25D366;color:#073B1C}
+.x{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;border:0;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer;font-size:18px;z-index:2}
+/* cart drawer */
+.drawer .panel{position:absolute;right:0;top:0;bottom:0;width:min(420px,100vw);background:#fff;display:flex;flex-direction:column}
+.drawer header{padding:16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.drawer header h3{margin:0}
+.items{flex:1;overflow:auto;padding:12px 16px;display:grid;gap:10px;align-content:start}
+.it{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:8px}
+.it .th{width:56px;height:56px;border-radius:10px;display:grid;place-items:center}
+.it .th svg{width:80%}
+.it small{color:var(--dim);display:block;line-height:1.3}
+.it button{border:0;background:none;color:var(--dim);cursor:pointer;font-size:13px}
+.checkout{border-top:1px solid var(--line);padding:14px 16px;display:grid;gap:10px}
+.tot{display:flex;justify-content:space-between;font-weight:700;font-size:17px}
+.pay{font-size:12px;color:var(--dim)}
+dialog{border:0;border-radius:16px;padding:0;max-width:min(440px,calc(100vw - 24px))}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dlg{padding:22px;display:grid;gap:12px}
+.dlg h3{margin:0}
+.bubble{background:#DCF8C6;border-radius:12px 12px 2px 12px;padding:12px 14px;white-space:pre-line;font-size:14px;max-height:50vh;overflow:auto}
+.dlg .note{font-size:12px;color:#555;margin:0}
+@media (max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.why{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:680px){
+  .top .wrap{grid-template-columns:1fr auto;}
+  .search{grid-column:1/-1;order:3}
+  .loc{display:none}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .banner{height:190px}.slide{padding:0 18px;grid-template-columns:1.3fr 1fr}.dots{left:18px}
+  .sheet .box{grid-template-columns:1fr;top:auto;bottom:0;left:0;transform:none;width:100%;max-height:92vh;border-radius:18px 18px 0 0}
+  .sheet .pic{min-height:220px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.slide{transition:none}.p{transition:none}.bump{animation:none}}
+</style>
+</head>
+<body>
+<div class="demo">Demo made for Om Bakery by Prakhar Punj. Not the official site. Cakes, photos and prices are samples — the real ones go here.</div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#">Om Bakery</a>
+  <label class="search" aria-label="Search cakes"><span aria-hidden="true">🔍</span><input id="q" type="search" placeholder="Search chocolate, photo cake, eggless…"></label>
+  <div class="hright">
+    <div class="loc">Delivering in<b>Jhansi</b></div>
+    <button class="cartbtn" id="cartBtn" type="button" aria-label="Open cart"><span aria-hidden="true">🛒</span><span class="lbl">Cart</span><span class="n" id="cartN">0</span></button>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <div class="banner" id="banner" aria-roledescription="carousel"></div>
+  <nav class="occ" id="occ" aria-label="Shop by occasion"></nav>
+
+  <div class="tool">
+    <h3 id="title">All cakes</h3>
+    <div class="f">
+      <button class="pill" type="button" id="eggOnly" aria-pressed="false">Eggless only</button>
+      <select class="pill" id="sort" aria-label="Sort"><option value="pop">Popular</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <div class="why">
+    <div><b>Same-day delivery</b>Order by afternoon, get it today in Jhansi</div>
+    <div><b>Midnight surprise</b>Delivered between 11:30 and 11:55 pm</div>
+    <div><b>Your photo, your message</b>On any cake, at no fuss</div>
+    <div><b>Pay your way</b>UPI or cash on delivery</div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <span>Om Bakery · Civil Lines, Jhansi · <a href="https://www.google.com/maps/search/?api=1&query=Om+Bakery+Civil+Lines+Jhansi" target="_blank" rel="noopener">Directions ↗</a></span>
+  <span>Demo by Prakhar Punj · p18khr.github.io</span>
+</div></footer>
+
+<!-- product sheet -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sName">
+  <div class="scrim" data-close></div>
+  <div class="box">
+    <button class="x" type="button" data-close aria-label="Close">✕</button>
+    <div class="pic" id="sPic"></div>
+    <div class="body">
+      <div><h3 id="sName"></h3><div class="pay" id="sDesc"></div></div>
+      <div class="price" id="sPrice"></div>
+      <div class="opt"><b>Weight</b><div class="row" id="sWt"></div></div>
+      <label class="sw"><input type="checkbox" id="sEgg"> Make it eggless</label>
+      <div class="opt"><b>Message on cake</b><input type="text" id="sMsg" maxlength="30" placeholder="e.g. Happy Birthday Riya"></div>
+      <div class="opt" id="photoOpt"><b>Photo on cake</b><input type="file" id="sPhoto" accept="image/*"></div>
+      <div class="opt"><b>Delivery date</b><input type="date" id="sDate"></div>
+      <div class="opt"><b>Delivery time</b><div class="row" id="sSlot"></div></div>
+      <div class="cta"><button class="btn ghost" type="button" id="sAdd">Add to cart</button><button class="btn" type="button" id="sBuy">Buy now</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- cart drawer -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Cart">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <header><h3>Your cart</h3><button class="x" style="position:static" type="button" data-close aria-label="Close">✕</button></header>
+    <div class="items" id="items"></div>
+    <div class="checkout">
+      <div class="tot"><span>Total</span><span id="tot">₹0</span></div>
+      <input class="fld" id="cName" placeholder="Your name" autocomplete="name">
+      <input class="fld" id="cAddr" placeholder="Delivery address in Jhansi" autocomplete="street-address">
+      <button class="btn wa" type="button" id="order">Place order on WhatsApp</button>
+      <div class="pay">The bakery confirms on WhatsApp. Pay by UPI or cash on delivery.</div>
+    </div>
+  </div>
+</div>
+
+<dialog id="dlg"><div class="dlg"><h3>This order would reach Om Bakery</h3><div class="bubble" id="bubble"></div><p class="note">On the real site, this opens WhatsApp with the order ready to send. The demo sends nothing.</p><button class="btn" type="button" id="dlgClose">Got it</button></div></dialog>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const rs = n => "₹" + n.toLocaleString("en-IN");
+/* a drawn cake, coloured per product — stands in for a real photo */
+function cake(c){ const [sp, fr, top] = c;
+  return `<svg viewBox="0 0 200 180" aria-hidden="true"><ellipse cx="100" cy="162" rx="84" ry="12" fill="rgba(0,0,0,.08)"/>
+  <rect x="26" y="78" width="148" height="78" rx="12" fill="${fr}"/><rect x="26" y="112" width="148" height="10" fill="${sp}" opacity=".85"/>
+  <ellipse cx="100" cy="78" rx="74" ry="16" fill="${fr}" stroke="rgba(0,0,0,.06)"/>
+  ${Array.from({length:9},(_,i)=>`<circle cx="${36+i*16}" cy="${84+(i%2)*3}" r="7" fill="${fr}" stroke="rgba(0,0,0,.08)"/>`).join("")}
+  ${top==="cherry"?[-30,0,30].map(d=>`<circle cx="${100+d}" cy="66" r="8" fill="#C8102E"/>`).join(""):""}
+  ${top==="choco"?Array.from({length:7},(_,i)=>`<rect x="${52+i*14}" y="60" width="6" height="16" rx="2" fill="#4A2A18"/>`).join(""):""}
+  ${top==="candle"?[-24,0,24].map(d=>`<rect x="${97+d}" y="44" width="6" height="26" rx="2" fill="#fff" stroke="${sp}"/><path d="M${100+d} 34 q6 8 0 12 q-6-4 0-12z" fill="#FFB400"/>`).join(""):""}
+  ${top==="sprinkle"?Array.from({length:18},()=>{const x=40+Math.random()*120,y=68+Math.random()*16;return `<rect x="${x}" y="${y}" width="7" height="2.5" rx="1" fill="${["#E91E63","#F6B73C","#4DD0E1","#7C4DFF"][Math.floor(Math.random()*4)]}" transform="rotate(${Math.random()*180} ${x} ${y})"/>`}).join(""):""}
+  ${top==="photo"?`<circle cx="100" cy="74" r="22" fill="#fff" stroke="${sp}" stroke-width="3"/><path d="M88 80 l8-9 6 6 5-5 8 8z" fill="${sp}"/><circle cx="106" cy="67" r="3" fill="${sp}"/>`:""}
+  ${top==="heart"?`<path d="M100 84 C80 70 82 52 96 56 Q100 58 100 62 Q100 58 104 56 C118 52 120 70 100 84Z" fill="#E91E63"/>`:""}
+  </svg>`; }
+const BG = ["#FCE4EC","#FFF3E0","#EDE7F6","#E0F2F1","#FFF8E1","#E3F2FD","#F3E5F5","#FBE9E7"];
+/* sample catalogue — the bakery's own cakes and prices replace these */
+const P = [
+ {id:1,n:"Chocolate Truffle",occ:["Birthday","Anniversary"],p:549,egg:true,c:["#5D2E17","#7B3F22","choco"],pop:9,d:"Rich chocolate sponge with truffle ganache"},
+ {id:2,n:"Black Forest",occ:["Birthday"],p:499,egg:true,c:["#3E2217","#F5F0EE","cherry"],pop:10,d:"Chocolate sponge, cream and cherries"},
+ {id:3,n:"Butterscotch Crunch",occ:["Birthday","Kids"],p:479,egg:true,c:["#C98B3A","#F3D08A","sprinkle"],pop:8,d:"Butterscotch cream with crunchy praline"},
+ {id:4,n:"Pineapple Delight",occ:["Birthday"],p:449,egg:true,c:["#F2C94C","#FFF4C2","cherry"],pop:7,d:"Classic pineapple with fresh cream"},
+ {id:5,n:"Red Velvet Heart",occ:["Anniversary"],p:749,egg:false,c:["#B3263E","#FFF6F6","heart"],pop:8,d:"Red velvet with cream-cheese frosting"},
+ {id:6,n:"Photo Cake",occ:["Photo cakes","Birthday","Anniversary"],p:899,egg:true,c:["#7C4DFF","#F3EEFF","photo"],pop:9,d:"Your photo printed on the cake",photo:true},
+ {id:7,n:"Rainbow Sprinkle",occ:["Kids","Birthday"],p:599,egg:true,c:["#E91E63","#FFFFFF","sprinkle"],pop:7,d:"Vanilla layers in rainbow colours"},
+ {id:8,n:"Birthday Candle Special",occ:["Birthday","Kids"],p:529,egg:true,c:["#1E88E5","#E3F2FD","candle"],pop:6,d:"Comes ready with candles"},
+ {id:9,n:"Rasmalai Fusion",occ:["Anniversary","Festive"],p:699,egg:true,c:["#E6B656","#FFF3DD","heart"],pop:7,d:"Rasmalai flavour, saffron and pistachio"},
+ {id:10,n:"Kaju Katli Cake",occ:["Festive"],p:799,egg:true,c:["#BFA27A","#F7EEDD","sprinkle"],pop:5,d:"Festive cake with kaju katli pieces"},
+ {id:11,n:"Strawberry Dream",occ:["Anniversary","Kids"],p:529,egg:true,c:["#E57399","#FFE3EC","heart"],pop:6,d:"Strawberry cream and sponge"},
+ {id:12,n:"Anniversary Couple Photo",occ:["Photo cakes","Anniversary"],p:999,egg:false,c:["#C2185B","#FFE9F0","photo"],pop:6,d:"Two-tier look with your photo",photo:true}
+];
+const OCC = [["All","🎂"],["Birthday","🎉"],["Anniversary","💞"],["Kids","🧸"],["Photo cakes","📷"],["Festive","🪔"]];
+const WTS = [["½ kg",1],["1 kg",1.9],["2 kg",3.6]];
+const SLOTS = [["Morning 9–12",0],["Afternoon 12–4",0],["Evening 4–9",0],["Midnight 11:30–11:55",150]];
+let occ = "All", eggOnly = false, sort = "pop", q = "";
+
+/* banner */
+const SLIDES = [
+ {h:"Midnight surprise",p:"Cake at their door at 11:30 pm",bg:"#3B1B4A",fg:"#fff",c:["#7C4DFF","#EDE7F6","candle"],go:"Birthday"},
+ {h:"Your photo on a cake",p:"Upload it, we print it",bg:"#FCE4EC",fg:"#1F1A1C",c:["#C2185B","#FFE9F0","photo"],go:"Photo cakes"},
+ {h:"Festive cakes",p:"Rasmalai, kaju katli and more",bg:"#FFF3E0",fg:"#1F1A1C",c:["#E6B656","#FFF3DD","sprinkle"],go:"Festive"}
+];
+$("banner").innerHTML = SLIDES.map((s,i) => `<div class="slide ${i?"":"on"}" style="background:${s.bg};color:${s.fg}"><div><h2>${s.h}</h2><p>${s.p}</p><button class="go" type="button" data-go="${s.go}">Shop now</button></div>${cake(s.c)}</div>`).join("") + `<div class="dots">${SLIDES.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`;
+let si = 0; const slides = [...document.querySelectorAll(".slide")], dots = [...document.querySelectorAll(".dots i")];
+if (!reduce) setInterval(() => { slides[si].classList.remove("on"); dots[si].classList.remove("on"); si = (si+1) % slides.length; slides[si].classList.add("on"); dots[si].classList.add("on"); }, 4200);
+document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => { setOcc(b.dataset.go); $("title").scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"start"}); });
+
+/* occasions + filters */
+$("occ").innerHTML = OCC.map(([o,e]) => `<button type="button" aria-pressed="${o===occ}" data-o="${o}"><span class="ic" aria-hidden="true">${e}</span>${o}</button>`).join("");
+document.querySelectorAll("#occ button").forEach(b => b.onclick = () => setOcc(b.dataset.o));
+function setOcc(o){ occ = o; document.querySelectorAll("#occ button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.o===o))); render(); }
+$("eggOnly").onclick = () => { eggOnly = !eggOnly; $("eggOnly").setAttribute("aria-pressed", String(eggOnly)); render(); };
+$("sort").onchange = e => { sort = e.target.value; render(); };
+$("q").oninput = e => { q = e.target.value.trim().toLowerCase(); render(); };
+function render(){
+  let list = P.filter(p => (occ==="All" || p.occ.includes(occ)) && (!eggOnly || p.egg) && (!q || (p.n + " " + p.d + " " + p.occ.join(" ") + (p.egg?" eggless":"")).toLowerCase().includes(q)));
+  list.sort((a,b) => sort==="lo" ? a.p-b.p : sort==="hi" ? b.p-a.p : b.pop-a.pop);
+  $("title").textContent = (occ==="All" ? "All cakes" : occ + " cakes") + ` (${list.length})`;
+  $("grid").innerHTML = list.length ? list.map((p,i) => `<button class="p" type="button" data-id="${p.id}">
+    <div class="img" style="background:${BG[p.id % BG.length]}">${cake(p.c)}${p.pop>=9?'<span class="tag">Bestseller</span>':''}${p.egg?'<span class="egg" title="Eggless available"></span>':''}</div>
+    <div class="info"><span class="nm">${p.n}</span><span class="pr">${rs(p.p)}<s>${rs(Math.round(p.p*1.2/10)*10)}</s></span><span class="del">Today in Jhansi</span></div></button>`).join("") : `<div class="empty">No cakes match. Try another filter.</div>`;
+  document.querySelectorAll(".p").forEach(el => el.onclick = () => openP(+el.dataset.id));
+}
+render();
+
+/* product sheet */
+let cur = null, wt = 0, slot = 0, photoURL = "";
+function price(){ return Math.round(cur.p * WTS[wt][1] + ($("sEgg").checked ? 50 * WTS[wt][1] : 0) + SLOTS[slot][1]); }
+function upd(){ $("sPrice").textContent = rs(price()); }
+function chips(el, arr, getI, setI){ el.innerHTML = arr.map((a,i) => `<button class="pill" type="button" aria-pressed="${i===getI()}">${a[0]}${a[1] && el.id==="sSlot" ? " +" + rs(a[1]) : ""}</button>`).join("");
+  [...el.children].forEach((b,i) => b.onclick = () => { setI(i); [...el.children].forEach((x,j) => x.setAttribute("aria-pressed", String(i===j))); upd(); }); }
+function openP(id){ cur = P.find(p => p.id === id); wt = 0; slot = 0; photoURL = "";
+  $("sName").textContent = cur.n; $("sDesc").textContent = cur.d;
+  $("sPic").style.background = BG[cur.id % BG.length]; $("sPic").innerHTML = cake(cur.c);
+  $("sEgg").checked = false; $("sEgg").disabled = !cur.egg; $("sEgg").parentElement.style.opacity = cur.egg ? 1 : .5;
+  $("sMsg").value = ""; $("sPhoto").value = ""; $("photoOpt").hidden = !cur.photo;
+  const d = new Date(); $("sDate").value = d.toISOString().slice(0,10); $("sDate").min = $("sDate").value;
+  chips($("sWt"), WTS, () => wt, i => wt = i); chips($("sSlot"), SLOTS, () => slot, i => slot = i);
+  upd(); $("sheet").classList.add("open"); $("sName").focus?.(); }
+$("sEgg").onchange = upd;
+$("sPhoto").onchange = e => { const f = e.target.files[0]; if (!f) return; photoURL = URL.createObjectURL(f); $("sPic").querySelector("img")?.remove(); const im = new Image(); im.src = photoURL; im.alt = "Your photo on the cake"; $("sPic").appendChild(im); };
+document.querySelectorAll("[data-close]").forEach(b => b.onclick = () => { $("sheet").classList.remove("open"); $("drawer").classList.remove("open"); });
+addEventListener("keydown", e => { if (e.key === "Escape"){ $("sheet").classList.remove("open"); $("drawer").classList.remove("open"); } });
+
+/* cart */
+const cart = [];
+function addToCart(){ cart.push({p:cur, wt:WTS[wt][0], egg:$("sEgg").checked, msg:$("sMsg").value.trim(), photo:!!photoURL, date:$("sDate").value, slot:SLOTS[slot][0], price:price()});
+  $("cartN").textContent = cart.length; const b = $("cartBtn"); b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); drawCart(); }
+$("sAdd").onclick = () => { addToCart(); $("sheet").classList.remove("open"); };
+$("sBuy").onclick = () => { addToCart(); $("sheet").classList.remove("open"); $("drawer").classList.add("open"); };
+$("cartBtn").onclick = () => { drawCart(); $("drawer").classList.add("open"); };
+const fmt = v => new Date(v + "T00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+function drawCart(){
+  $("items").innerHTML = cart.length ? cart.map((c,i) => `<div class="it"><div class="th" style="background:${BG[c.p.id % BG.length]}">${cake(c.p.c)}</div>
+    <div><b>${c.p.n}</b><small>${c.wt}${c.egg?" · eggless":""}${c.msg?` · “${c.msg.replace(/[<>&]/g,"")}”`:""}${c.photo?" · photo added":""}</small><small>${fmt(c.date)} · ${c.slot}</small></div>
+    <div style="text-align:right"><b>${rs(c.price)}</b><br><button type="button" data-rm="${i}">Remove</button></div></div>`).join("") : `<div class="empty">Your cart is empty.</div>`;
+  $("tot").textContent = rs(cart.reduce((s,c) => s + c.price, 0));
+  document.querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { cart.splice(+b.dataset.rm, 1); $("cartN").textContent = cart.length; drawCart(); });
+}
+drawCart();
+const dlg = $("dlg");
+$("order").onclick = () => {
+  if (!cart.length){ $("items").innerHTML = `<div class="empty">Add a cake first.</div>`; return; }
+  if (!$("cName").value.trim() || !$("cAddr").value.trim()){ (!$("cName").value.trim() ? $("cName") : $("cAddr")).focus(); return; }
+  const lines = cart.map((c,i) => `${i+1}. ${c.p.n}, ${c.wt}${c.egg?", eggless":""}${c.msg?`\n   Message: "${c.msg}"`:""}${(c.photo || c.p.photo)?"\n   Photo: I'll send it here":""}\n   ${fmt(c.date)}, ${c.slot} — ${rs(c.price)}`).join("\n");
+  $("bubble").textContent = `Hi Om Bakery! New order:\n${lines}\n\nTotal: ${rs(cart.reduce((s,c)=>s+c.price,0))}\nName: ${$("cName").value.trim()}\nDeliver to: ${$("cAddr").value.trim()}\nPayment: UPI / cash on delivery`;
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open","");
+};
+$("dlgClose").onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute("open");
+</script>
+</body>
+</html>
