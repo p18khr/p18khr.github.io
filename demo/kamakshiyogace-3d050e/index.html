@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kamakshi Yoga Center · Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap">
+<style>
+:root{--bg:#FFF8FB;--ink:#1E1424;--dim:#6E6273;--card:#fff;--line:#EEDDE8;--a:#C2185B;--a2:#7B1FA2;--soft:#FCE4EC;--on:#fff}
+body[data-kind="yoga"]{--bg:#F6F8F3;--ink:#1D2A21;--dim:#5E6B62;--line:#DCE5D8;--a:#3F7D5A;--a2:#A3B86C;--soft:#E6EFDF}
+body[data-kind="coaching"]{--bg:#F5F7FC;--ink:#111A33;--dim:#5A6380;--line:#DDE3F0;--a:#1F3A93;--a2:#F5B700;--soft:#E7ECF8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 "Poppins",system-ui,sans-serif;overflow-x:hidden}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+.demo{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:8px 14px}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px}
+.bar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.brand{font:800 18px/1.1 "Poppins",sans-serif;letter-spacing:.5px;min-width:0}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--a);color:var(--on);border:0;border-radius:999px;padding:11px 18px;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap}
+.cta.ghost{background:transparent;color:var(--a);border:2px solid var(--a)}
+.hero{padding-block:44px 30px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:center}
+.tag{display:inline-block;background:var(--soft);color:var(--a);font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;border-radius:999px;padding:5px 12px}
+h1{font:800 clamp(34px,6vw,64px)/1.02 "Fraunces",Georgia,serif;margin:14px 0 12px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--a)}
+.lead{color:var(--dim);font-size:17px;max-width:46ch;margin:0 0 20px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.art{aspect-ratio:1/1;max-width:100%;border-radius:28px;background:linear-gradient(140deg,var(--soft),#fff);display:grid;place-items:center;position:relative;overflow:hidden;border:1px solid var(--line)}
+.art canvas{width:100%;height:100%}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:8px 0 34px}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+.stats b{display:block;font:800 26px/1.1 "Fraunces",serif;color:var(--a)}
+.stats span{font-size:13px;color:var(--dim)}
+h2{font:800 clamp(24px,3.6vw,34px)/1.15 "Fraunces",serif;margin:0 0 6px;text-wrap:balance}
+.sub{color:var(--dim);margin:0 0 18px}
+section{padding-block:26px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;cursor:pointer;color:var(--ink);font-weight:500}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.batches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.b{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:6px;cursor:pointer;text-align:left;color:var(--ink);transition:border-color .2s,transform .2s}
+.b:hover{transform:translateY(-2px)}
+.b[aria-pressed="true"]{border-color:var(--a);box-shadow:0 0 0 2px var(--a) inset}
+.b .t{font-weight:700;font-size:16px}
+.b .m{color:var(--dim);font-size:13px}
+.b .seats{font-size:12px;font-weight:600;color:var(--a)}
+.feat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.feat div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;font-size:14px;color:var(--dim)}
+.feat b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+.book{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+form{display:grid;gap:10px}
+label{font-size:13px;font-weight:600}
+input,select{width:100%;min-width:0;font:inherit;font-size:15px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+.bubble{background:#DCF8C6;color:#111;border-radius:14px 14px 3px 14px;padding:12px 14px;white-space:pre-line;font-size:14px;min-height:110px}
+.wa{font-size:12px;color:var(--dim)}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:8px}
+.faq summary{cursor:pointer;font-weight:600}
+.faq p{margin:8px 0 0;color:var(--dim)}
+footer{border-top:1px solid var(--line);margin-top:30px;padding-block:22px;color:var(--dim);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--a)}
+@media (max-width:860px){.hero,.book{grid-template-columns:minmax(0,1fr)}.batches{grid-template-columns:repeat(2,minmax(0,1fr))}.feat{grid-template-columns:repeat(2,minmax(0,1fr))}.art{max-height:320px;aspect-ratio:auto;height:300px}}
+@media (max-width:520px){.batches{grid-template-columns:minmax(0,1fr)}.bar .cta{padding:9px 13px;font-size:13px}.brand{font-size:15px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.b{transition:none}}
+</style>
+</head>
+<body data-kind="yoga">
+<div class="demo">Demo made for Kamakshi Yoga Center by Prakhar Punj. Not the official site. Batches and timings are examples.</div>
+<header class="bar"><div class="wrap"><div class="brand">Kamakshi Yoga Center</div><a class="cta" href="#book" id="topCta">Book free trial</a></div></header>
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <span class="tag" id="tag"></span>
+      <h1 id="h1"></h1>
+      <p class="lead" id="lead"></p>
+      <div class="row"><a class="cta" href="#book">Book a free trial class</a><a class="cta ghost" href="#batches">See batches</a></div>
+    </div>
+    <div class="art"><canvas id="cv" width="600" height="600" aria-hidden="true"></canvas></div>
+  </div>
+  <div class="stats" id="stats"></div>
+
+  <section id="batches">
+    <h2 id="bH"></h2>
+    <p class="sub">Tap a batch to pick it for your free trial.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="batches" id="blist"></div>
+  </section>
+
+  <section><h2 id="fH"></h2><div class="feat" id="feat"></div></section>
+
+  <section id="book">
+    <div class="book">
+      <form id="form">
+        <h2 style="margin-bottom:4px">Book a free trial</h2>
+        <label for="fName">Your name</label><input id="fName" required autocomplete="name" placeholder="e.g. Riya">
+        <label for="fBatch">Batch</label><select id="fBatch"></select>
+        <label for="fDay">Day</label><select id="fDay"></select>
+        <button class="cta" type="submit">Send on WhatsApp</button>
+      </form>
+      <div>
+        <p class="wa">The message that reaches Kamakshi Yoga Center:</p>
+        <div class="bubble" id="bubble">Fill the form to see your message.</div>
+        <p class="wa">On the real site this opens WhatsApp ready to send. The demo sends nothing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq"><h2>Questions</h2><div id="faq"></div></section>
+</main>
+<footer><div class="wrap"><span>Kamakshi Yoga Center · near Rani Mahal, Jhansi · <a href="https://www.google.com/maps/search/?api=1&query=Kamakshi+Yoga+Center+near+Rani+Mahal%2C+Jhansi" target="_blank" rel="noopener">Directions ↗</a></span><span>Demo by Prakhar Punj · p18khr.github.io</span></div></footer>
+<script>
+const NAME = `Kamakshi Yoga Center`, KIND = document.body.dataset.kind;
+const C = {
+ dance:{tag:"Dance classes", h1:"Learn to <em>dance</em>. Love every step.", lead:"Bollywood, hip-hop, contemporary and classical for kids and adults. First class is free.",
+  stats:[["All ages","4 years and up"],["6 styles","from Bollywood to Kathak"],["Stage shows","twice a year"]],
+  bH:"Batches", groups:{"Kids":[["Bollywood Kids","Mon–Fri · 4:00 pm","Ages 5–12"],["Western Kids","Sat–Sun · 10:00 am","Ages 6–14"],["Kathak Basics","Tue–Thu · 5:00 pm","Ages 7+"]],"Adults":[["Bollywood","Mon–Fri · 7:00 pm","All levels"],["Hip-hop","Tue–Thu · 6:00 pm","Beginners welcome"],["Zumba","Daily · 7:00 am","Burn and dance"]],"Wedding":[["Sangeet prep","Book a slot","Couples and families"],["Couple dance","Weekends","2–4 weeks"],["Group choreography","On request","Friends and family"]]},
+  fH:"Why dance here", feat:[["Trained instructors","Years of stage experience"],["Small batches","Everyone gets attention"],["Annual show","Perform on a real stage"],["Sangeet choreography","For weddings and events"]],
+  faq:[["Do I need experience?","No. Every batch starts from basics."],["What should I wear?","Comfortable clothes and sports shoes."],["Is the trial really free?","Yes, one full class, no payment."]]},
+ yoga:{tag:"Yoga centre", h1:"Breathe. Stretch. <em>Feel better</em>.", lead:"Daily yoga batches for beginners, back pain, weight loss and stress. First class is free.",
+  stats:[["Morning & evening","daily batches"],["All levels","beginners welcome"],["Small groups","personal attention"]],
+  bH:"Batches", groups:{"Morning":[["Hatha Yoga","Daily · 6:00 am","All levels"],["Power Yoga","Daily · 7:00 am","Weight loss"],["Pranayama","Daily · 8:00 am","Breathing and calm"]],"Evening":[["Back care","Mon–Sat · 5:30 pm","Back and neck pain"],["Women's yoga","Mon–Sat · 6:30 pm","Ladies only"],["Meditation","Daily · 7:30 pm","Stress relief"]],"Special":[["Prenatal yoga","By appointment","With doctor's advice"],["Kids yoga","Weekends · 9:00 am","Ages 6–14"],["Private session","Your time","One-to-one"]]},
+  fH:"Why practise here", feat:[["Certified teachers","Safe for beginners"],["Therapy focus","Back, knees, thyroid, BP"],["Calm space","Clean and airy hall"],["Flexible timings","Morning and evening"]],
+  faq:[["I'm stiff, can I join?","Yes. We start slowly and adjust every pose."],["What do I bring?","A mat and a water bottle. Mats are available too."],["Is the trial free?","Yes, one full class, no payment."]]},
+ coaching:{tag:"Coaching institute", h1:"Clear concepts. <em>Better marks</em>.", lead:"Small batches, regular tests and doubt sessions. Come for a free demo class before you join.",
+  stats:[["Weekly tests","with rank and analysis"],["Small batches","doubts cleared daily"],["Study material","notes and practice sheets"]],
+  bH:"Courses", groups:{"School":[["Class 9–10","Mon–Sat · 4:00 pm","Maths & Science"],["Class 11","Mon–Sat · 5:00 pm","PCM / PCB"],["Class 12 Boards","Mon–Sat · 6:00 pm","Board focus"]],"Entrance":[["JEE Foundation","Mon–Sat · 3:00 pm","Class 11–12"],["NEET Batch","Mon–Sat · 7:00 am","Class 11–12"],["Crash course","Before exams","Revision and tests"]],"Tests":[["Weekly test","Every Sunday","Rank and report"],["Doubt class","Daily · 8:00 pm","One-to-one"],["Parent meeting","Monthly","Progress report"]]},
+  fH:"Why students join", feat:[["Experienced faculty","Concept-first teaching"],["Regular tests","Know where you stand"],["Doubt sessions","Nothing stays unclear"],["Parent updates","Progress on WhatsApp"]],
+  faq:[["Can I attend a demo class?","Yes, one free demo class before joining."],["What are the fees?","Fees depend on the course. Ask on WhatsApp."],["Are there weekend batches?","Yes, for selected courses."]]}
+}[KIND];
+const $ = id => document.getElementById(id);
+$("tag").textContent = C.tag; $("h1").innerHTML = C.h1; $("lead").textContent = C.lead; $("bH").textContent = C.bH; $("fH").textContent = C.fH;
+$("stats").innerHTML = C.stats.map(([b,s]) => `<div><b>${b}</b><span>${s}</span></div>`).join("");
+$("feat").innerHTML = C.feat.map(([b,s]) => `<div><b>${b}</b>${s}</div>`).join("");
+$("faq").innerHTML = C.faq.map(([q,a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+const G = Object.keys(C.groups); let grp = G[0], pick = null;
+const all = G.flatMap(g => C.groups[g].map(b => b[0] + " (" + b[1] + ")"));
+$("fBatch").innerHTML = all.map(x => `<option>${x}</option>`).join("");
+const days = []; for (let i = 0; i < 7; i++){ const d = new Date(); d.setDate(d.getDate() + i); days.push(i === 0 ? "Today" : i === 1 ? "Tomorrow" : d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"})); }
+$("fDay").innerHTML = days.map(d => `<option>${d}</option>`).join("");
+function tabs(){ $("tabs").innerHTML = G.map(g => `<button type="button" aria-pressed="${g===grp}">${g}</button>`).join("");
+  [...$("tabs").children].forEach((b,i) => b.onclick = () => { grp = G[i]; tabs(); list(); }); }
+function list(){ $("blist").innerHTML = C.groups[grp].map((b,i) => `<button class="b" type="button" aria-pressed="${pick===grp+i}" data-i="${i}"><span class="t">${b[0]}</span><span class="m">${b[1]}</span><span class="m">${b[2]}</span><span class="seats">${3 + (i*5 + grp.length) % 6} seats left</span></button>`).join("");
+  [...$("blist").children].forEach(el => el.onclick = () => { const i = +el.dataset.i, b = C.groups[grp][i]; pick = grp + i; $("fBatch").value = b[0] + " (" + b[1] + ")"; list(); $("book").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); }); }
+tabs(); list();
+$("form").onsubmit = e => { e.preventDefault(); const n = $("fName").value.trim(); if (!n){ $("fName").focus(); return; }
+  $("bubble").textContent = `Hi ${NAME}! I'd like a free trial.\nName: ${n}\nBatch: ${$("fBatch").value}\nDay: ${$("fDay").value}`; };
+/* hero art: drifting shapes in the accent colours */
+const cv = $("cv"), x = cv.getContext("2d"), cs = getComputedStyle(document.body), A = cs.getPropertyValue("--a").trim(), A2 = cs.getPropertyValue("--a2").trim();
+const dots = Array.from({length:26}, (_,i) => ({x:Math.random()*600, y:Math.random()*600, r:8+Math.random()*34, vx:(Math.random()-.5)*.6, vy:(Math.random()-.5)*.6, c:i%2?A:A2}));
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function draw(){ x.clearRect(0,0,600,600);
+  for (const d of dots){ if (!still){ d.x += d.vx; d.y += d.vy; if (d.x<-40) d.x=640; if (d.x>640) d.x=-40; if (d.y<-40) d.y=640; if (d.y>640) d.y=-40; }
+    x.globalAlpha = .22; x.fillStyle = d.c; x.beginPath(); x.arc(d.x, d.y, d.r, 0, 7); x.fill(); }
+  x.globalAlpha = 1; x.fillStyle = A; x.font = "800 64px Fraunces, Georgia, serif"; x.textAlign = "center";
+  x.fillText(KIND === "coaching" ? "A+" : KIND === "yoga" ? "ॐ" : "♪", 300, 330);
+  if (!still) requestAnimationFrame(draw); }
+draw();
+</script>
+</body>
+</html>
